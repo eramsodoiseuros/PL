@@ -91,7 +91,7 @@ def showMeDist(dataSplited):
 
 
 dataSplited=trataJson('inscritos-form.json')
-showMeDist(dataSplited)
+# showMeDist(dataSplited)
 
 
 # In[27]:

@@ -89,7 +89,7 @@ def showMeDist(dataSplited):
 
 
 dataSplited=trataJson('inscritos-form.json')
-showMeDist(dataSplited)
+# showMeDist(dataSplited)
 
 
 # In[22]:
@@ -101,7 +101,7 @@ for linha in dataSplited:
         individual = re.search(r'(?i:Individual)',linha[6])
     
         if(individual): 
-            name, dataNasc, morada, email,prova,escalao,equipa= getdataLine(linha)
+            name, dataNasc, morada, email,prova,escalao,equipa = getdataLine(linha)
             print('---------Dados de Inscrito---------')
             print(name[1].upper())
    
