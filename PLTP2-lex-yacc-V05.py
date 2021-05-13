@@ -41,6 +41,8 @@ lexer = lex.lex()
 def p_Programa(p):
     "Programa : BlocosCodigo"
     #print('Parsing completed succesfully! Value synthesized: ', p[1])
+    #print(p[1])
+    p[0]=p[1]
     
     
     ####----------------------------------------------------------------------
@@ -52,7 +54,8 @@ def p_BlocoCodigo_fin(p):
 def p_BlocosCodigo_Rec(p):
     "BlocosCodigo  :  BlocosCodigo Codigo "
     #print('Parsing Codigo succesfully! ID DID' , p[1])
-    p[0]=p[1]
+    tupleX=('CodigoRec',p[1],p[2])
+    p[0]=tupleX
     
     ####----------------------------------------------------------------------
 ### p_Declaracao
@@ -78,147 +81,150 @@ def p_Codigo_Atribuicao(p):
 def p_Atribuicao(p):
     " Atribuicao : ID '=' Expressao ';' "
     tupleX= ('Atribuicao',p[1],p[3])
-    a=','.join(p[1])
-    b=','.join(p[3])
-    print('Atribuicao',a,b)
+    #a=','.join(p[1])
+    #b=','.join(p[3])
+    #print('Atribuicao',a,b)
     p[0]=tupleX
     
 def p_Atribuicao_FUNC(p):
     " Atribuicao : ID '=' Bloco_CALLFUNC "
-    a=','.join(p[1])
-    b=','.join(p[3])
-    print('Atribuicao',a,b)
+    tupleX= ('Atribuicao',p[1],p[3])
+    #a=','.join(p[1])
+    #b=','.join(p[3])
+    #print('Atribuicao',a,b)
     p[0]=tupleX
 
 
 
 def p_Expressao_fin(p):
     " Expressao : Var "
-    p[0]=p[1]
+    tupleX=('Var',(p[1]))
+    p[0]=tupleX
 
 def p_Var_NUM(p):
     " Var : NUM "
-    tupleX = ('Var',p[1])
-    print(','.join(tupleX))
+    tupleX = ('NUM',p[1])
+    #print(','.join(tupleX))
     p[0]=tupleX
     
 def p_Var_ID(p):
     " Var : ID "
-    tupleX = ('Var',p[1])
-    print(','.join(tupleX))
+    tupleX = ('ID',p[1])
+    #print(','.join(tupleX))
     p[0]=tupleX
 def p_Var_TRUE(p):
     " Var : TRUE "
-    tupleX = ('Var',p[1])
-    print(','.join(tupleX))
+    tupleX = ('TRUE',p[1])
+    #print(','.join(tupleX))
     p[0]=tupleX
 def p_Var_FALSE(p):
     " Var : FALSE "
-    tupleX = ('Var',p[1])
-    print(','.join(tupleX))
+    tupleX = ('FALSE',p[1])
+    #print(','.join(tupleX))
     p[0]=tupleX
+
+
 
 def p_Expressao_Rec1(p):
     " Expressao : Expressao Operador Var "
-    print('Parsing p_Expressao_Rec1' , p[1])
-    p[0]=p[1]
+    tupleX = ('Operacao',p[2],p[1],p[3])
+    p[0]=tupleX
 
 def p_Expressao_Rec2(p):
     " Expressao : '(' Expressao  ')' "
-    print('Parsing p_Expressao_Rec2' , p[1])
-    p[0]=p[1]
+    #tupleX = ()
+    p[0]=p[2]
     
 def p_Operador_MAIS(p):
     " Operador : '+' "
-    print('Parsing p_Operador_MAIS' , p[1])
     p[0]=p[1]
 
 def p_Operador_Minus(p):
     " Operador : '-' "
-    print('Parsing p_Operador_Minus' , p[1])
     p[0]=p[1]
 def p_Operador_MUL(p):
     " Operador : '*' "
-    print('Parsing p_Operador_MUL' , p[1])
     p[0]=p[1]
 def p_Operador_Div(p):
     " Operador : '/' "
-    print('Parsing p_Operador_Div' , p[1])
     p[0]=p[1]
 def p_Operador_Rest(p):
     " Operador : '%' "
-    print('Parsing p_Operador_Rest' , p[1])
     p[0]=p[1]
 
 
     ####----------------------------------IF------------------------------------
 def p_Codigo_BlocoIF(p):
     "Codigo  : BlocoIF"
-    print('Parsing BlocoIF' , p[1])
-    p[0]=p[1]   
+    #print('Parsing BlocoIF' , p[1])
+    p[0]=p[1]
 
 
     
 def p_BlocoIF(p):
     " BlocoIF : IF '(' ListaCondicionais ')' '{' BlocosCodigo '}' "
-    print('Parsing BlocoIF '  , p[1])
-    p[0]=p[1]
+    tupleX=('IF', p[3],p[6])
+    p[0]=tupleX
 
 def p_ListaCondicionais_fin(p):
     " ListaCondicionais : Condicional"
-    print('Parsing p_ListaCondicionais_fin '  , p[1])
+    #print('Parsing p_ListaCondicionais_fin '  , p[1])
     p[0]=p[1]
     
 def p_ListaCondicionais_Capsulado(p):
     " ListaCondicionais : '(' ListaCondicionais ')' "
-    print('Parsing p_ListaCondicionais_fin '  , p[1])
-    p[0]=p[1]
+    
+    p[0]=p[2]
 
 def p_ListaCondicionais_Neg(p):
     "ListaCondicionais : '!' '(' ListaCondicionais ')'"
-    print('Parsing p_Condicional_Neg '  , p[1])
-    p[0]=p[1]
+    tupleX=('!',p[3])
+    p[0]=tupleX
 
 def p_ListaCondicionais_Rec(p):
-    print('--------------')
     " ListaCondicionais : ListaCondicionais OperadorLogico Condicional"
-    print('Parsing p_ListaCondicionais_Rec '  , p[1])
-    p[0]=p[1]
+    print('--------------')
+    tupleX=('OperacaoLogica',p[2],p[1],p[3])
+    p[0]=tupleX
+    print('--------------')
+    
+    
 
 def p_OperadorLogico_AND(p):
     "OperadorLogico : AND"
-    print('Parsing p_OperadorLogico_AND '  , p[1])
+    #print('Parsing p_OperadorLogico_AND '  , p[1])
     p[0]=p[1]
 
 def p_OperadorLogico_OR(p):
     "OperadorLogico : OR"
-    print('Parsing p_OperadorLogico_OR '  , p[1])
+    #print('Parsing p_OperadorLogico_OR '  , p[1])
     p[0]=p[1]
+    
+    
     
     
 def p_Condicional_Var(p):
     "Condicional : Var"
-    print('Parsing p_Condicional_Var '  , p[1])
+    #print('Parsing p_Condicional_Var '  , p[1])
     p[0]=p[1]
 def p_Condicional_Neg(p):
     "Condicional : '!' '(' Condicional ')'"
-    print('Parsing p_Condicional_Neg '  , p[1])
-    p[0]=p[3]
+    tupleX=('!',p[3])
+    #print('Parsing p_Condicional_Neg '  , p[1])
+    p[0]=tupleX
     
 def p_Condicional_Capsulado(p):
     "Condicional : '(' Condicional ')'"
-    print('Parsing p_Condicional_Capsulado '  , p[1])
     p[0]=p[2]
     
 def p_Condicional_OperadorCondicional(p):
     "Condicional : Condicional OperadorCondicional Condicional"
     tupleX= ( 'OperacaoCondicional' ,p[2],p[1],p[3] )
     #print('Parsing p_Condicional_OperadorCondicional '  , p[1])
-    a=p[2]
-    b=','.join(p[1])
-    c=','.join(p[3])
-    print('OperacaoCondicional' ,a,b,c )
-    p[0]=p[1]
+    #a=p[2]
+    #c=','.join(p[3])
+    #print('OperacaoCondicional' ,a,b,c )
+    p[0]=tupleX
     
 def p_OperadorCondicional_Maior(p):
     "OperadorCondicional : '>'"
@@ -250,25 +256,25 @@ def p_OperadorCondicional_NOTEQUALS(p):
     ####---------------------------------WHILEDO-------------------------------------
 def p_Codigo_BlocoWhileDo(p):
     "Codigo  : BlocoWhileDo"
-    print('Parsing p_Codigo_BlocoWhileDo' , p[1])
+    
     p[0]=p[1]   
     
 def p_BlocoWhileDo(p):
     " BlocoWhileDo : WHILE  '(' ListaCondicionais ')' DO '{' BlocosCodigo '}'  "
-    print('Parsing p_BlocoWhileDo '  , p[1])
-    p[0]=p[1]    
+    tupleX=('WHILE',p[3],'DO',p[7])
+    p[0]=tupleX
     
     ####---------------------------------LERSTDIN-------------------------------------
 def p_Codigo_LerSTDIN(p):
     "Codigo  : BlocoLerSTDIN"
     #print('Parsing p_Codigo_LerSTDIN' , p[1])
-    p[0]=p[1]   
+    p[0]=p[1]
     
 def p_BlocoLerSTDIN(p):
     " BlocoLerSTDIN : ID '=' STDIN '(' ')' ';' "
     tupleX=('STDIN', p[1] )
-    print(','.join(tupleX))
-    p[0]=p[1]
+    #print(','.join(tupleX))
+    p[0]=tupleX
 
     ####---------------------------STDOUT-------------------------------------------
 def p_Codigo_EscreverSTDOUT(p):
@@ -278,53 +284,58 @@ def p_Codigo_EscreverSTDOUT(p):
 def p_Bloco_EscreverSTDOUT(p):
     " Bloco_EscreverSTDOUT : STDOUT '(' Var ')' ';' "
     tupleX=('STDOUT',p[3])
-    a=  '('+','.join(p[3])+')'
-    print('STDOUT',a)
-    p[0]=p[4]
+    #a=  '('+','.join(p[3])+')'
+    #print('STDOUT',a)
+    p[0]=tupleX
         
     ####---------------------------Comentario-------------------------------------------
 def p_Codigo_Comentario(p):
     "Codigo  : Bloco_Comentario"
-    print('Parsing p_Codigo_Comentario' , p[1])
+    #print('Parsing p_Codigo_Comentario' , p[1])
     p[0]=p[1]   
     
 def p_Bloco_Comentario(p):
     " Bloco_Comentario : COMMENT "
-    print('Parsing p_Bloco_Comentario '  , p[1])
-    p[0]=p[1]
+    #print('Parsing p_Bloco_Comentario '  , p[1])
+    tupleX= ('COMMENT',p[1])
+    p[0]=tupleX
     
     ####----------------------------------------------------------------------
     
     ####--------------------------DEFINEFUNC--------------------------------------------
 def p_Codigo_DEFINEFUNC(p):
     "Codigo  : Bloco_DEFINEFUNC"
-    print('Parsing Bloco_DEFINEFUNC' , p[1])
+    #print('Parsing Bloco_DEFINEFUNC' , p[1])
     p[0]=p[1]   
     
 def p_Bloco_DEFINEFUNC_EMPTY(p):
     " Bloco_DEFINEFUNC : DEFINE FUNC '(' ')' '{' BlocosCodigo '}'"
-    print('Parsing p_BlocoLerSTDIN '  , p[1])
-    p[0]=p[1]
+    #print('Parsing p_BlocoLerSTDIN '  , p[1])
+    tupleX=('DEFINEEMPTY',p[2],p[6])
+    p[0]=tupleX
 
 def p_Bloco_DEFINEFUNC_Atributos(p):
     " Bloco_DEFINEFUNC : DEFINE FUNC '(' ListaAtributos  ')' '{' BlocosCodigo '}'"
-    print('Parsing p_BlocoLerSTDIN '  , p[1])
-    p[0]=p[1]
+    #print('Parsing p_BlocoLerSTDIN '  , p[1])
+    tupleX=('DEFINEFILL', p[2],p[4],p[7])
+    p[0]=tupleX
     
 def p_ListaAtributos_fin(p):
     " ListaAtributos : Atributo"
-    print('Parsing p_BlocoLerSTDIN '  , p[1])
-    p[0]=p[1]
+    #print('Parsing p_BlocoLerSTDIN '  , p[1])
+    tupleX=('Atributo',p[1])
+    p[0]=tupleX
 
 def p_ListaAtributos_Rec(p):
     " ListaAtributos : ListaAtributos ',' Atributo"
-    print('Parsing p_BlocoLerSTDIN '  , p[1])
-    p[0]=p[1]
+    #print('Parsing p_BlocoLerSTDIN '  , p[1])
+    tupleX=('AtributoRec',p[1],p[3])
+    p[0]=tupleX
 
 
 def p_Atributo(p):
     " Atributo : INT"
-    print('Parsing p_BlocoLerSTDIN '  , p[1])
+    #print('Parsing p_BlocoLerSTDIN '  , p[1])
     p[0]=p[1]
     
     
@@ -332,18 +343,19 @@ def p_Atributo(p):
     ####--------------------------Call_FUNC--------------------------------------------
 def p_Codigo_CALLFUNC(p):
     "Codigo  : Bloco_CALLFUNC"
-    print('Parsing p_Codigo_CALLFUNC' , p[1])
-    p[0]=p[1]   
+    p#rint('Parsing p_Codigo_CALLFUNC' , p[1])
+    p[0]=p[1]
     
 def p_Bloco_CALLFUNC_EMPTY(p):
     " Bloco_CALLFUNC : CALL FUNC '(' ')' ';'"
-    print('Parsing p_BlocoLerSTDIN '  , p[1])
-    p[0]=p[1]
+    tupleX=('CALLEMPTY',p[2])
+    p[0]=tupleX
+    
 ## CALL _isNUMBER_(x)
 def p_Bloco_CALLFUNC_Atributos(p):
     " Bloco_CALLFUNC : CALL FUNC '(' INPUTVar  ')' ';' "
-    print('Parsing p_BlocoLerSTDIN '  , p[1])
-    p[0]=p[1]    
+    tupleX=('CALLFILL',p[2],p[4])
+    p[0]=tupleX  
 
 def p_INPUTVar_fin(p):
     " INPUTVar : Var "
@@ -352,8 +364,8 @@ def p_INPUTVar_fin(p):
 
 def p_INPUTVar_Rec(p):
     " INPUTVar : INPUTVar ',' Var "
-    print('Parsing p_BlocoLerSTDIN '  , p[1])
-    p[0]=p[1] 
+    tupleX=('RecVar',p[1],p[3])
+    p[0]=tupleX  
 
 def p_error(p):
     parser.success = False
@@ -486,7 +498,65 @@ fonteoption=    """
      result = parser.parse(source)
      """
      
-     
-parser.parse(pergunta_1)
+   
+def assembliza(tupleX):
+    if (tupleX[0] == 'CodigoRec') :# ('Codigorec' ,BlocodeCodigo, Codigo )
+        assembliza(tupleX[1])
+        assembliza(tupleX[2])
+    
+    if (tupleX[0] == 'Declaracao') :#('Declaracao', 'INT', 'x')
+        
+        print('PUSHI',tupleX[2])
+    if (tupleX[0] == 'STDIN') :#('STDIN', 'n')
+        
+        print(tupleX)
+    if (tupleX[0] == 'OperacaoLogica') :#
+        
+        print(tupleX)
+    if (tupleX[0] == 'OperacaoCondicional') :#('OperacaoCondicional', '>', ('ID', 'n'), ('NUM', '0'))
+        
+        print(tupleX)
+    if (tupleX[0] == 'IF') :#('IF', ('OperacaoLogica', '&&', ('OperacaoLogica', '&&', ('OperacaoCondicional', '==', ('ID', 'x'), ('ID', 'y')), ('OperacaoCondicional', '==', ('ID', 'x'), ('ID', 'w'))), ('OperacaoCondicional', '==', ('ID', 'x'), ('ID', 'z'))), ('STDOUT', ('ID', 'a')))
+        
+        print(tupleX)
+    if (tupleX[0] == 'ID') :#('ID', 'x')
+        
+        print(tupleX)
+    if (tupleX[0] == 'STDOUT') :#('STDOUT', ('ID', 'x')) 
+        
+        print(tupleX)
+    if (tupleX[0] == 'COMMENT') :#('COMMENT', '*/ atenção aqui estou ainda a pensar como garantir que o numero é INT /*')
+        
+        print(tupleX)
+    if (tupleX[0] == 'Atribuicao') :#('Atribuicao', 'c', ('Var', ('NUM', '0')))
+        
+        print(tupleX)
+    if (tupleX[0] == 'Var') : #('Var', ('ID', 'x'))
+        
+        print(tupleX)
+    if (tupleX[0] == 'WHILE') :#
+        
+        print(tupleX)
+    if (tupleX[0] == 'NUM') :#('NUM', '1')
+        
+        print(tupleX)
+    if (tupleX[0] == 'Operacao') :#('Operacao', '-', ('Var', ('ID', 'n')), ('NUM', '1')))
+        
+        print(tupleX)
+
+# é preciso ter em atenção a ordem da recursividade e que algumas das cenas devemos verificar se tem outros tuplos dentro
+    
+
+        
+        
+            
+
+struct_to_assemblizar=parser.parse(pergunta_4)
+print(struct_to_assemblizar)
 if parser.success:
    print('Parsing completed!')
+   
+   
+assembliza(struct_to_assemblizar)
+   
+   
