@@ -180,6 +180,7 @@ def p_ListaCondicionais_Neg(p):
     p[0]=p[1]
 
 def p_ListaCondicionais_Rec(p):
+    print('--------------')
     " ListaCondicionais : ListaCondicionais OperadorLogico Condicional"
     print('Parsing p_ListaCondicionais_Rec '  , p[1])
     p[0]=p[1]
@@ -202,16 +203,21 @@ def p_Condicional_Var(p):
 def p_Condicional_Neg(p):
     "Condicional : '!' '(' Condicional ')'"
     print('Parsing p_Condicional_Neg '  , p[1])
-    p[0]=p[1]
+    p[0]=p[3]
     
 def p_Condicional_Capsulado(p):
     "Condicional : '(' Condicional ')'"
     print('Parsing p_Condicional_Capsulado '  , p[1])
-    p[0]=p[1]
+    p[0]=p[2]
     
 def p_Condicional_OperadorCondicional(p):
     "Condicional : Condicional OperadorCondicional Condicional"
-    print('Parsing p_Condicional_OperadorCondicional '  , p[1])
+    tupleX= ( 'OperacaoCondicional' ,p[2],p[1],p[3] )
+    #print('Parsing p_Condicional_OperadorCondicional '  , p[1])
+    a=p[2]
+    b=','.join(p[1])
+    c=','.join(p[3])
+    print('OperacaoCondicional' ,a,b,c )
     p[0]=p[1]
     
 def p_OperadorCondicional_Maior(p):
