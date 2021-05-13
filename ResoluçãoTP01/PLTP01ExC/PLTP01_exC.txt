@@ -1,0 +1,360 @@
+Dados de Utilizador:
+Nome: JOÃO COSTA
+Data de Nascimento: 04/04/70
+Morada: Rua Carolina Rosa Alves Nº27 Braga
+Email: jfscosta@gmail.com
+Prova: Ultra Trail
+Escalão: M40
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: PAULO PIMENTEL TORRES
+Data de Nascimento: 10/09/59
+Morada: Rua Costa Soares, 39
+Email: geral@vieirafreitas.pt
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: JOÃO PIMENTEL TORRES
+Data de Nascimento: 11/09/88
+Morada: Rua Costa Soares, 39
+Email: geral@vieirafreitas.pt
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: VASCO MANUEL DE SEQUEIROS BARRETO MARTINS DE ARAÚJO
+Data de Nascimento: 26/05/64
+Morada: Rua S. Domingos 174 3º esq.
+Email: vascosequeiros@yahoo.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: CELESTE CRUZ
+Data de Nascimento: 23/10/65
+Morada: Rua Graça Júnior, nº 14, Braga
+Email: mcrus@stec.uminho.pt
+Prova: Corrida da Geira
+Escalão: SENIOR Fem
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: JORGE LOURENÇO
+Data de Nascimento: 27/10/69
+Morada: Rua Eduardo Esperança, 7
+Email: jlourenzo@hotmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: LUÍS MELO
+Data de Nascimento: 11/09/67
+Morada: R. Feliciano Ramos, Nº 24 - 11º Esq. Frt.
+Email: lume_pereira@yahoo.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: MARIO JORGE AORIMM
+Data de Nascimento: 11/12/66
+Morada: R.Eng.Pimentel 19 4715-359 Braga
+Email: mjgsmamorim@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: LUIS B PEREIRA
+Data de Nascimento: 05/08/61
+Morada: Rua Damião de Gois, 198-5ª Esq 4700-028-Braga
+Email: luis.pereira@grupoecb.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: PAULO ANTUNES
+Data de Nascimento: 16/09/73
+Morada: Rua Eduardo Manuel de Almeida nº 648 5º Direito
+Email: psantunes@sapo.pt
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: CARLOS ALBERTO GOMES TEIXEIRA
+Data de Nascimento: 08/06/69
+Morada: R. António F. F. Gomes, 138, 4º Esq. 4705-157 Braga
+Email: carlosflaviae@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: MANEL ALBERTO LEITE DE SOUSA
+Data de Nascimento: 15/05/66
+Morada: Rua Germão Galharde, 16   5DTFT
+Email: mna.sousa@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: GIUSEPPE BALDASSARRE
+Data de Nascimento: 30/04/66
+Morada: Av.Joao XXI 730
+Email: badgi.p@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: HELENA OLIVEIRA
+Data de Nascimento: 11/12/86
+Morada: Av.Joao XXI 730
+Email: helena-mendes.oliveira@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Fem
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: PAULO ANTUNES
+Data de Nascimento: 16/09/73
+Morada: Rua Eduardo Manuel de Almeida nº 648 5º Direito
+Email: psantunes@sapo.pt
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: MARINHA PAULA FERNANDES
+Data de Nascimento: 19/12/65
+Morada: Rua do Outeiro, nº 28 Lamaçães Braga
+Email: paula.fer@netcabo.pt
+Prova: Corrida da Geira
+Escalão: SENIOR Fem
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: CÁTIA RAQUEL MACEDO OLIVEIRA
+Data de Nascimento: 14/08/83
+Morada: Rua Serrões nº899 4760-247 Vila Nova de Famalicão
+Email: catia_oliveira83@hotmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Fem
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: MANUEL COUTINHO MACHADO
+Data de Nascimento: 04/03/67
+Morada: Urbanização do Rio - Rua 1 - nº 31 - 4º esqº 4905-313 Ponte
+Email: couto67@gmail.com
+Prova: Ultra Trail
+Escalão: M40
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: TIAGO DOMINGUES FRADA
+Data de Nascimento: 10/01/82
+Morada: Rua Germão Galharde, nº 26, 3º tro Trás, 4715-290 Braga
+Email: tiagofrada@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: ANTÓNIO JOSÉ COSTA
+Data de Nascimento: 04/05/60
+Morada: rua costa soares - braga
+Email: tozecosta1960@hotmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: Turbulentos
+
+Dados de Utilizador:
+Nome: TIAGO DOMINGUES FRADA
+Data de Nascimento: 10/01/82
+Morada: Rua Germão galharde, nº 26, 3º Ctro Trás, Braga
+Email: tiagofrada@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: MARIO JORGE AORIMM
+Data de Nascimento: 11/12/66
+Morada: R. Eng Pimentel 19 Braga
+Email: mjgsmamorim@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: JOSÉ FERREIRA LOUREIRO
+Data de Nascimento: 25/04/65
+Morada: Rua Rodrigo Gonçalves Costa nº13 - 4715-230 -Braga
+Email: jfloureiros@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: CARLOS MANUEL GONÇALVES VIEIRA FERNANDES
+Data de Nascimento: 14/03/66
+Morada: Rua do Outeiro, nº 28 LAmaçães - 4715-082 Braga
+Email: carlos.fer@netcabo.pt
+Prova: Ultra Trail
+Escalão: M40
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: JOSE ALBERTO MARTINS
+Data de Nascimento: 06/09/63
+Morada: Rua Costa Soares 14
+Email: geral@bragalis.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: SANDRA MARIA FINSTERRA TRAVESSAS
+Data de Nascimento: 16/04/14
+Morada: Rua gomes d Amorim 2350 Aveiro mar P varzim
+Email: Sandra.travessas@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Fem
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: FRANCISCO ANTÓNIO DOS SANTOS COSTAS
+Data de Nascimento: 08/06/64
+Morada: Praça Dr Francisco Araújo Malheiro nº 76 3º Dt
+Email: xicocosta@yahoo.com
+Prova: Ultra Trail
+Escalão: M40
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: CARLOS BRITO
+Data de Nascimento: 16/01/70
+Morada: Rua da Mourisca 51 4710 - 087 Braga
+Email: carlosmcbrito@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: Turbulentos
+
+Dados de Utilizador:
+Nome: ELISABETE COSTA
+Data de Nascimento: 21/05/79
+Morada: rua santa cruz vimieiro braga
+Email: elisabetecosta78@hotmail.com
+Prova: Ultra Trail
+Escalão: SENIOR Fem
+Prova: turbulentos
+
+Dados de Utilizador:
+Nome: ANTÓNIO FERREIRA
+Data de Nascimento: 10/02/61
+Morada: Rua Albanao Belino, 42 - 3º esq. 4710-351 Braga
+Email: anjomafe@sas.uminho.pt
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: ANTÓNIO JOSÉ VELOSO DOS SANTOS
+Data de Nascimento: 05/04/63
+Morada: Rua do Outeiro, 52, Lamaçães, 4715-082 Braga
+Email: a.veloso.santos@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: ANA MOREIRA
+Data de Nascimento: 21/07/61
+Morada: R. Conego Constantino Souto Mayor Nº7,  7ºD.  4715 287 Braga
+Email: ruisantosmail@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Fem
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: JOÃO NUNO FERREIRA CRUZ PINTO
+Data de Nascimento: 30/07/72
+Morada: Av. Dr. Porfirio da Silva 290 - 6º
+Email: joao.nuno@portugalmail.pt
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: MÁRIO RAMOS
+Data de Nascimento: 25/08/64
+Morada: Dr João Araujo Nº226 , 4910 433 Vila Praia Ancora
+Email: ruisantosmail@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: CONCEIÇÃO MARQUES
+Data de Nascimento: 17/03/63
+Morada: Avª Antero de Quental, nº 60, 6º Esqº Trás - Braga
+Email: cmarques@dps.uminho.pt
+Prova: Corrida da Geira
+Escalão: SENIOR Fem
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: SÉRGIO SILVA
+Data de Nascimento: 26/12/59
+Morada: Avª Alfredo Barros, nº 4, 5º Dtº - Braga
+Email: sergio_pirata@sapo.pt
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: PAULA MATOS
+Data de Nascimento: 16/01/65
+Morada: R. Prof. Machado Vilela 180 2º trás - Braga
+Email: paulamatoso@yayoo.com.br
+Prova: Corrida da Geira
+Escalão: SENIOR Fem
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: SHEILA PEREIRA KHAN
+Data de Nascimento: 02/10/72
+Morada: Rua do Assento, Quinta da Seara, Hab.D, Gondizalves
+Email: sheilakhan31@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Fem
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: RUI GOMES
+Data de Nascimento: 27/12/72
+Morada: Rua Amândio César nº5, 1ºDF
+Email: rui.rodrigues.gomes@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
+Dados de Utilizador:
+Nome: JOSÉ MARIA RIBEIRO VIEIRA DE FIGUEIREDO
+Data de Nascimento: 05/02/69
+Morada: Braga
+Email: osvaldo.s.oliveira@gmail.com
+Prova: Corrida da Geira
+Escalão: SENIOR Masc
+Prova: TURBULENTOS
+
