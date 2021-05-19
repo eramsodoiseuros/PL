@@ -8,124 +8,126 @@ Rule 2     BlocosCodigo -> Codigo
 Rule 3     BlocosCodigo -> BlocosCodigo Codigo
 Rule 4     Codigo -> Declaracao
 Rule 5     Declaracao -> INT ID ;
-Rule 6     Codigo -> Atribuicao
-Rule 7     Atribuicao -> ID = Expressao ;
-Rule 8     Atribuicao -> ID = Bloco_CALLFUNC
-Rule 9     Expressao -> Var
-Rule 10    Var -> NUM
-Rule 11    Var -> ID
-Rule 12    Var -> TRUE
-Rule 13    Var -> FALSE
-Rule 14    Expressao -> Expressao Operador Var
-Rule 15    Expressao -> ( Expressao )
-Rule 16    Operador -> +
-Rule 17    Operador -> -
-Rule 18    Operador -> *
-Rule 19    Operador -> /
-Rule 20    Operador -> %
-Rule 21    Codigo -> BlocoIF
-Rule 22    BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo }
-Rule 23    BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-Rule 24    ListaCondicionais -> Condicional
-Rule 25    ListaCondicionais -> ( ListaCondicionais )
-Rule 26    ListaCondicionais -> ! ( ListaCondicionais )
-Rule 27    ListaCondicionais -> ListaCondicionais OperadorLogico Condicional
-Rule 28    OperadorLogico -> AND
-Rule 29    OperadorLogico -> OR
-Rule 30    Condicional -> Var
-Rule 31    Condicional -> ! ( Condicional )
-Rule 32    Condicional -> ( Condicional )
-Rule 33    Condicional -> Condicional OperadorCondicional Condicional
-Rule 34    OperadorCondicional -> >
-Rule 35    OperadorCondicional -> BIGEQUAL
-Rule 36    OperadorCondicional -> <
-Rule 37    OperadorCondicional -> LESSEREQUAL
-Rule 38    OperadorCondicional -> EQUALS
-Rule 39    OperadorCondicional -> NOTEQUALS
-Rule 40    Codigo -> BlocoWhileDo
-Rule 41    BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo }
-Rule 42    Codigo -> BlocoLerSTDIN
-Rule 43    BlocoLerSTDIN -> ID = STDIN ( ) ;
-Rule 44    Codigo -> Bloco_EscreverSTDOUT
-Rule 45    Bloco_EscreverSTDOUT -> STDOUT ( Var ) ;
-Rule 46    Codigo -> Bloco_Comentario
-Rule 47    Bloco_Comentario -> COMMENT
-Rule 48    Codigo -> Bloco_DEFINEFUNC
-Rule 49    Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo }
-Rule 50    Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-Rule 51    ListaAtributos -> Atributo
-Rule 52    ListaAtributos -> ListaAtributos , Atributo
-Rule 53    Atributo -> INT
-Rule 54    Codigo -> Bloco_CALLFUNC
-Rule 55    Bloco_CALLFUNC -> CALL FUNC ( ) ;
-Rule 56    Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ;
-Rule 57    INPUTVar -> Var
-Rule 58    INPUTVar -> INPUTVar , Var
+Rule 6     Declaracao -> INT ID = Expressao
+Rule 7     Declaracao -> INT BlocoLerSTDIN
+Rule 8     Codigo -> Atribuicao
+Rule 9     Atribuicao -> ID = Expressao ;
+Rule 10    Atribuicao -> ID = Bloco_CALLFUNC
+Rule 11    Expressao -> Var
+Rule 12    Var -> NUM
+Rule 13    Var -> ID
+Rule 14    Var -> TRUE
+Rule 15    Var -> FALSE
+Rule 16    Expressao -> Expressao Operador Var
+Rule 17    Expressao -> ( Expressao )
+Rule 18    Operador -> +
+Rule 19    Operador -> -
+Rule 20    Operador -> *
+Rule 21    Operador -> /
+Rule 22    Operador -> %
+Rule 23    Codigo -> BlocoIF
+Rule 24    BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo }
+Rule 25    BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+Rule 26    ListaCondicionais -> Condicional
+Rule 27    ListaCondicionais -> ( ListaCondicionais )
+Rule 28    ListaCondicionais -> ! ( ListaCondicionais )
+Rule 29    ListaCondicionais -> ListaCondicionais OperadorLogico Condicional
+Rule 30    OperadorLogico -> AND
+Rule 31    OperadorLogico -> OR
+Rule 32    Condicional -> Var
+Rule 33    Condicional -> ! ( Condicional )
+Rule 34    Condicional -> ( Condicional )
+Rule 35    Condicional -> Condicional OperadorCondicional Condicional
+Rule 36    OperadorCondicional -> >
+Rule 37    OperadorCondicional -> BIGEQUAL
+Rule 38    OperadorCondicional -> <
+Rule 39    OperadorCondicional -> LESSEREQUAL
+Rule 40    OperadorCondicional -> EQUALS
+Rule 41    OperadorCondicional -> NOTEQUALS
+Rule 42    Codigo -> BlocoWhileDo
+Rule 43    BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo }
+Rule 44    Codigo -> BlocoLerSTDIN
+Rule 45    BlocoLerSTDIN -> ID = STDIN ( ) ;
+Rule 46    Codigo -> Bloco_EscreverSTDOUT
+Rule 47    Bloco_EscreverSTDOUT -> STDOUT ( Var ) ;
+Rule 48    Codigo -> Bloco_Comentario
+Rule 49    Bloco_Comentario -> COMMENT
+Rule 50    Codigo -> Bloco_DEFINEFUNC
+Rule 51    Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo }
+Rule 52    Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+Rule 53    ListaAtributos -> Atributo
+Rule 54    ListaAtributos -> ListaAtributos , Atributo
+Rule 55    Atributo -> INT
+Rule 56    Codigo -> Bloco_CALLFUNC
+Rule 57    Bloco_CALLFUNC -> CALL FUNC ( ) ;
+Rule 58    Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ;
+Rule 59    INPUTVar -> Var
+Rule 60    INPUTVar -> INPUTVar , Var
 
 Terminals, with rules where they appear
 
-!                    : 26 31
-%                    : 20
-(                    : 15 22 23 25 26 31 32 41 43 45 49 50 55 56
-)                    : 15 22 23 25 26 31 32 41 43 45 49 50 55 56
-*                    : 18
-+                    : 16
-,                    : 52 58
--                    : 17
-/                    : 19
-;                    : 5 7 43 45 55 56
-<                    : 36
-=                    : 7 8 43
->                    : 34
-AND                  : 28
-BIGEQUAL             : 35
-CALL                 : 55 56
-COMMENT              : 47
-DEFINE               : 49 50
-DO                   : 41
-ELSE                 : 23
-EQUALS               : 38
-FALSE                : 13
-FUNC                 : 49 50 55 56
-ID                   : 5 7 8 11 43
-IF                   : 22 23
-INT                  : 5 53
-LESSEREQUAL          : 37
-NOTEQUALS            : 39
-NUM                  : 10
-OR                   : 29
-STDIN                : 43
-STDOUT               : 45
-TRUE                 : 12
-WHILE                : 41
+!                    : 28 33
+%                    : 22
+(                    : 17 24 25 27 28 33 34 43 45 47 51 52 57 58
+)                    : 17 24 25 27 28 33 34 43 45 47 51 52 57 58
+*                    : 20
++                    : 18
+,                    : 54 60
+-                    : 19
+/                    : 21
+;                    : 5 9 45 47 57 58
+<                    : 38
+=                    : 6 9 10 45
+>                    : 36
+AND                  : 30
+BIGEQUAL             : 37
+CALL                 : 57 58
+COMMENT              : 49
+DEFINE               : 51 52
+DO                   : 43
+ELSE                 : 25
+EQUALS               : 40
+FALSE                : 15
+FUNC                 : 51 52 57 58
+ID                   : 5 6 9 10 13 45
+IF                   : 24 25
+INT                  : 5 6 7 55
+LESSEREQUAL          : 39
+NOTEQUALS            : 41
+NUM                  : 12
+OR                   : 31
+STDIN                : 45
+STDOUT               : 47
+TRUE                 : 14
+WHILE                : 43
 error                : 
-{                    : 22 23 23 41 49 50
-}                    : 22 23 23 41 49 50
+{                    : 24 25 25 43 51 52
+}                    : 24 25 25 43 51 52
 
 Nonterminals, with rules where they appear
 
-Atribuicao           : 6
-Atributo             : 51 52
-BlocoIF              : 21
-BlocoLerSTDIN        : 42
-BlocoWhileDo         : 40
-Bloco_CALLFUNC       : 8 54
-Bloco_Comentario     : 46
-Bloco_DEFINEFUNC     : 48
-Bloco_EscreverSTDOUT : 44
-BlocosCodigo         : 1 3 22 23 23 41 49 50
+Atribuicao           : 8
+Atributo             : 53 54
+BlocoIF              : 23
+BlocoLerSTDIN        : 7 44
+BlocoWhileDo         : 42
+Bloco_CALLFUNC       : 10 56
+Bloco_Comentario     : 48
+Bloco_DEFINEFUNC     : 50
+Bloco_EscreverSTDOUT : 46
+BlocosCodigo         : 1 3 24 25 25 43 51 52
 Codigo               : 2 3
-Condicional          : 24 27 31 32 33 33
+Condicional          : 26 29 33 34 35 35
 Declaracao           : 4
-Expressao            : 7 14 15
-INPUTVar             : 56 58
-ListaAtributos       : 50 52
-ListaCondicionais    : 22 23 25 26 27 41
-Operador             : 14
-OperadorCondicional  : 33
-OperadorLogico       : 27
+Expressao            : 6 9 16 17
+INPUTVar             : 58 60
+ListaAtributos       : 52 54
+ListaCondicionais    : 24 25 27 28 29 43
+Operador             : 16
+OperadorCondicional  : 35
+OperadorLogico       : 29
 Programa             : 0
-Var                  : 9 14 30 45 57 58
+Var                  : 11 16 32 47 59 60
 
 Parsing method: LALR
 
@@ -136,27 +138,29 @@ state 0
     (2) BlocosCodigo -> . Codigo
     (3) BlocosCodigo -> . BlocosCodigo Codigo
     (4) Codigo -> . Declaracao
-    (6) Codigo -> . Atribuicao
-    (21) Codigo -> . BlocoIF
-    (40) Codigo -> . BlocoWhileDo
-    (42) Codigo -> . BlocoLerSTDIN
-    (44) Codigo -> . Bloco_EscreverSTDOUT
-    (46) Codigo -> . Bloco_Comentario
-    (48) Codigo -> . Bloco_DEFINEFUNC
-    (54) Codigo -> . Bloco_CALLFUNC
+    (8) Codigo -> . Atribuicao
+    (23) Codigo -> . BlocoIF
+    (42) Codigo -> . BlocoWhileDo
+    (44) Codigo -> . BlocoLerSTDIN
+    (46) Codigo -> . Bloco_EscreverSTDOUT
+    (48) Codigo -> . Bloco_Comentario
+    (50) Codigo -> . Bloco_DEFINEFUNC
+    (56) Codigo -> . Bloco_CALLFUNC
     (5) Declaracao -> . INT ID ;
-    (7) Atribuicao -> . ID = Expressao ;
-    (8) Atribuicao -> . ID = Bloco_CALLFUNC
-    (22) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
-    (23) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-    (41) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
-    (43) BlocoLerSTDIN -> . ID = STDIN ( ) ;
-    (45) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
-    (47) Bloco_Comentario -> . COMMENT
-    (49) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (55) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (56) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (6) Declaracao -> . INT ID = Expressao
+    (7) Declaracao -> . INT BlocoLerSTDIN
+    (9) Atribuicao -> . ID = Expressao ;
+    (10) Atribuicao -> . ID = Bloco_CALLFUNC
+    (24) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
+    (25) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+    (43) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
+    (45) BlocoLerSTDIN -> . ID = STDIN ( ) ;
+    (47) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
+    (49) Bloco_Comentario -> . COMMENT
+    (51) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (57) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (58) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
 
     INT             shift and go to state 13
     ID              shift and go to state 14
@@ -191,27 +195,29 @@ state 2
     (1) Programa -> BlocosCodigo .
     (3) BlocosCodigo -> BlocosCodigo . Codigo
     (4) Codigo -> . Declaracao
-    (6) Codigo -> . Atribuicao
-    (21) Codigo -> . BlocoIF
-    (40) Codigo -> . BlocoWhileDo
-    (42) Codigo -> . BlocoLerSTDIN
-    (44) Codigo -> . Bloco_EscreverSTDOUT
-    (46) Codigo -> . Bloco_Comentario
-    (48) Codigo -> . Bloco_DEFINEFUNC
-    (54) Codigo -> . Bloco_CALLFUNC
+    (8) Codigo -> . Atribuicao
+    (23) Codigo -> . BlocoIF
+    (42) Codigo -> . BlocoWhileDo
+    (44) Codigo -> . BlocoLerSTDIN
+    (46) Codigo -> . Bloco_EscreverSTDOUT
+    (48) Codigo -> . Bloco_Comentario
+    (50) Codigo -> . Bloco_DEFINEFUNC
+    (56) Codigo -> . Bloco_CALLFUNC
     (5) Declaracao -> . INT ID ;
-    (7) Atribuicao -> . ID = Expressao ;
-    (8) Atribuicao -> . ID = Bloco_CALLFUNC
-    (22) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
-    (23) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-    (41) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
-    (43) BlocoLerSTDIN -> . ID = STDIN ( ) ;
-    (45) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
-    (47) Bloco_Comentario -> . COMMENT
-    (49) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (55) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (56) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (6) Declaracao -> . INT ID = Expressao
+    (7) Declaracao -> . INT BlocoLerSTDIN
+    (9) Atribuicao -> . ID = Expressao ;
+    (10) Atribuicao -> . ID = Bloco_CALLFUNC
+    (24) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
+    (25) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+    (43) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
+    (45) BlocoLerSTDIN -> . ID = STDIN ( ) ;
+    (47) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
+    (49) Bloco_Comentario -> . COMMENT
+    (51) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (57) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (58) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
 
     $end            reduce using rule 1 (Programa -> BlocosCodigo .)
     INT             shift and go to state 13
@@ -268,200 +274,204 @@ state 4
 
 state 5
 
-    (6) Codigo -> Atribuicao .
+    (8) Codigo -> Atribuicao .
 
-    INT             reduce using rule 6 (Codigo -> Atribuicao .)
-    ID              reduce using rule 6 (Codigo -> Atribuicao .)
-    IF              reduce using rule 6 (Codigo -> Atribuicao .)
-    WHILE           reduce using rule 6 (Codigo -> Atribuicao .)
-    STDOUT          reduce using rule 6 (Codigo -> Atribuicao .)
-    COMMENT         reduce using rule 6 (Codigo -> Atribuicao .)
-    DEFINE          reduce using rule 6 (Codigo -> Atribuicao .)
-    CALL            reduce using rule 6 (Codigo -> Atribuicao .)
-    $end            reduce using rule 6 (Codigo -> Atribuicao .)
-    }               reduce using rule 6 (Codigo -> Atribuicao .)
+    INT             reduce using rule 8 (Codigo -> Atribuicao .)
+    ID              reduce using rule 8 (Codigo -> Atribuicao .)
+    IF              reduce using rule 8 (Codigo -> Atribuicao .)
+    WHILE           reduce using rule 8 (Codigo -> Atribuicao .)
+    STDOUT          reduce using rule 8 (Codigo -> Atribuicao .)
+    COMMENT         reduce using rule 8 (Codigo -> Atribuicao .)
+    DEFINE          reduce using rule 8 (Codigo -> Atribuicao .)
+    CALL            reduce using rule 8 (Codigo -> Atribuicao .)
+    $end            reduce using rule 8 (Codigo -> Atribuicao .)
+    }               reduce using rule 8 (Codigo -> Atribuicao .)
 
 
 state 6
 
-    (21) Codigo -> BlocoIF .
+    (23) Codigo -> BlocoIF .
 
-    INT             reduce using rule 21 (Codigo -> BlocoIF .)
-    ID              reduce using rule 21 (Codigo -> BlocoIF .)
-    IF              reduce using rule 21 (Codigo -> BlocoIF .)
-    WHILE           reduce using rule 21 (Codigo -> BlocoIF .)
-    STDOUT          reduce using rule 21 (Codigo -> BlocoIF .)
-    COMMENT         reduce using rule 21 (Codigo -> BlocoIF .)
-    DEFINE          reduce using rule 21 (Codigo -> BlocoIF .)
-    CALL            reduce using rule 21 (Codigo -> BlocoIF .)
-    $end            reduce using rule 21 (Codigo -> BlocoIF .)
-    }               reduce using rule 21 (Codigo -> BlocoIF .)
+    INT             reduce using rule 23 (Codigo -> BlocoIF .)
+    ID              reduce using rule 23 (Codigo -> BlocoIF .)
+    IF              reduce using rule 23 (Codigo -> BlocoIF .)
+    WHILE           reduce using rule 23 (Codigo -> BlocoIF .)
+    STDOUT          reduce using rule 23 (Codigo -> BlocoIF .)
+    COMMENT         reduce using rule 23 (Codigo -> BlocoIF .)
+    DEFINE          reduce using rule 23 (Codigo -> BlocoIF .)
+    CALL            reduce using rule 23 (Codigo -> BlocoIF .)
+    $end            reduce using rule 23 (Codigo -> BlocoIF .)
+    }               reduce using rule 23 (Codigo -> BlocoIF .)
 
 
 state 7
 
-    (40) Codigo -> BlocoWhileDo .
+    (42) Codigo -> BlocoWhileDo .
 
-    INT             reduce using rule 40 (Codigo -> BlocoWhileDo .)
-    ID              reduce using rule 40 (Codigo -> BlocoWhileDo .)
-    IF              reduce using rule 40 (Codigo -> BlocoWhileDo .)
-    WHILE           reduce using rule 40 (Codigo -> BlocoWhileDo .)
-    STDOUT          reduce using rule 40 (Codigo -> BlocoWhileDo .)
-    COMMENT         reduce using rule 40 (Codigo -> BlocoWhileDo .)
-    DEFINE          reduce using rule 40 (Codigo -> BlocoWhileDo .)
-    CALL            reduce using rule 40 (Codigo -> BlocoWhileDo .)
-    $end            reduce using rule 40 (Codigo -> BlocoWhileDo .)
-    }               reduce using rule 40 (Codigo -> BlocoWhileDo .)
+    INT             reduce using rule 42 (Codigo -> BlocoWhileDo .)
+    ID              reduce using rule 42 (Codigo -> BlocoWhileDo .)
+    IF              reduce using rule 42 (Codigo -> BlocoWhileDo .)
+    WHILE           reduce using rule 42 (Codigo -> BlocoWhileDo .)
+    STDOUT          reduce using rule 42 (Codigo -> BlocoWhileDo .)
+    COMMENT         reduce using rule 42 (Codigo -> BlocoWhileDo .)
+    DEFINE          reduce using rule 42 (Codigo -> BlocoWhileDo .)
+    CALL            reduce using rule 42 (Codigo -> BlocoWhileDo .)
+    $end            reduce using rule 42 (Codigo -> BlocoWhileDo .)
+    }               reduce using rule 42 (Codigo -> BlocoWhileDo .)
 
 
 state 8
 
-    (42) Codigo -> BlocoLerSTDIN .
+    (44) Codigo -> BlocoLerSTDIN .
 
-    INT             reduce using rule 42 (Codigo -> BlocoLerSTDIN .)
-    ID              reduce using rule 42 (Codigo -> BlocoLerSTDIN .)
-    IF              reduce using rule 42 (Codigo -> BlocoLerSTDIN .)
-    WHILE           reduce using rule 42 (Codigo -> BlocoLerSTDIN .)
-    STDOUT          reduce using rule 42 (Codigo -> BlocoLerSTDIN .)
-    COMMENT         reduce using rule 42 (Codigo -> BlocoLerSTDIN .)
-    DEFINE          reduce using rule 42 (Codigo -> BlocoLerSTDIN .)
-    CALL            reduce using rule 42 (Codigo -> BlocoLerSTDIN .)
-    $end            reduce using rule 42 (Codigo -> BlocoLerSTDIN .)
-    }               reduce using rule 42 (Codigo -> BlocoLerSTDIN .)
+    INT             reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
+    ID              reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
+    IF              reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
+    WHILE           reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
+    STDOUT          reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
+    COMMENT         reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
+    DEFINE          reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
+    CALL            reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
+    $end            reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
+    }               reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
 
 
 state 9
 
-    (44) Codigo -> Bloco_EscreverSTDOUT .
+    (46) Codigo -> Bloco_EscreverSTDOUT .
 
-    INT             reduce using rule 44 (Codigo -> Bloco_EscreverSTDOUT .)
-    ID              reduce using rule 44 (Codigo -> Bloco_EscreverSTDOUT .)
-    IF              reduce using rule 44 (Codigo -> Bloco_EscreverSTDOUT .)
-    WHILE           reduce using rule 44 (Codigo -> Bloco_EscreverSTDOUT .)
-    STDOUT          reduce using rule 44 (Codigo -> Bloco_EscreverSTDOUT .)
-    COMMENT         reduce using rule 44 (Codigo -> Bloco_EscreverSTDOUT .)
-    DEFINE          reduce using rule 44 (Codigo -> Bloco_EscreverSTDOUT .)
-    CALL            reduce using rule 44 (Codigo -> Bloco_EscreverSTDOUT .)
-    $end            reduce using rule 44 (Codigo -> Bloco_EscreverSTDOUT .)
-    }               reduce using rule 44 (Codigo -> Bloco_EscreverSTDOUT .)
+    INT             reduce using rule 46 (Codigo -> Bloco_EscreverSTDOUT .)
+    ID              reduce using rule 46 (Codigo -> Bloco_EscreverSTDOUT .)
+    IF              reduce using rule 46 (Codigo -> Bloco_EscreverSTDOUT .)
+    WHILE           reduce using rule 46 (Codigo -> Bloco_EscreverSTDOUT .)
+    STDOUT          reduce using rule 46 (Codigo -> Bloco_EscreverSTDOUT .)
+    COMMENT         reduce using rule 46 (Codigo -> Bloco_EscreverSTDOUT .)
+    DEFINE          reduce using rule 46 (Codigo -> Bloco_EscreverSTDOUT .)
+    CALL            reduce using rule 46 (Codigo -> Bloco_EscreverSTDOUT .)
+    $end            reduce using rule 46 (Codigo -> Bloco_EscreverSTDOUT .)
+    }               reduce using rule 46 (Codigo -> Bloco_EscreverSTDOUT .)
 
 
 state 10
 
-    (46) Codigo -> Bloco_Comentario .
+    (48) Codigo -> Bloco_Comentario .
 
-    INT             reduce using rule 46 (Codigo -> Bloco_Comentario .)
-    ID              reduce using rule 46 (Codigo -> Bloco_Comentario .)
-    IF              reduce using rule 46 (Codigo -> Bloco_Comentario .)
-    WHILE           reduce using rule 46 (Codigo -> Bloco_Comentario .)
-    STDOUT          reduce using rule 46 (Codigo -> Bloco_Comentario .)
-    COMMENT         reduce using rule 46 (Codigo -> Bloco_Comentario .)
-    DEFINE          reduce using rule 46 (Codigo -> Bloco_Comentario .)
-    CALL            reduce using rule 46 (Codigo -> Bloco_Comentario .)
-    $end            reduce using rule 46 (Codigo -> Bloco_Comentario .)
-    }               reduce using rule 46 (Codigo -> Bloco_Comentario .)
+    INT             reduce using rule 48 (Codigo -> Bloco_Comentario .)
+    ID              reduce using rule 48 (Codigo -> Bloco_Comentario .)
+    IF              reduce using rule 48 (Codigo -> Bloco_Comentario .)
+    WHILE           reduce using rule 48 (Codigo -> Bloco_Comentario .)
+    STDOUT          reduce using rule 48 (Codigo -> Bloco_Comentario .)
+    COMMENT         reduce using rule 48 (Codigo -> Bloco_Comentario .)
+    DEFINE          reduce using rule 48 (Codigo -> Bloco_Comentario .)
+    CALL            reduce using rule 48 (Codigo -> Bloco_Comentario .)
+    $end            reduce using rule 48 (Codigo -> Bloco_Comentario .)
+    }               reduce using rule 48 (Codigo -> Bloco_Comentario .)
 
 
 state 11
 
-    (48) Codigo -> Bloco_DEFINEFUNC .
+    (50) Codigo -> Bloco_DEFINEFUNC .
 
-    INT             reduce using rule 48 (Codigo -> Bloco_DEFINEFUNC .)
-    ID              reduce using rule 48 (Codigo -> Bloco_DEFINEFUNC .)
-    IF              reduce using rule 48 (Codigo -> Bloco_DEFINEFUNC .)
-    WHILE           reduce using rule 48 (Codigo -> Bloco_DEFINEFUNC .)
-    STDOUT          reduce using rule 48 (Codigo -> Bloco_DEFINEFUNC .)
-    COMMENT         reduce using rule 48 (Codigo -> Bloco_DEFINEFUNC .)
-    DEFINE          reduce using rule 48 (Codigo -> Bloco_DEFINEFUNC .)
-    CALL            reduce using rule 48 (Codigo -> Bloco_DEFINEFUNC .)
-    $end            reduce using rule 48 (Codigo -> Bloco_DEFINEFUNC .)
-    }               reduce using rule 48 (Codigo -> Bloco_DEFINEFUNC .)
+    INT             reduce using rule 50 (Codigo -> Bloco_DEFINEFUNC .)
+    ID              reduce using rule 50 (Codigo -> Bloco_DEFINEFUNC .)
+    IF              reduce using rule 50 (Codigo -> Bloco_DEFINEFUNC .)
+    WHILE           reduce using rule 50 (Codigo -> Bloco_DEFINEFUNC .)
+    STDOUT          reduce using rule 50 (Codigo -> Bloco_DEFINEFUNC .)
+    COMMENT         reduce using rule 50 (Codigo -> Bloco_DEFINEFUNC .)
+    DEFINE          reduce using rule 50 (Codigo -> Bloco_DEFINEFUNC .)
+    CALL            reduce using rule 50 (Codigo -> Bloco_DEFINEFUNC .)
+    $end            reduce using rule 50 (Codigo -> Bloco_DEFINEFUNC .)
+    }               reduce using rule 50 (Codigo -> Bloco_DEFINEFUNC .)
 
 
 state 12
 
-    (54) Codigo -> Bloco_CALLFUNC .
+    (56) Codigo -> Bloco_CALLFUNC .
 
-    INT             reduce using rule 54 (Codigo -> Bloco_CALLFUNC .)
-    ID              reduce using rule 54 (Codigo -> Bloco_CALLFUNC .)
-    IF              reduce using rule 54 (Codigo -> Bloco_CALLFUNC .)
-    WHILE           reduce using rule 54 (Codigo -> Bloco_CALLFUNC .)
-    STDOUT          reduce using rule 54 (Codigo -> Bloco_CALLFUNC .)
-    COMMENT         reduce using rule 54 (Codigo -> Bloco_CALLFUNC .)
-    DEFINE          reduce using rule 54 (Codigo -> Bloco_CALLFUNC .)
-    CALL            reduce using rule 54 (Codigo -> Bloco_CALLFUNC .)
-    $end            reduce using rule 54 (Codigo -> Bloco_CALLFUNC .)
-    }               reduce using rule 54 (Codigo -> Bloco_CALLFUNC .)
+    INT             reduce using rule 56 (Codigo -> Bloco_CALLFUNC .)
+    ID              reduce using rule 56 (Codigo -> Bloco_CALLFUNC .)
+    IF              reduce using rule 56 (Codigo -> Bloco_CALLFUNC .)
+    WHILE           reduce using rule 56 (Codigo -> Bloco_CALLFUNC .)
+    STDOUT          reduce using rule 56 (Codigo -> Bloco_CALLFUNC .)
+    COMMENT         reduce using rule 56 (Codigo -> Bloco_CALLFUNC .)
+    DEFINE          reduce using rule 56 (Codigo -> Bloco_CALLFUNC .)
+    CALL            reduce using rule 56 (Codigo -> Bloco_CALLFUNC .)
+    $end            reduce using rule 56 (Codigo -> Bloco_CALLFUNC .)
+    }               reduce using rule 56 (Codigo -> Bloco_CALLFUNC .)
 
 
 state 13
 
     (5) Declaracao -> INT . ID ;
+    (6) Declaracao -> INT . ID = Expressao
+    (7) Declaracao -> INT . BlocoLerSTDIN
+    (45) BlocoLerSTDIN -> . ID = STDIN ( ) ;
 
     ID              shift and go to state 22
 
+    BlocoLerSTDIN                  shift and go to state 23
 
 state 14
 
-    (7) Atribuicao -> ID . = Expressao ;
-    (8) Atribuicao -> ID . = Bloco_CALLFUNC
-    (43) BlocoLerSTDIN -> ID . = STDIN ( ) ;
+    (9) Atribuicao -> ID . = Expressao ;
+    (10) Atribuicao -> ID . = Bloco_CALLFUNC
+    (45) BlocoLerSTDIN -> ID . = STDIN ( ) ;
 
-    =               shift and go to state 23
+    =               shift and go to state 24
 
 
 state 15
 
-    (22) BlocoIF -> IF . ( ListaCondicionais ) { BlocosCodigo }
-    (23) BlocoIF -> IF . ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-
-    (               shift and go to state 24
-
-
-state 16
-
-    (41) BlocoWhileDo -> WHILE . ( ListaCondicionais ) DO { BlocosCodigo }
+    (24) BlocoIF -> IF . ( ListaCondicionais ) { BlocosCodigo }
+    (25) BlocoIF -> IF . ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
 
     (               shift and go to state 25
 
 
-state 17
+state 16
 
-    (45) Bloco_EscreverSTDOUT -> STDOUT . ( Var ) ;
+    (43) BlocoWhileDo -> WHILE . ( ListaCondicionais ) DO { BlocosCodigo }
 
     (               shift and go to state 26
 
 
+state 17
+
+    (47) Bloco_EscreverSTDOUT -> STDOUT . ( Var ) ;
+
+    (               shift and go to state 27
+
+
 state 18
 
-    (47) Bloco_Comentario -> COMMENT .
+    (49) Bloco_Comentario -> COMMENT .
 
-    INT             reduce using rule 47 (Bloco_Comentario -> COMMENT .)
-    ID              reduce using rule 47 (Bloco_Comentario -> COMMENT .)
-    IF              reduce using rule 47 (Bloco_Comentario -> COMMENT .)
-    WHILE           reduce using rule 47 (Bloco_Comentario -> COMMENT .)
-    STDOUT          reduce using rule 47 (Bloco_Comentario -> COMMENT .)
-    COMMENT         reduce using rule 47 (Bloco_Comentario -> COMMENT .)
-    DEFINE          reduce using rule 47 (Bloco_Comentario -> COMMENT .)
-    CALL            reduce using rule 47 (Bloco_Comentario -> COMMENT .)
-    $end            reduce using rule 47 (Bloco_Comentario -> COMMENT .)
-    }               reduce using rule 47 (Bloco_Comentario -> COMMENT .)
+    INT             reduce using rule 49 (Bloco_Comentario -> COMMENT .)
+    ID              reduce using rule 49 (Bloco_Comentario -> COMMENT .)
+    IF              reduce using rule 49 (Bloco_Comentario -> COMMENT .)
+    WHILE           reduce using rule 49 (Bloco_Comentario -> COMMENT .)
+    STDOUT          reduce using rule 49 (Bloco_Comentario -> COMMENT .)
+    COMMENT         reduce using rule 49 (Bloco_Comentario -> COMMENT .)
+    DEFINE          reduce using rule 49 (Bloco_Comentario -> COMMENT .)
+    CALL            reduce using rule 49 (Bloco_Comentario -> COMMENT .)
+    $end            reduce using rule 49 (Bloco_Comentario -> COMMENT .)
+    }               reduce using rule 49 (Bloco_Comentario -> COMMENT .)
 
 
 state 19
 
-    (49) Bloco_DEFINEFUNC -> DEFINE . FUNC ( ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> DEFINE . FUNC ( ListaAtributos ) { BlocosCodigo }
+    (51) Bloco_DEFINEFUNC -> DEFINE . FUNC ( ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> DEFINE . FUNC ( ListaAtributos ) { BlocosCodigo }
 
-    FUNC            shift and go to state 27
+    FUNC            shift and go to state 28
 
 
 state 20
 
-    (55) Bloco_CALLFUNC -> CALL . FUNC ( ) ;
-    (56) Bloco_CALLFUNC -> CALL . FUNC ( INPUTVar ) ;
+    (57) Bloco_CALLFUNC -> CALL . FUNC ( ) ;
+    (58) Bloco_CALLFUNC -> CALL . FUNC ( INPUTVar ) ;
 
-    FUNC            shift and go to state 28
+    FUNC            shift and go to state 29
 
 
 state 21
@@ -483,124 +493,143 @@ state 21
 state 22
 
     (5) Declaracao -> INT ID . ;
+    (6) Declaracao -> INT ID . = Expressao
+    (45) BlocoLerSTDIN -> ID . = STDIN ( ) ;
 
-    ;               shift and go to state 29
+    ;               shift and go to state 30
+    =               shift and go to state 31
 
 
 state 23
 
-    (7) Atribuicao -> ID = . Expressao ;
-    (8) Atribuicao -> ID = . Bloco_CALLFUNC
-    (43) BlocoLerSTDIN -> ID = . STDIN ( ) ;
-    (9) Expressao -> . Var
-    (14) Expressao -> . Expressao Operador Var
-    (15) Expressao -> . ( Expressao )
-    (55) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (56) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (10) Var -> . NUM
-    (11) Var -> . ID
-    (12) Var -> . TRUE
-    (13) Var -> . FALSE
+    (7) Declaracao -> INT BlocoLerSTDIN .
 
-    STDIN           shift and go to state 33
-    (               shift and go to state 34
-    CALL            shift and go to state 20
-    NUM             shift and go to state 36
-    ID              shift and go to state 30
-    TRUE            shift and go to state 37
-    FALSE           shift and go to state 38
+    INT             reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
+    ID              reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
+    IF              reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
+    WHILE           reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
+    STDOUT          reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
+    COMMENT         reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
+    DEFINE          reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
+    CALL            reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
+    $end            reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
+    }               reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
 
-    Expressao                      shift and go to state 31
-    Bloco_CALLFUNC                 shift and go to state 32
-    Var                            shift and go to state 35
 
 state 24
 
-    (22) BlocoIF -> IF ( . ListaCondicionais ) { BlocosCodigo }
-    (23) BlocoIF -> IF ( . ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-    (24) ListaCondicionais -> . Condicional
-    (25) ListaCondicionais -> . ( ListaCondicionais )
-    (26) ListaCondicionais -> . ! ( ListaCondicionais )
-    (27) ListaCondicionais -> . ListaCondicionais OperadorLogico Condicional
-    (30) Condicional -> . Var
-    (31) Condicional -> . ! ( Condicional )
-    (32) Condicional -> . ( Condicional )
-    (33) Condicional -> . Condicional OperadorCondicional Condicional
-    (10) Var -> . NUM
-    (11) Var -> . ID
-    (12) Var -> . TRUE
-    (13) Var -> . FALSE
+    (9) Atribuicao -> ID = . Expressao ;
+    (10) Atribuicao -> ID = . Bloco_CALLFUNC
+    (45) BlocoLerSTDIN -> ID = . STDIN ( ) ;
+    (11) Expressao -> . Var
+    (16) Expressao -> . Expressao Operador Var
+    (17) Expressao -> . ( Expressao )
+    (57) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (58) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
 
-    (               shift and go to state 39
-    !               shift and go to state 42
-    NUM             shift and go to state 36
-    ID              shift and go to state 30
-    TRUE            shift and go to state 37
-    FALSE           shift and go to state 38
+    STDIN           shift and go to state 35
+    (               shift and go to state 36
+    CALL            shift and go to state 20
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
 
-    ListaCondicionais              shift and go to state 40
-    Condicional                    shift and go to state 41
-    Var                            shift and go to state 43
+    Expressao                      shift and go to state 33
+    Bloco_CALLFUNC                 shift and go to state 34
+    Var                            shift and go to state 37
 
 state 25
 
-    (41) BlocoWhileDo -> WHILE ( . ListaCondicionais ) DO { BlocosCodigo }
-    (24) ListaCondicionais -> . Condicional
-    (25) ListaCondicionais -> . ( ListaCondicionais )
-    (26) ListaCondicionais -> . ! ( ListaCondicionais )
-    (27) ListaCondicionais -> . ListaCondicionais OperadorLogico Condicional
-    (30) Condicional -> . Var
-    (31) Condicional -> . ! ( Condicional )
-    (32) Condicional -> . ( Condicional )
-    (33) Condicional -> . Condicional OperadorCondicional Condicional
-    (10) Var -> . NUM
-    (11) Var -> . ID
-    (12) Var -> . TRUE
-    (13) Var -> . FALSE
+    (24) BlocoIF -> IF ( . ListaCondicionais ) { BlocosCodigo }
+    (25) BlocoIF -> IF ( . ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+    (26) ListaCondicionais -> . Condicional
+    (27) ListaCondicionais -> . ( ListaCondicionais )
+    (28) ListaCondicionais -> . ! ( ListaCondicionais )
+    (29) ListaCondicionais -> . ListaCondicionais OperadorLogico Condicional
+    (32) Condicional -> . Var
+    (33) Condicional -> . ! ( Condicional )
+    (34) Condicional -> . ( Condicional )
+    (35) Condicional -> . Condicional OperadorCondicional Condicional
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
 
-    (               shift and go to state 39
-    !               shift and go to state 42
-    NUM             shift and go to state 36
-    ID              shift and go to state 30
-    TRUE            shift and go to state 37
-    FALSE           shift and go to state 38
+    (               shift and go to state 41
+    !               shift and go to state 44
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
 
-    ListaCondicionais              shift and go to state 44
-    Condicional                    shift and go to state 41
-    Var                            shift and go to state 43
+    ListaCondicionais              shift and go to state 42
+    Condicional                    shift and go to state 43
+    Var                            shift and go to state 45
 
 state 26
 
-    (45) Bloco_EscreverSTDOUT -> STDOUT ( . Var ) ;
-    (10) Var -> . NUM
-    (11) Var -> . ID
-    (12) Var -> . TRUE
-    (13) Var -> . FALSE
+    (43) BlocoWhileDo -> WHILE ( . ListaCondicionais ) DO { BlocosCodigo }
+    (26) ListaCondicionais -> . Condicional
+    (27) ListaCondicionais -> . ( ListaCondicionais )
+    (28) ListaCondicionais -> . ! ( ListaCondicionais )
+    (29) ListaCondicionais -> . ListaCondicionais OperadorLogico Condicional
+    (32) Condicional -> . Var
+    (33) Condicional -> . ! ( Condicional )
+    (34) Condicional -> . ( Condicional )
+    (35) Condicional -> . Condicional OperadorCondicional Condicional
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
 
-    NUM             shift and go to state 36
-    ID              shift and go to state 30
-    TRUE            shift and go to state 37
-    FALSE           shift and go to state 38
+    (               shift and go to state 41
+    !               shift and go to state 44
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
 
+    ListaCondicionais              shift and go to state 46
+    Condicional                    shift and go to state 43
     Var                            shift and go to state 45
 
 state 27
 
-    (49) Bloco_DEFINEFUNC -> DEFINE FUNC . ( ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> DEFINE FUNC . ( ListaAtributos ) { BlocosCodigo }
+    (47) Bloco_EscreverSTDOUT -> STDOUT ( . Var ) ;
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
 
-    (               shift and go to state 46
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
 
+    Var                            shift and go to state 47
 
 state 28
 
-    (55) Bloco_CALLFUNC -> CALL FUNC . ( ) ;
-    (56) Bloco_CALLFUNC -> CALL FUNC . ( INPUTVar ) ;
+    (51) Bloco_DEFINEFUNC -> DEFINE FUNC . ( ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> DEFINE FUNC . ( ListaAtributos ) { BlocosCodigo }
 
-    (               shift and go to state 47
+    (               shift and go to state 48
 
 
 state 29
+
+    (57) Bloco_CALLFUNC -> CALL FUNC . ( ) ;
+    (58) Bloco_CALLFUNC -> CALL FUNC . ( INPUTVar ) ;
+
+    (               shift and go to state 49
+
+
+state 30
 
     (5) Declaracao -> INT ID ; .
 
@@ -616,789 +645,911 @@ state 29
     }               reduce using rule 5 (Declaracao -> INT ID ; .)
 
 
-state 30
-
-    (11) Var -> ID .
-
-    ;               reduce using rule 11 (Var -> ID .)
-    +               reduce using rule 11 (Var -> ID .)
-    -               reduce using rule 11 (Var -> ID .)
-    *               reduce using rule 11 (Var -> ID .)
-    /               reduce using rule 11 (Var -> ID .)
-    %               reduce using rule 11 (Var -> ID .)
-    >               reduce using rule 11 (Var -> ID .)
-    BIGEQUAL        reduce using rule 11 (Var -> ID .)
-    <               reduce using rule 11 (Var -> ID .)
-    LESSEREQUAL     reduce using rule 11 (Var -> ID .)
-    EQUALS          reduce using rule 11 (Var -> ID .)
-    NOTEQUALS       reduce using rule 11 (Var -> ID .)
-    )               reduce using rule 11 (Var -> ID .)
-    AND             reduce using rule 11 (Var -> ID .)
-    OR              reduce using rule 11 (Var -> ID .)
-    ,               reduce using rule 11 (Var -> ID .)
-
-
 state 31
 
-    (7) Atribuicao -> ID = Expressao . ;
-    (14) Expressao -> Expressao . Operador Var
-    (16) Operador -> . +
-    (17) Operador -> . -
-    (18) Operador -> . *
-    (19) Operador -> . /
-    (20) Operador -> . %
+    (6) Declaracao -> INT ID = . Expressao
+    (45) BlocoLerSTDIN -> ID = . STDIN ( ) ;
+    (11) Expressao -> . Var
+    (16) Expressao -> . Expressao Operador Var
+    (17) Expressao -> . ( Expressao )
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
 
-    ;               shift and go to state 48
-    +               shift and go to state 50
-    -               shift and go to state 51
-    *               shift and go to state 52
-    /               shift and go to state 53
-    %               shift and go to state 54
+    STDIN           shift and go to state 35
+    (               shift and go to state 36
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
 
-    Operador                       shift and go to state 49
+    Expressao                      shift and go to state 50
+    Var                            shift and go to state 37
 
 state 32
 
-    (8) Atribuicao -> ID = Bloco_CALLFUNC .
+    (13) Var -> ID .
 
-    INT             reduce using rule 8 (Atribuicao -> ID = Bloco_CALLFUNC .)
-    ID              reduce using rule 8 (Atribuicao -> ID = Bloco_CALLFUNC .)
-    IF              reduce using rule 8 (Atribuicao -> ID = Bloco_CALLFUNC .)
-    WHILE           reduce using rule 8 (Atribuicao -> ID = Bloco_CALLFUNC .)
-    STDOUT          reduce using rule 8 (Atribuicao -> ID = Bloco_CALLFUNC .)
-    COMMENT         reduce using rule 8 (Atribuicao -> ID = Bloco_CALLFUNC .)
-    DEFINE          reduce using rule 8 (Atribuicao -> ID = Bloco_CALLFUNC .)
-    CALL            reduce using rule 8 (Atribuicao -> ID = Bloco_CALLFUNC .)
-    $end            reduce using rule 8 (Atribuicao -> ID = Bloco_CALLFUNC .)
-    }               reduce using rule 8 (Atribuicao -> ID = Bloco_CALLFUNC .)
+    ;               reduce using rule 13 (Var -> ID .)
+    +               reduce using rule 13 (Var -> ID .)
+    -               reduce using rule 13 (Var -> ID .)
+    *               reduce using rule 13 (Var -> ID .)
+    /               reduce using rule 13 (Var -> ID .)
+    %               reduce using rule 13 (Var -> ID .)
+    >               reduce using rule 13 (Var -> ID .)
+    BIGEQUAL        reduce using rule 13 (Var -> ID .)
+    <               reduce using rule 13 (Var -> ID .)
+    LESSEREQUAL     reduce using rule 13 (Var -> ID .)
+    EQUALS          reduce using rule 13 (Var -> ID .)
+    NOTEQUALS       reduce using rule 13 (Var -> ID .)
+    )               reduce using rule 13 (Var -> ID .)
+    AND             reduce using rule 13 (Var -> ID .)
+    OR              reduce using rule 13 (Var -> ID .)
+    INT             reduce using rule 13 (Var -> ID .)
+    ID              reduce using rule 13 (Var -> ID .)
+    IF              reduce using rule 13 (Var -> ID .)
+    WHILE           reduce using rule 13 (Var -> ID .)
+    STDOUT          reduce using rule 13 (Var -> ID .)
+    COMMENT         reduce using rule 13 (Var -> ID .)
+    DEFINE          reduce using rule 13 (Var -> ID .)
+    CALL            reduce using rule 13 (Var -> ID .)
+    $end            reduce using rule 13 (Var -> ID .)
+    }               reduce using rule 13 (Var -> ID .)
+    ,               reduce using rule 13 (Var -> ID .)
 
 
 state 33
 
-    (43) BlocoLerSTDIN -> ID = STDIN . ( ) ;
+    (9) Atribuicao -> ID = Expressao . ;
+    (16) Expressao -> Expressao . Operador Var
+    (18) Operador -> . +
+    (19) Operador -> . -
+    (20) Operador -> . *
+    (21) Operador -> . /
+    (22) Operador -> . %
 
-    (               shift and go to state 55
+    ;               shift and go to state 51
+    +               shift and go to state 53
+    -               shift and go to state 54
+    *               shift and go to state 55
+    /               shift and go to state 56
+    %               shift and go to state 57
 
+    Operador                       shift and go to state 52
 
 state 34
 
-    (15) Expressao -> ( . Expressao )
-    (9) Expressao -> . Var
-    (14) Expressao -> . Expressao Operador Var
-    (15) Expressao -> . ( Expressao )
-    (10) Var -> . NUM
-    (11) Var -> . ID
-    (12) Var -> . TRUE
-    (13) Var -> . FALSE
+    (10) Atribuicao -> ID = Bloco_CALLFUNC .
 
-    (               shift and go to state 34
-    NUM             shift and go to state 36
-    ID              shift and go to state 30
-    TRUE            shift and go to state 37
-    FALSE           shift and go to state 38
+    INT             reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
+    ID              reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
+    IF              reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
+    WHILE           reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
+    STDOUT          reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
+    COMMENT         reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
+    DEFINE          reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
+    CALL            reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
+    $end            reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
+    }               reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
 
-    Expressao                      shift and go to state 56
-    Var                            shift and go to state 35
 
 state 35
 
-    (9) Expressao -> Var .
+    (45) BlocoLerSTDIN -> ID = STDIN . ( ) ;
 
-    ;               reduce using rule 9 (Expressao -> Var .)
-    +               reduce using rule 9 (Expressao -> Var .)
-    -               reduce using rule 9 (Expressao -> Var .)
-    *               reduce using rule 9 (Expressao -> Var .)
-    /               reduce using rule 9 (Expressao -> Var .)
-    %               reduce using rule 9 (Expressao -> Var .)
-    )               reduce using rule 9 (Expressao -> Var .)
+    (               shift and go to state 58
 
 
 state 36
 
-    (10) Var -> NUM .
+    (17) Expressao -> ( . Expressao )
+    (11) Expressao -> . Var
+    (16) Expressao -> . Expressao Operador Var
+    (17) Expressao -> . ( Expressao )
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
 
-    ;               reduce using rule 10 (Var -> NUM .)
-    +               reduce using rule 10 (Var -> NUM .)
-    -               reduce using rule 10 (Var -> NUM .)
-    *               reduce using rule 10 (Var -> NUM .)
-    /               reduce using rule 10 (Var -> NUM .)
-    %               reduce using rule 10 (Var -> NUM .)
-    >               reduce using rule 10 (Var -> NUM .)
-    BIGEQUAL        reduce using rule 10 (Var -> NUM .)
-    <               reduce using rule 10 (Var -> NUM .)
-    LESSEREQUAL     reduce using rule 10 (Var -> NUM .)
-    EQUALS          reduce using rule 10 (Var -> NUM .)
-    NOTEQUALS       reduce using rule 10 (Var -> NUM .)
-    )               reduce using rule 10 (Var -> NUM .)
-    AND             reduce using rule 10 (Var -> NUM .)
-    OR              reduce using rule 10 (Var -> NUM .)
-    ,               reduce using rule 10 (Var -> NUM .)
+    (               shift and go to state 36
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
 
+    Expressao                      shift and go to state 59
+    Var                            shift and go to state 37
 
 state 37
 
-    (12) Var -> TRUE .
+    (11) Expressao -> Var .
 
-    ;               reduce using rule 12 (Var -> TRUE .)
-    +               reduce using rule 12 (Var -> TRUE .)
-    -               reduce using rule 12 (Var -> TRUE .)
-    *               reduce using rule 12 (Var -> TRUE .)
-    /               reduce using rule 12 (Var -> TRUE .)
-    %               reduce using rule 12 (Var -> TRUE .)
-    >               reduce using rule 12 (Var -> TRUE .)
-    BIGEQUAL        reduce using rule 12 (Var -> TRUE .)
-    <               reduce using rule 12 (Var -> TRUE .)
-    LESSEREQUAL     reduce using rule 12 (Var -> TRUE .)
-    EQUALS          reduce using rule 12 (Var -> TRUE .)
-    NOTEQUALS       reduce using rule 12 (Var -> TRUE .)
-    )               reduce using rule 12 (Var -> TRUE .)
-    AND             reduce using rule 12 (Var -> TRUE .)
-    OR              reduce using rule 12 (Var -> TRUE .)
-    ,               reduce using rule 12 (Var -> TRUE .)
+    ;               reduce using rule 11 (Expressao -> Var .)
+    +               reduce using rule 11 (Expressao -> Var .)
+    -               reduce using rule 11 (Expressao -> Var .)
+    *               reduce using rule 11 (Expressao -> Var .)
+    /               reduce using rule 11 (Expressao -> Var .)
+    %               reduce using rule 11 (Expressao -> Var .)
+    INT             reduce using rule 11 (Expressao -> Var .)
+    ID              reduce using rule 11 (Expressao -> Var .)
+    IF              reduce using rule 11 (Expressao -> Var .)
+    WHILE           reduce using rule 11 (Expressao -> Var .)
+    STDOUT          reduce using rule 11 (Expressao -> Var .)
+    COMMENT         reduce using rule 11 (Expressao -> Var .)
+    DEFINE          reduce using rule 11 (Expressao -> Var .)
+    CALL            reduce using rule 11 (Expressao -> Var .)
+    $end            reduce using rule 11 (Expressao -> Var .)
+    }               reduce using rule 11 (Expressao -> Var .)
+    )               reduce using rule 11 (Expressao -> Var .)
 
 
 state 38
 
-    (13) Var -> FALSE .
+    (12) Var -> NUM .
 
-    ;               reduce using rule 13 (Var -> FALSE .)
-    +               reduce using rule 13 (Var -> FALSE .)
-    -               reduce using rule 13 (Var -> FALSE .)
-    *               reduce using rule 13 (Var -> FALSE .)
-    /               reduce using rule 13 (Var -> FALSE .)
-    %               reduce using rule 13 (Var -> FALSE .)
-    >               reduce using rule 13 (Var -> FALSE .)
-    BIGEQUAL        reduce using rule 13 (Var -> FALSE .)
-    <               reduce using rule 13 (Var -> FALSE .)
-    LESSEREQUAL     reduce using rule 13 (Var -> FALSE .)
-    EQUALS          reduce using rule 13 (Var -> FALSE .)
-    NOTEQUALS       reduce using rule 13 (Var -> FALSE .)
-    )               reduce using rule 13 (Var -> FALSE .)
-    AND             reduce using rule 13 (Var -> FALSE .)
-    OR              reduce using rule 13 (Var -> FALSE .)
-    ,               reduce using rule 13 (Var -> FALSE .)
+    ;               reduce using rule 12 (Var -> NUM .)
+    +               reduce using rule 12 (Var -> NUM .)
+    -               reduce using rule 12 (Var -> NUM .)
+    *               reduce using rule 12 (Var -> NUM .)
+    /               reduce using rule 12 (Var -> NUM .)
+    %               reduce using rule 12 (Var -> NUM .)
+    >               reduce using rule 12 (Var -> NUM .)
+    BIGEQUAL        reduce using rule 12 (Var -> NUM .)
+    <               reduce using rule 12 (Var -> NUM .)
+    LESSEREQUAL     reduce using rule 12 (Var -> NUM .)
+    EQUALS          reduce using rule 12 (Var -> NUM .)
+    NOTEQUALS       reduce using rule 12 (Var -> NUM .)
+    )               reduce using rule 12 (Var -> NUM .)
+    AND             reduce using rule 12 (Var -> NUM .)
+    OR              reduce using rule 12 (Var -> NUM .)
+    INT             reduce using rule 12 (Var -> NUM .)
+    ID              reduce using rule 12 (Var -> NUM .)
+    IF              reduce using rule 12 (Var -> NUM .)
+    WHILE           reduce using rule 12 (Var -> NUM .)
+    STDOUT          reduce using rule 12 (Var -> NUM .)
+    COMMENT         reduce using rule 12 (Var -> NUM .)
+    DEFINE          reduce using rule 12 (Var -> NUM .)
+    CALL            reduce using rule 12 (Var -> NUM .)
+    $end            reduce using rule 12 (Var -> NUM .)
+    }               reduce using rule 12 (Var -> NUM .)
+    ,               reduce using rule 12 (Var -> NUM .)
 
 
 state 39
 
-    (25) ListaCondicionais -> ( . ListaCondicionais )
-    (32) Condicional -> ( . Condicional )
-    (24) ListaCondicionais -> . Condicional
-    (25) ListaCondicionais -> . ( ListaCondicionais )
-    (26) ListaCondicionais -> . ! ( ListaCondicionais )
-    (27) ListaCondicionais -> . ListaCondicionais OperadorLogico Condicional
-    (30) Condicional -> . Var
-    (31) Condicional -> . ! ( Condicional )
-    (32) Condicional -> . ( Condicional )
-    (33) Condicional -> . Condicional OperadorCondicional Condicional
-    (10) Var -> . NUM
-    (11) Var -> . ID
-    (12) Var -> . TRUE
-    (13) Var -> . FALSE
+    (14) Var -> TRUE .
 
-    (               shift and go to state 39
-    !               shift and go to state 42
-    NUM             shift and go to state 36
-    ID              shift and go to state 30
-    TRUE            shift and go to state 37
-    FALSE           shift and go to state 38
+    ;               reduce using rule 14 (Var -> TRUE .)
+    +               reduce using rule 14 (Var -> TRUE .)
+    -               reduce using rule 14 (Var -> TRUE .)
+    *               reduce using rule 14 (Var -> TRUE .)
+    /               reduce using rule 14 (Var -> TRUE .)
+    %               reduce using rule 14 (Var -> TRUE .)
+    >               reduce using rule 14 (Var -> TRUE .)
+    BIGEQUAL        reduce using rule 14 (Var -> TRUE .)
+    <               reduce using rule 14 (Var -> TRUE .)
+    LESSEREQUAL     reduce using rule 14 (Var -> TRUE .)
+    EQUALS          reduce using rule 14 (Var -> TRUE .)
+    NOTEQUALS       reduce using rule 14 (Var -> TRUE .)
+    )               reduce using rule 14 (Var -> TRUE .)
+    AND             reduce using rule 14 (Var -> TRUE .)
+    OR              reduce using rule 14 (Var -> TRUE .)
+    INT             reduce using rule 14 (Var -> TRUE .)
+    ID              reduce using rule 14 (Var -> TRUE .)
+    IF              reduce using rule 14 (Var -> TRUE .)
+    WHILE           reduce using rule 14 (Var -> TRUE .)
+    STDOUT          reduce using rule 14 (Var -> TRUE .)
+    COMMENT         reduce using rule 14 (Var -> TRUE .)
+    DEFINE          reduce using rule 14 (Var -> TRUE .)
+    CALL            reduce using rule 14 (Var -> TRUE .)
+    $end            reduce using rule 14 (Var -> TRUE .)
+    }               reduce using rule 14 (Var -> TRUE .)
+    ,               reduce using rule 14 (Var -> TRUE .)
 
-    ListaCondicionais              shift and go to state 57
-    Condicional                    shift and go to state 58
-    Var                            shift and go to state 43
 
 state 40
 
-    (22) BlocoIF -> IF ( ListaCondicionais . ) { BlocosCodigo }
-    (23) BlocoIF -> IF ( ListaCondicionais . ) { BlocosCodigo } ELSE { BlocosCodigo }
-    (27) ListaCondicionais -> ListaCondicionais . OperadorLogico Condicional
-    (28) OperadorLogico -> . AND
-    (29) OperadorLogico -> . OR
+    (15) Var -> FALSE .
 
-    )               shift and go to state 59
-    AND             shift and go to state 61
-    OR              shift and go to state 62
+    ;               reduce using rule 15 (Var -> FALSE .)
+    +               reduce using rule 15 (Var -> FALSE .)
+    -               reduce using rule 15 (Var -> FALSE .)
+    *               reduce using rule 15 (Var -> FALSE .)
+    /               reduce using rule 15 (Var -> FALSE .)
+    %               reduce using rule 15 (Var -> FALSE .)
+    >               reduce using rule 15 (Var -> FALSE .)
+    BIGEQUAL        reduce using rule 15 (Var -> FALSE .)
+    <               reduce using rule 15 (Var -> FALSE .)
+    LESSEREQUAL     reduce using rule 15 (Var -> FALSE .)
+    EQUALS          reduce using rule 15 (Var -> FALSE .)
+    NOTEQUALS       reduce using rule 15 (Var -> FALSE .)
+    )               reduce using rule 15 (Var -> FALSE .)
+    AND             reduce using rule 15 (Var -> FALSE .)
+    OR              reduce using rule 15 (Var -> FALSE .)
+    INT             reduce using rule 15 (Var -> FALSE .)
+    ID              reduce using rule 15 (Var -> FALSE .)
+    IF              reduce using rule 15 (Var -> FALSE .)
+    WHILE           reduce using rule 15 (Var -> FALSE .)
+    STDOUT          reduce using rule 15 (Var -> FALSE .)
+    COMMENT         reduce using rule 15 (Var -> FALSE .)
+    DEFINE          reduce using rule 15 (Var -> FALSE .)
+    CALL            reduce using rule 15 (Var -> FALSE .)
+    $end            reduce using rule 15 (Var -> FALSE .)
+    }               reduce using rule 15 (Var -> FALSE .)
+    ,               reduce using rule 15 (Var -> FALSE .)
 
-    OperadorLogico                 shift and go to state 60
 
 state 41
 
-    (24) ListaCondicionais -> Condicional .
-    (33) Condicional -> Condicional . OperadorCondicional Condicional
-    (34) OperadorCondicional -> . >
-    (35) OperadorCondicional -> . BIGEQUAL
-    (36) OperadorCondicional -> . <
-    (37) OperadorCondicional -> . LESSEREQUAL
-    (38) OperadorCondicional -> . EQUALS
-    (39) OperadorCondicional -> . NOTEQUALS
+    (27) ListaCondicionais -> ( . ListaCondicionais )
+    (34) Condicional -> ( . Condicional )
+    (26) ListaCondicionais -> . Condicional
+    (27) ListaCondicionais -> . ( ListaCondicionais )
+    (28) ListaCondicionais -> . ! ( ListaCondicionais )
+    (29) ListaCondicionais -> . ListaCondicionais OperadorLogico Condicional
+    (32) Condicional -> . Var
+    (33) Condicional -> . ! ( Condicional )
+    (34) Condicional -> . ( Condicional )
+    (35) Condicional -> . Condicional OperadorCondicional Condicional
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
 
-    )               reduce using rule 24 (ListaCondicionais -> Condicional .)
-    AND             reduce using rule 24 (ListaCondicionais -> Condicional .)
-    OR              reduce using rule 24 (ListaCondicionais -> Condicional .)
-    >               shift and go to state 64
-    BIGEQUAL        shift and go to state 65
-    <               shift and go to state 66
-    LESSEREQUAL     shift and go to state 67
-    EQUALS          shift and go to state 68
-    NOTEQUALS       shift and go to state 69
+    (               shift and go to state 41
+    !               shift and go to state 44
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
 
-    OperadorCondicional            shift and go to state 63
+    ListaCondicionais              shift and go to state 60
+    Condicional                    shift and go to state 61
+    Var                            shift and go to state 45
 
 state 42
 
-    (26) ListaCondicionais -> ! . ( ListaCondicionais )
-    (31) Condicional -> ! . ( Condicional )
+    (24) BlocoIF -> IF ( ListaCondicionais . ) { BlocosCodigo }
+    (25) BlocoIF -> IF ( ListaCondicionais . ) { BlocosCodigo } ELSE { BlocosCodigo }
+    (29) ListaCondicionais -> ListaCondicionais . OperadorLogico Condicional
+    (30) OperadorLogico -> . AND
+    (31) OperadorLogico -> . OR
 
-    (               shift and go to state 70
+    )               shift and go to state 62
+    AND             shift and go to state 64
+    OR              shift and go to state 65
 
+    OperadorLogico                 shift and go to state 63
 
 state 43
 
-    (30) Condicional -> Var .
+    (26) ListaCondicionais -> Condicional .
+    (35) Condicional -> Condicional . OperadorCondicional Condicional
+    (36) OperadorCondicional -> . >
+    (37) OperadorCondicional -> . BIGEQUAL
+    (38) OperadorCondicional -> . <
+    (39) OperadorCondicional -> . LESSEREQUAL
+    (40) OperadorCondicional -> . EQUALS
+    (41) OperadorCondicional -> . NOTEQUALS
 
-    >               reduce using rule 30 (Condicional -> Var .)
-    BIGEQUAL        reduce using rule 30 (Condicional -> Var .)
-    <               reduce using rule 30 (Condicional -> Var .)
-    LESSEREQUAL     reduce using rule 30 (Condicional -> Var .)
-    EQUALS          reduce using rule 30 (Condicional -> Var .)
-    NOTEQUALS       reduce using rule 30 (Condicional -> Var .)
-    )               reduce using rule 30 (Condicional -> Var .)
-    AND             reduce using rule 30 (Condicional -> Var .)
-    OR              reduce using rule 30 (Condicional -> Var .)
+    )               reduce using rule 26 (ListaCondicionais -> Condicional .)
+    AND             reduce using rule 26 (ListaCondicionais -> Condicional .)
+    OR              reduce using rule 26 (ListaCondicionais -> Condicional .)
+    >               shift and go to state 67
+    BIGEQUAL        shift and go to state 68
+    <               shift and go to state 69
+    LESSEREQUAL     shift and go to state 70
+    EQUALS          shift and go to state 71
+    NOTEQUALS       shift and go to state 72
 
+    OperadorCondicional            shift and go to state 66
 
 state 44
 
-    (41) BlocoWhileDo -> WHILE ( ListaCondicionais . ) DO { BlocosCodigo }
-    (27) ListaCondicionais -> ListaCondicionais . OperadorLogico Condicional
-    (28) OperadorLogico -> . AND
-    (29) OperadorLogico -> . OR
+    (28) ListaCondicionais -> ! . ( ListaCondicionais )
+    (33) Condicional -> ! . ( Condicional )
 
-    )               shift and go to state 71
-    AND             shift and go to state 61
-    OR              shift and go to state 62
+    (               shift and go to state 73
 
-    OperadorLogico                 shift and go to state 60
 
 state 45
 
-    (45) Bloco_EscreverSTDOUT -> STDOUT ( Var . ) ;
+    (32) Condicional -> Var .
 
-    )               shift and go to state 72
+    >               reduce using rule 32 (Condicional -> Var .)
+    BIGEQUAL        reduce using rule 32 (Condicional -> Var .)
+    <               reduce using rule 32 (Condicional -> Var .)
+    LESSEREQUAL     reduce using rule 32 (Condicional -> Var .)
+    EQUALS          reduce using rule 32 (Condicional -> Var .)
+    NOTEQUALS       reduce using rule 32 (Condicional -> Var .)
+    )               reduce using rule 32 (Condicional -> Var .)
+    AND             reduce using rule 32 (Condicional -> Var .)
+    OR              reduce using rule 32 (Condicional -> Var .)
 
 
 state 46
 
-    (49) Bloco_DEFINEFUNC -> DEFINE FUNC ( . ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> DEFINE FUNC ( . ListaAtributos ) { BlocosCodigo }
-    (51) ListaAtributos -> . Atributo
-    (52) ListaAtributos -> . ListaAtributos , Atributo
-    (53) Atributo -> . INT
+    (43) BlocoWhileDo -> WHILE ( ListaCondicionais . ) DO { BlocosCodigo }
+    (29) ListaCondicionais -> ListaCondicionais . OperadorLogico Condicional
+    (30) OperadorLogico -> . AND
+    (31) OperadorLogico -> . OR
 
-    )               shift and go to state 73
-    INT             shift and go to state 76
+    )               shift and go to state 74
+    AND             shift and go to state 64
+    OR              shift and go to state 65
 
-    ListaAtributos                 shift and go to state 74
-    Atributo                       shift and go to state 75
+    OperadorLogico                 shift and go to state 63
 
 state 47
 
-    (55) Bloco_CALLFUNC -> CALL FUNC ( . ) ;
-    (56) Bloco_CALLFUNC -> CALL FUNC ( . INPUTVar ) ;
-    (57) INPUTVar -> . Var
-    (58) INPUTVar -> . INPUTVar , Var
-    (10) Var -> . NUM
-    (11) Var -> . ID
-    (12) Var -> . TRUE
-    (13) Var -> . FALSE
+    (47) Bloco_EscreverSTDOUT -> STDOUT ( Var . ) ;
 
-    )               shift and go to state 77
-    NUM             shift and go to state 36
-    ID              shift and go to state 30
-    TRUE            shift and go to state 37
-    FALSE           shift and go to state 38
+    )               shift and go to state 75
 
-    INPUTVar                       shift and go to state 78
-    Var                            shift and go to state 79
 
 state 48
 
-    (7) Atribuicao -> ID = Expressao ; .
+    (51) Bloco_DEFINEFUNC -> DEFINE FUNC ( . ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> DEFINE FUNC ( . ListaAtributos ) { BlocosCodigo }
+    (53) ListaAtributos -> . Atributo
+    (54) ListaAtributos -> . ListaAtributos , Atributo
+    (55) Atributo -> . INT
 
-    INT             reduce using rule 7 (Atribuicao -> ID = Expressao ; .)
-    ID              reduce using rule 7 (Atribuicao -> ID = Expressao ; .)
-    IF              reduce using rule 7 (Atribuicao -> ID = Expressao ; .)
-    WHILE           reduce using rule 7 (Atribuicao -> ID = Expressao ; .)
-    STDOUT          reduce using rule 7 (Atribuicao -> ID = Expressao ; .)
-    COMMENT         reduce using rule 7 (Atribuicao -> ID = Expressao ; .)
-    DEFINE          reduce using rule 7 (Atribuicao -> ID = Expressao ; .)
-    CALL            reduce using rule 7 (Atribuicao -> ID = Expressao ; .)
-    $end            reduce using rule 7 (Atribuicao -> ID = Expressao ; .)
-    }               reduce using rule 7 (Atribuicao -> ID = Expressao ; .)
+    )               shift and go to state 76
+    INT             shift and go to state 79
 
+    ListaAtributos                 shift and go to state 77
+    Atributo                       shift and go to state 78
 
 state 49
 
-    (14) Expressao -> Expressao Operador . Var
-    (10) Var -> . NUM
-    (11) Var -> . ID
-    (12) Var -> . TRUE
-    (13) Var -> . FALSE
+    (57) Bloco_CALLFUNC -> CALL FUNC ( . ) ;
+    (58) Bloco_CALLFUNC -> CALL FUNC ( . INPUTVar ) ;
+    (59) INPUTVar -> . Var
+    (60) INPUTVar -> . INPUTVar , Var
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
 
-    NUM             shift and go to state 36
-    ID              shift and go to state 30
-    TRUE            shift and go to state 37
-    FALSE           shift and go to state 38
+    )               shift and go to state 80
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
 
-    Var                            shift and go to state 80
+    INPUTVar                       shift and go to state 81
+    Var                            shift and go to state 82
 
 state 50
 
-    (16) Operador -> + .
+    (6) Declaracao -> INT ID = Expressao .
+    (16) Expressao -> Expressao . Operador Var
+    (18) Operador -> . +
+    (19) Operador -> . -
+    (20) Operador -> . *
+    (21) Operador -> . /
+    (22) Operador -> . %
 
-    NUM             reduce using rule 16 (Operador -> + .)
-    ID              reduce using rule 16 (Operador -> + .)
-    TRUE            reduce using rule 16 (Operador -> + .)
-    FALSE           reduce using rule 16 (Operador -> + .)
+    INT             reduce using rule 6 (Declaracao -> INT ID = Expressao .)
+    ID              reduce using rule 6 (Declaracao -> INT ID = Expressao .)
+    IF              reduce using rule 6 (Declaracao -> INT ID = Expressao .)
+    WHILE           reduce using rule 6 (Declaracao -> INT ID = Expressao .)
+    STDOUT          reduce using rule 6 (Declaracao -> INT ID = Expressao .)
+    COMMENT         reduce using rule 6 (Declaracao -> INT ID = Expressao .)
+    DEFINE          reduce using rule 6 (Declaracao -> INT ID = Expressao .)
+    CALL            reduce using rule 6 (Declaracao -> INT ID = Expressao .)
+    $end            reduce using rule 6 (Declaracao -> INT ID = Expressao .)
+    }               reduce using rule 6 (Declaracao -> INT ID = Expressao .)
+    +               shift and go to state 53
+    -               shift and go to state 54
+    *               shift and go to state 55
+    /               shift and go to state 56
+    %               shift and go to state 57
 
+    Operador                       shift and go to state 52
 
 state 51
 
-    (17) Operador -> - .
+    (9) Atribuicao -> ID = Expressao ; .
 
-    NUM             reduce using rule 17 (Operador -> - .)
-    ID              reduce using rule 17 (Operador -> - .)
-    TRUE            reduce using rule 17 (Operador -> - .)
-    FALSE           reduce using rule 17 (Operador -> - .)
+    INT             reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
+    ID              reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
+    IF              reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
+    WHILE           reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
+    STDOUT          reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
+    COMMENT         reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
+    DEFINE          reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
+    CALL            reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
+    $end            reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
+    }               reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
 
 
 state 52
 
-    (18) Operador -> * .
+    (16) Expressao -> Expressao Operador . Var
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
 
-    NUM             reduce using rule 18 (Operador -> * .)
-    ID              reduce using rule 18 (Operador -> * .)
-    TRUE            reduce using rule 18 (Operador -> * .)
-    FALSE           reduce using rule 18 (Operador -> * .)
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
 
+    Var                            shift and go to state 83
 
 state 53
 
-    (19) Operador -> / .
+    (18) Operador -> + .
 
-    NUM             reduce using rule 19 (Operador -> / .)
-    ID              reduce using rule 19 (Operador -> / .)
-    TRUE            reduce using rule 19 (Operador -> / .)
-    FALSE           reduce using rule 19 (Operador -> / .)
+    NUM             reduce using rule 18 (Operador -> + .)
+    ID              reduce using rule 18 (Operador -> + .)
+    TRUE            reduce using rule 18 (Operador -> + .)
+    FALSE           reduce using rule 18 (Operador -> + .)
 
 
 state 54
 
-    (20) Operador -> % .
+    (19) Operador -> - .
 
-    NUM             reduce using rule 20 (Operador -> % .)
-    ID              reduce using rule 20 (Operador -> % .)
-    TRUE            reduce using rule 20 (Operador -> % .)
-    FALSE           reduce using rule 20 (Operador -> % .)
+    NUM             reduce using rule 19 (Operador -> - .)
+    ID              reduce using rule 19 (Operador -> - .)
+    TRUE            reduce using rule 19 (Operador -> - .)
+    FALSE           reduce using rule 19 (Operador -> - .)
 
 
 state 55
 
-    (43) BlocoLerSTDIN -> ID = STDIN ( . ) ;
+    (20) Operador -> * .
 
-    )               shift and go to state 81
+    NUM             reduce using rule 20 (Operador -> * .)
+    ID              reduce using rule 20 (Operador -> * .)
+    TRUE            reduce using rule 20 (Operador -> * .)
+    FALSE           reduce using rule 20 (Operador -> * .)
 
 
 state 56
 
-    (15) Expressao -> ( Expressao . )
-    (14) Expressao -> Expressao . Operador Var
-    (16) Operador -> . +
-    (17) Operador -> . -
-    (18) Operador -> . *
-    (19) Operador -> . /
-    (20) Operador -> . %
+    (21) Operador -> / .
 
-    )               shift and go to state 82
-    +               shift and go to state 50
-    -               shift and go to state 51
-    *               shift and go to state 52
-    /               shift and go to state 53
-    %               shift and go to state 54
+    NUM             reduce using rule 21 (Operador -> / .)
+    ID              reduce using rule 21 (Operador -> / .)
+    TRUE            reduce using rule 21 (Operador -> / .)
+    FALSE           reduce using rule 21 (Operador -> / .)
 
-    Operador                       shift and go to state 49
 
 state 57
 
-    (25) ListaCondicionais -> ( ListaCondicionais . )
-    (27) ListaCondicionais -> ListaCondicionais . OperadorLogico Condicional
-    (28) OperadorLogico -> . AND
-    (29) OperadorLogico -> . OR
+    (22) Operador -> % .
 
-    )               shift and go to state 83
-    AND             shift and go to state 61
-    OR              shift and go to state 62
+    NUM             reduce using rule 22 (Operador -> % .)
+    ID              reduce using rule 22 (Operador -> % .)
+    TRUE            reduce using rule 22 (Operador -> % .)
+    FALSE           reduce using rule 22 (Operador -> % .)
 
-    OperadorLogico                 shift and go to state 60
 
 state 58
 
-    (32) Condicional -> ( Condicional . )
-    (24) ListaCondicionais -> Condicional .
-    (33) Condicional -> Condicional . OperadorCondicional Condicional
-    (34) OperadorCondicional -> . >
-    (35) OperadorCondicional -> . BIGEQUAL
-    (36) OperadorCondicional -> . <
-    (37) OperadorCondicional -> . LESSEREQUAL
-    (38) OperadorCondicional -> . EQUALS
-    (39) OperadorCondicional -> . NOTEQUALS
+    (45) BlocoLerSTDIN -> ID = STDIN ( . ) ;
 
-  ! shift/reduce conflict for ) resolved as shift
     )               shift and go to state 84
-    AND             reduce using rule 24 (ListaCondicionais -> Condicional .)
-    OR              reduce using rule 24 (ListaCondicionais -> Condicional .)
-    >               shift and go to state 64
-    BIGEQUAL        shift and go to state 65
-    <               shift and go to state 66
-    LESSEREQUAL     shift and go to state 67
-    EQUALS          shift and go to state 68
-    NOTEQUALS       shift and go to state 69
 
-  ! )               [ reduce using rule 24 (ListaCondicionais -> Condicional .) ]
-
-    OperadorCondicional            shift and go to state 63
 
 state 59
 
-    (22) BlocoIF -> IF ( ListaCondicionais ) . { BlocosCodigo }
-    (23) BlocoIF -> IF ( ListaCondicionais ) . { BlocosCodigo } ELSE { BlocosCodigo }
+    (17) Expressao -> ( Expressao . )
+    (16) Expressao -> Expressao . Operador Var
+    (18) Operador -> . +
+    (19) Operador -> . -
+    (20) Operador -> . *
+    (21) Operador -> . /
+    (22) Operador -> . %
 
-    {               shift and go to state 85
+    )               shift and go to state 85
+    +               shift and go to state 53
+    -               shift and go to state 54
+    *               shift and go to state 55
+    /               shift and go to state 56
+    %               shift and go to state 57
 
+    Operador                       shift and go to state 52
 
 state 60
 
-    (27) ListaCondicionais -> ListaCondicionais OperadorLogico . Condicional
-    (30) Condicional -> . Var
-    (31) Condicional -> . ! ( Condicional )
-    (32) Condicional -> . ( Condicional )
-    (33) Condicional -> . Condicional OperadorCondicional Condicional
-    (10) Var -> . NUM
-    (11) Var -> . ID
-    (12) Var -> . TRUE
-    (13) Var -> . FALSE
+    (27) ListaCondicionais -> ( ListaCondicionais . )
+    (29) ListaCondicionais -> ListaCondicionais . OperadorLogico Condicional
+    (30) OperadorLogico -> . AND
+    (31) OperadorLogico -> . OR
 
-    !               shift and go to state 87
-    (               shift and go to state 88
-    NUM             shift and go to state 36
-    ID              shift and go to state 30
-    TRUE            shift and go to state 37
-    FALSE           shift and go to state 38
+    )               shift and go to state 86
+    AND             shift and go to state 64
+    OR              shift and go to state 65
 
-    Condicional                    shift and go to state 86
-    Var                            shift and go to state 43
+    OperadorLogico                 shift and go to state 63
 
 state 61
 
-    (28) OperadorLogico -> AND .
+    (34) Condicional -> ( Condicional . )
+    (26) ListaCondicionais -> Condicional .
+    (35) Condicional -> Condicional . OperadorCondicional Condicional
+    (36) OperadorCondicional -> . >
+    (37) OperadorCondicional -> . BIGEQUAL
+    (38) OperadorCondicional -> . <
+    (39) OperadorCondicional -> . LESSEREQUAL
+    (40) OperadorCondicional -> . EQUALS
+    (41) OperadorCondicional -> . NOTEQUALS
 
-    !               reduce using rule 28 (OperadorLogico -> AND .)
-    (               reduce using rule 28 (OperadorLogico -> AND .)
-    NUM             reduce using rule 28 (OperadorLogico -> AND .)
-    ID              reduce using rule 28 (OperadorLogico -> AND .)
-    TRUE            reduce using rule 28 (OperadorLogico -> AND .)
-    FALSE           reduce using rule 28 (OperadorLogico -> AND .)
+  ! shift/reduce conflict for ) resolved as shift
+    )               shift and go to state 87
+    AND             reduce using rule 26 (ListaCondicionais -> Condicional .)
+    OR              reduce using rule 26 (ListaCondicionais -> Condicional .)
+    >               shift and go to state 67
+    BIGEQUAL        shift and go to state 68
+    <               shift and go to state 69
+    LESSEREQUAL     shift and go to state 70
+    EQUALS          shift and go to state 71
+    NOTEQUALS       shift and go to state 72
 
+  ! )               [ reduce using rule 26 (ListaCondicionais -> Condicional .) ]
+
+    OperadorCondicional            shift and go to state 66
 
 state 62
 
-    (29) OperadorLogico -> OR .
+    (24) BlocoIF -> IF ( ListaCondicionais ) . { BlocosCodigo }
+    (25) BlocoIF -> IF ( ListaCondicionais ) . { BlocosCodigo } ELSE { BlocosCodigo }
 
-    !               reduce using rule 29 (OperadorLogico -> OR .)
-    (               reduce using rule 29 (OperadorLogico -> OR .)
-    NUM             reduce using rule 29 (OperadorLogico -> OR .)
-    ID              reduce using rule 29 (OperadorLogico -> OR .)
-    TRUE            reduce using rule 29 (OperadorLogico -> OR .)
-    FALSE           reduce using rule 29 (OperadorLogico -> OR .)
+    {               shift and go to state 88
 
 
 state 63
 
-    (33) Condicional -> Condicional OperadorCondicional . Condicional
-    (30) Condicional -> . Var
-    (31) Condicional -> . ! ( Condicional )
-    (32) Condicional -> . ( Condicional )
-    (33) Condicional -> . Condicional OperadorCondicional Condicional
-    (10) Var -> . NUM
-    (11) Var -> . ID
-    (12) Var -> . TRUE
-    (13) Var -> . FALSE
+    (29) ListaCondicionais -> ListaCondicionais OperadorLogico . Condicional
+    (32) Condicional -> . Var
+    (33) Condicional -> . ! ( Condicional )
+    (34) Condicional -> . ( Condicional )
+    (35) Condicional -> . Condicional OperadorCondicional Condicional
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
 
-    !               shift and go to state 87
-    (               shift and go to state 88
-    NUM             shift and go to state 36
-    ID              shift and go to state 30
-    TRUE            shift and go to state 37
-    FALSE           shift and go to state 38
+    !               shift and go to state 90
+    (               shift and go to state 91
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
 
     Condicional                    shift and go to state 89
-    Var                            shift and go to state 43
+    Var                            shift and go to state 45
 
 state 64
 
-    (34) OperadorCondicional -> > .
+    (30) OperadorLogico -> AND .
 
-    !               reduce using rule 34 (OperadorCondicional -> > .)
-    (               reduce using rule 34 (OperadorCondicional -> > .)
-    NUM             reduce using rule 34 (OperadorCondicional -> > .)
-    ID              reduce using rule 34 (OperadorCondicional -> > .)
-    TRUE            reduce using rule 34 (OperadorCondicional -> > .)
-    FALSE           reduce using rule 34 (OperadorCondicional -> > .)
+    !               reduce using rule 30 (OperadorLogico -> AND .)
+    (               reduce using rule 30 (OperadorLogico -> AND .)
+    NUM             reduce using rule 30 (OperadorLogico -> AND .)
+    ID              reduce using rule 30 (OperadorLogico -> AND .)
+    TRUE            reduce using rule 30 (OperadorLogico -> AND .)
+    FALSE           reduce using rule 30 (OperadorLogico -> AND .)
 
 
 state 65
 
-    (35) OperadorCondicional -> BIGEQUAL .
+    (31) OperadorLogico -> OR .
 
-    !               reduce using rule 35 (OperadorCondicional -> BIGEQUAL .)
-    (               reduce using rule 35 (OperadorCondicional -> BIGEQUAL .)
-    NUM             reduce using rule 35 (OperadorCondicional -> BIGEQUAL .)
-    ID              reduce using rule 35 (OperadorCondicional -> BIGEQUAL .)
-    TRUE            reduce using rule 35 (OperadorCondicional -> BIGEQUAL .)
-    FALSE           reduce using rule 35 (OperadorCondicional -> BIGEQUAL .)
+    !               reduce using rule 31 (OperadorLogico -> OR .)
+    (               reduce using rule 31 (OperadorLogico -> OR .)
+    NUM             reduce using rule 31 (OperadorLogico -> OR .)
+    ID              reduce using rule 31 (OperadorLogico -> OR .)
+    TRUE            reduce using rule 31 (OperadorLogico -> OR .)
+    FALSE           reduce using rule 31 (OperadorLogico -> OR .)
 
 
 state 66
 
-    (36) OperadorCondicional -> < .
+    (35) Condicional -> Condicional OperadorCondicional . Condicional
+    (32) Condicional -> . Var
+    (33) Condicional -> . ! ( Condicional )
+    (34) Condicional -> . ( Condicional )
+    (35) Condicional -> . Condicional OperadorCondicional Condicional
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
 
-    !               reduce using rule 36 (OperadorCondicional -> < .)
-    (               reduce using rule 36 (OperadorCondicional -> < .)
-    NUM             reduce using rule 36 (OperadorCondicional -> < .)
-    ID              reduce using rule 36 (OperadorCondicional -> < .)
-    TRUE            reduce using rule 36 (OperadorCondicional -> < .)
-    FALSE           reduce using rule 36 (OperadorCondicional -> < .)
+    !               shift and go to state 90
+    (               shift and go to state 91
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
 
+    Condicional                    shift and go to state 92
+    Var                            shift and go to state 45
 
 state 67
 
-    (37) OperadorCondicional -> LESSEREQUAL .
+    (36) OperadorCondicional -> > .
 
-    !               reduce using rule 37 (OperadorCondicional -> LESSEREQUAL .)
-    (               reduce using rule 37 (OperadorCondicional -> LESSEREQUAL .)
-    NUM             reduce using rule 37 (OperadorCondicional -> LESSEREQUAL .)
-    ID              reduce using rule 37 (OperadorCondicional -> LESSEREQUAL .)
-    TRUE            reduce using rule 37 (OperadorCondicional -> LESSEREQUAL .)
-    FALSE           reduce using rule 37 (OperadorCondicional -> LESSEREQUAL .)
+    !               reduce using rule 36 (OperadorCondicional -> > .)
+    (               reduce using rule 36 (OperadorCondicional -> > .)
+    NUM             reduce using rule 36 (OperadorCondicional -> > .)
+    ID              reduce using rule 36 (OperadorCondicional -> > .)
+    TRUE            reduce using rule 36 (OperadorCondicional -> > .)
+    FALSE           reduce using rule 36 (OperadorCondicional -> > .)
 
 
 state 68
 
-    (38) OperadorCondicional -> EQUALS .
+    (37) OperadorCondicional -> BIGEQUAL .
 
-    !               reduce using rule 38 (OperadorCondicional -> EQUALS .)
-    (               reduce using rule 38 (OperadorCondicional -> EQUALS .)
-    NUM             reduce using rule 38 (OperadorCondicional -> EQUALS .)
-    ID              reduce using rule 38 (OperadorCondicional -> EQUALS .)
-    TRUE            reduce using rule 38 (OperadorCondicional -> EQUALS .)
-    FALSE           reduce using rule 38 (OperadorCondicional -> EQUALS .)
+    !               reduce using rule 37 (OperadorCondicional -> BIGEQUAL .)
+    (               reduce using rule 37 (OperadorCondicional -> BIGEQUAL .)
+    NUM             reduce using rule 37 (OperadorCondicional -> BIGEQUAL .)
+    ID              reduce using rule 37 (OperadorCondicional -> BIGEQUAL .)
+    TRUE            reduce using rule 37 (OperadorCondicional -> BIGEQUAL .)
+    FALSE           reduce using rule 37 (OperadorCondicional -> BIGEQUAL .)
 
 
 state 69
 
-    (39) OperadorCondicional -> NOTEQUALS .
+    (38) OperadorCondicional -> < .
 
-    !               reduce using rule 39 (OperadorCondicional -> NOTEQUALS .)
-    (               reduce using rule 39 (OperadorCondicional -> NOTEQUALS .)
-    NUM             reduce using rule 39 (OperadorCondicional -> NOTEQUALS .)
-    ID              reduce using rule 39 (OperadorCondicional -> NOTEQUALS .)
-    TRUE            reduce using rule 39 (OperadorCondicional -> NOTEQUALS .)
-    FALSE           reduce using rule 39 (OperadorCondicional -> NOTEQUALS .)
+    !               reduce using rule 38 (OperadorCondicional -> < .)
+    (               reduce using rule 38 (OperadorCondicional -> < .)
+    NUM             reduce using rule 38 (OperadorCondicional -> < .)
+    ID              reduce using rule 38 (OperadorCondicional -> < .)
+    TRUE            reduce using rule 38 (OperadorCondicional -> < .)
+    FALSE           reduce using rule 38 (OperadorCondicional -> < .)
 
 
 state 70
 
-    (26) ListaCondicionais -> ! ( . ListaCondicionais )
-    (31) Condicional -> ! ( . Condicional )
-    (24) ListaCondicionais -> . Condicional
-    (25) ListaCondicionais -> . ( ListaCondicionais )
-    (26) ListaCondicionais -> . ! ( ListaCondicionais )
-    (27) ListaCondicionais -> . ListaCondicionais OperadorLogico Condicional
-    (30) Condicional -> . Var
-    (31) Condicional -> . ! ( Condicional )
-    (32) Condicional -> . ( Condicional )
-    (33) Condicional -> . Condicional OperadorCondicional Condicional
-    (10) Var -> . NUM
-    (11) Var -> . ID
-    (12) Var -> . TRUE
-    (13) Var -> . FALSE
+    (39) OperadorCondicional -> LESSEREQUAL .
 
-    (               shift and go to state 39
-    !               shift and go to state 42
-    NUM             shift and go to state 36
-    ID              shift and go to state 30
-    TRUE            shift and go to state 37
-    FALSE           shift and go to state 38
+    !               reduce using rule 39 (OperadorCondicional -> LESSEREQUAL .)
+    (               reduce using rule 39 (OperadorCondicional -> LESSEREQUAL .)
+    NUM             reduce using rule 39 (OperadorCondicional -> LESSEREQUAL .)
+    ID              reduce using rule 39 (OperadorCondicional -> LESSEREQUAL .)
+    TRUE            reduce using rule 39 (OperadorCondicional -> LESSEREQUAL .)
+    FALSE           reduce using rule 39 (OperadorCondicional -> LESSEREQUAL .)
 
-    ListaCondicionais              shift and go to state 90
-    Condicional                    shift and go to state 91
-    Var                            shift and go to state 43
 
 state 71
 
-    (41) BlocoWhileDo -> WHILE ( ListaCondicionais ) . DO { BlocosCodigo }
+    (40) OperadorCondicional -> EQUALS .
 
-    DO              shift and go to state 92
+    !               reduce using rule 40 (OperadorCondicional -> EQUALS .)
+    (               reduce using rule 40 (OperadorCondicional -> EQUALS .)
+    NUM             reduce using rule 40 (OperadorCondicional -> EQUALS .)
+    ID              reduce using rule 40 (OperadorCondicional -> EQUALS .)
+    TRUE            reduce using rule 40 (OperadorCondicional -> EQUALS .)
+    FALSE           reduce using rule 40 (OperadorCondicional -> EQUALS .)
 
 
 state 72
 
-    (45) Bloco_EscreverSTDOUT -> STDOUT ( Var ) . ;
+    (41) OperadorCondicional -> NOTEQUALS .
 
-    ;               shift and go to state 93
+    !               reduce using rule 41 (OperadorCondicional -> NOTEQUALS .)
+    (               reduce using rule 41 (OperadorCondicional -> NOTEQUALS .)
+    NUM             reduce using rule 41 (OperadorCondicional -> NOTEQUALS .)
+    ID              reduce using rule 41 (OperadorCondicional -> NOTEQUALS .)
+    TRUE            reduce using rule 41 (OperadorCondicional -> NOTEQUALS .)
+    FALSE           reduce using rule 41 (OperadorCondicional -> NOTEQUALS .)
 
 
 state 73
 
-    (49) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) . { BlocosCodigo }
+    (28) ListaCondicionais -> ! ( . ListaCondicionais )
+    (33) Condicional -> ! ( . Condicional )
+    (26) ListaCondicionais -> . Condicional
+    (27) ListaCondicionais -> . ( ListaCondicionais )
+    (28) ListaCondicionais -> . ! ( ListaCondicionais )
+    (29) ListaCondicionais -> . ListaCondicionais OperadorLogico Condicional
+    (32) Condicional -> . Var
+    (33) Condicional -> . ! ( Condicional )
+    (34) Condicional -> . ( Condicional )
+    (35) Condicional -> . Condicional OperadorCondicional Condicional
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
 
-    {               shift and go to state 94
+    (               shift and go to state 41
+    !               shift and go to state 44
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
 
+    ListaCondicionais              shift and go to state 93
+    Condicional                    shift and go to state 94
+    Var                            shift and go to state 45
 
 state 74
 
-    (50) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos . ) { BlocosCodigo }
-    (52) ListaAtributos -> ListaAtributos . , Atributo
+    (43) BlocoWhileDo -> WHILE ( ListaCondicionais ) . DO { BlocosCodigo }
 
-    )               shift and go to state 95
-    ,               shift and go to state 96
+    DO              shift and go to state 95
 
 
 state 75
 
-    (51) ListaAtributos -> Atributo .
+    (47) Bloco_EscreverSTDOUT -> STDOUT ( Var ) . ;
 
-    )               reduce using rule 51 (ListaAtributos -> Atributo .)
-    ,               reduce using rule 51 (ListaAtributos -> Atributo .)
+    ;               shift and go to state 96
 
 
 state 76
 
-    (53) Atributo -> INT .
+    (51) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) . { BlocosCodigo }
 
-    )               reduce using rule 53 (Atributo -> INT .)
-    ,               reduce using rule 53 (Atributo -> INT .)
+    {               shift and go to state 97
 
 
 state 77
 
-    (55) Bloco_CALLFUNC -> CALL FUNC ( ) . ;
-
-    ;               shift and go to state 97
-
-
-state 78
-
-    (56) Bloco_CALLFUNC -> CALL FUNC ( INPUTVar . ) ;
-    (58) INPUTVar -> INPUTVar . , Var
+    (52) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos . ) { BlocosCodigo }
+    (54) ListaAtributos -> ListaAtributos . , Atributo
 
     )               shift and go to state 98
     ,               shift and go to state 99
 
 
+state 78
+
+    (53) ListaAtributos -> Atributo .
+
+    )               reduce using rule 53 (ListaAtributos -> Atributo .)
+    ,               reduce using rule 53 (ListaAtributos -> Atributo .)
+
+
 state 79
 
-    (57) INPUTVar -> Var .
+    (55) Atributo -> INT .
 
-    )               reduce using rule 57 (INPUTVar -> Var .)
-    ,               reduce using rule 57 (INPUTVar -> Var .)
+    )               reduce using rule 55 (Atributo -> INT .)
+    ,               reduce using rule 55 (Atributo -> INT .)
 
 
 state 80
 
-    (14) Expressao -> Expressao Operador Var .
-
-    ;               reduce using rule 14 (Expressao -> Expressao Operador Var .)
-    +               reduce using rule 14 (Expressao -> Expressao Operador Var .)
-    -               reduce using rule 14 (Expressao -> Expressao Operador Var .)
-    *               reduce using rule 14 (Expressao -> Expressao Operador Var .)
-    /               reduce using rule 14 (Expressao -> Expressao Operador Var .)
-    %               reduce using rule 14 (Expressao -> Expressao Operador Var .)
-    )               reduce using rule 14 (Expressao -> Expressao Operador Var .)
-
-
-state 81
-
-    (43) BlocoLerSTDIN -> ID = STDIN ( ) . ;
+    (57) Bloco_CALLFUNC -> CALL FUNC ( ) . ;
 
     ;               shift and go to state 100
 
 
+state 81
+
+    (58) Bloco_CALLFUNC -> CALL FUNC ( INPUTVar . ) ;
+    (60) INPUTVar -> INPUTVar . , Var
+
+    )               shift and go to state 101
+    ,               shift and go to state 102
+
+
 state 82
 
-    (15) Expressao -> ( Expressao ) .
+    (59) INPUTVar -> Var .
 
-    ;               reduce using rule 15 (Expressao -> ( Expressao ) .)
-    +               reduce using rule 15 (Expressao -> ( Expressao ) .)
-    -               reduce using rule 15 (Expressao -> ( Expressao ) .)
-    *               reduce using rule 15 (Expressao -> ( Expressao ) .)
-    /               reduce using rule 15 (Expressao -> ( Expressao ) .)
-    %               reduce using rule 15 (Expressao -> ( Expressao ) .)
-    )               reduce using rule 15 (Expressao -> ( Expressao ) .)
+    )               reduce using rule 59 (INPUTVar -> Var .)
+    ,               reduce using rule 59 (INPUTVar -> Var .)
 
 
 state 83
 
-    (25) ListaCondicionais -> ( ListaCondicionais ) .
+    (16) Expressao -> Expressao Operador Var .
 
-    )               reduce using rule 25 (ListaCondicionais -> ( ListaCondicionais ) .)
-    AND             reduce using rule 25 (ListaCondicionais -> ( ListaCondicionais ) .)
-    OR              reduce using rule 25 (ListaCondicionais -> ( ListaCondicionais ) .)
+    ;               reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    +               reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    -               reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    *               reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    /               reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    %               reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    INT             reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    ID              reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    IF              reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    WHILE           reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    STDOUT          reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    COMMENT         reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    DEFINE          reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    CALL            reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    $end            reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    }               reduce using rule 16 (Expressao -> Expressao Operador Var .)
+    )               reduce using rule 16 (Expressao -> Expressao Operador Var .)
 
 
 state 84
 
-    (32) Condicional -> ( Condicional ) .
+    (45) BlocoLerSTDIN -> ID = STDIN ( ) . ;
 
-    >               reduce using rule 32 (Condicional -> ( Condicional ) .)
-    BIGEQUAL        reduce using rule 32 (Condicional -> ( Condicional ) .)
-    <               reduce using rule 32 (Condicional -> ( Condicional ) .)
-    LESSEREQUAL     reduce using rule 32 (Condicional -> ( Condicional ) .)
-    EQUALS          reduce using rule 32 (Condicional -> ( Condicional ) .)
-    NOTEQUALS       reduce using rule 32 (Condicional -> ( Condicional ) .)
-    )               reduce using rule 32 (Condicional -> ( Condicional ) .)
-    AND             reduce using rule 32 (Condicional -> ( Condicional ) .)
-    OR              reduce using rule 32 (Condicional -> ( Condicional ) .)
+    ;               shift and go to state 103
 
 
 state 85
 
-    (22) BlocoIF -> IF ( ListaCondicionais ) { . BlocosCodigo }
-    (23) BlocoIF -> IF ( ListaCondicionais ) { . BlocosCodigo } ELSE { BlocosCodigo }
+    (17) Expressao -> ( Expressao ) .
+
+    ;               reduce using rule 17 (Expressao -> ( Expressao ) .)
+    +               reduce using rule 17 (Expressao -> ( Expressao ) .)
+    -               reduce using rule 17 (Expressao -> ( Expressao ) .)
+    *               reduce using rule 17 (Expressao -> ( Expressao ) .)
+    /               reduce using rule 17 (Expressao -> ( Expressao ) .)
+    %               reduce using rule 17 (Expressao -> ( Expressao ) .)
+    INT             reduce using rule 17 (Expressao -> ( Expressao ) .)
+    ID              reduce using rule 17 (Expressao -> ( Expressao ) .)
+    IF              reduce using rule 17 (Expressao -> ( Expressao ) .)
+    WHILE           reduce using rule 17 (Expressao -> ( Expressao ) .)
+    STDOUT          reduce using rule 17 (Expressao -> ( Expressao ) .)
+    COMMENT         reduce using rule 17 (Expressao -> ( Expressao ) .)
+    DEFINE          reduce using rule 17 (Expressao -> ( Expressao ) .)
+    CALL            reduce using rule 17 (Expressao -> ( Expressao ) .)
+    $end            reduce using rule 17 (Expressao -> ( Expressao ) .)
+    }               reduce using rule 17 (Expressao -> ( Expressao ) .)
+    )               reduce using rule 17 (Expressao -> ( Expressao ) .)
+
+
+state 86
+
+    (27) ListaCondicionais -> ( ListaCondicionais ) .
+
+    )               reduce using rule 27 (ListaCondicionais -> ( ListaCondicionais ) .)
+    AND             reduce using rule 27 (ListaCondicionais -> ( ListaCondicionais ) .)
+    OR              reduce using rule 27 (ListaCondicionais -> ( ListaCondicionais ) .)
+
+
+state 87
+
+    (34) Condicional -> ( Condicional ) .
+
+    >               reduce using rule 34 (Condicional -> ( Condicional ) .)
+    BIGEQUAL        reduce using rule 34 (Condicional -> ( Condicional ) .)
+    <               reduce using rule 34 (Condicional -> ( Condicional ) .)
+    LESSEREQUAL     reduce using rule 34 (Condicional -> ( Condicional ) .)
+    EQUALS          reduce using rule 34 (Condicional -> ( Condicional ) .)
+    NOTEQUALS       reduce using rule 34 (Condicional -> ( Condicional ) .)
+    )               reduce using rule 34 (Condicional -> ( Condicional ) .)
+    AND             reduce using rule 34 (Condicional -> ( Condicional ) .)
+    OR              reduce using rule 34 (Condicional -> ( Condicional ) .)
+
+
+state 88
+
+    (24) BlocoIF -> IF ( ListaCondicionais ) { . BlocosCodigo }
+    (25) BlocoIF -> IF ( ListaCondicionais ) { . BlocosCodigo } ELSE { BlocosCodigo }
     (2) BlocosCodigo -> . Codigo
     (3) BlocosCodigo -> . BlocosCodigo Codigo
     (4) Codigo -> . Declaracao
-    (6) Codigo -> . Atribuicao
-    (21) Codigo -> . BlocoIF
-    (40) Codigo -> . BlocoWhileDo
-    (42) Codigo -> . BlocoLerSTDIN
-    (44) Codigo -> . Bloco_EscreverSTDOUT
-    (46) Codigo -> . Bloco_Comentario
-    (48) Codigo -> . Bloco_DEFINEFUNC
-    (54) Codigo -> . Bloco_CALLFUNC
+    (8) Codigo -> . Atribuicao
+    (23) Codigo -> . BlocoIF
+    (42) Codigo -> . BlocoWhileDo
+    (44) Codigo -> . BlocoLerSTDIN
+    (46) Codigo -> . Bloco_EscreverSTDOUT
+    (48) Codigo -> . Bloco_Comentario
+    (50) Codigo -> . Bloco_DEFINEFUNC
+    (56) Codigo -> . Bloco_CALLFUNC
     (5) Declaracao -> . INT ID ;
-    (7) Atribuicao -> . ID = Expressao ;
-    (8) Atribuicao -> . ID = Bloco_CALLFUNC
-    (22) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
-    (23) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-    (41) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
-    (43) BlocoLerSTDIN -> . ID = STDIN ( ) ;
-    (45) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
-    (47) Bloco_Comentario -> . COMMENT
-    (49) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (55) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (56) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (6) Declaracao -> . INT ID = Expressao
+    (7) Declaracao -> . INT BlocoLerSTDIN
+    (9) Atribuicao -> . ID = Expressao ;
+    (10) Atribuicao -> . ID = Bloco_CALLFUNC
+    (24) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
+    (25) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+    (43) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
+    (45) BlocoLerSTDIN -> . ID = STDIN ( ) ;
+    (47) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
+    (49) Bloco_Comentario -> . COMMENT
+    (51) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (57) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (58) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
 
     INT             shift and go to state 13
     ID              shift and go to state 14
@@ -1409,7 +1560,7 @@ state 85
     DEFINE          shift and go to state 19
     CALL            shift and go to state 20
 
-    BlocosCodigo                   shift and go to state 101
+    BlocosCodigo                   shift and go to state 104
     Codigo                         shift and go to state 3
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
@@ -1421,68 +1572,68 @@ state 85
     Bloco_DEFINEFUNC               shift and go to state 11
     Bloco_CALLFUNC                 shift and go to state 12
 
-state 86
-
-    (27) ListaCondicionais -> ListaCondicionais OperadorLogico Condicional .
-    (33) Condicional -> Condicional . OperadorCondicional Condicional
-    (34) OperadorCondicional -> . >
-    (35) OperadorCondicional -> . BIGEQUAL
-    (36) OperadorCondicional -> . <
-    (37) OperadorCondicional -> . LESSEREQUAL
-    (38) OperadorCondicional -> . EQUALS
-    (39) OperadorCondicional -> . NOTEQUALS
-
-    )               reduce using rule 27 (ListaCondicionais -> ListaCondicionais OperadorLogico Condicional .)
-    AND             reduce using rule 27 (ListaCondicionais -> ListaCondicionais OperadorLogico Condicional .)
-    OR              reduce using rule 27 (ListaCondicionais -> ListaCondicionais OperadorLogico Condicional .)
-    >               shift and go to state 64
-    BIGEQUAL        shift and go to state 65
-    <               shift and go to state 66
-    LESSEREQUAL     shift and go to state 67
-    EQUALS          shift and go to state 68
-    NOTEQUALS       shift and go to state 69
-
-    OperadorCondicional            shift and go to state 63
-
-state 87
-
-    (31) Condicional -> ! . ( Condicional )
-
-    (               shift and go to state 102
-
-
-state 88
-
-    (32) Condicional -> ( . Condicional )
-    (30) Condicional -> . Var
-    (31) Condicional -> . ! ( Condicional )
-    (32) Condicional -> . ( Condicional )
-    (33) Condicional -> . Condicional OperadorCondicional Condicional
-    (10) Var -> . NUM
-    (11) Var -> . ID
-    (12) Var -> . TRUE
-    (13) Var -> . FALSE
-
-    !               shift and go to state 87
-    (               shift and go to state 88
-    NUM             shift and go to state 36
-    ID              shift and go to state 30
-    TRUE            shift and go to state 37
-    FALSE           shift and go to state 38
-
-    Condicional                    shift and go to state 103
-    Var                            shift and go to state 43
-
 state 89
 
-    (33) Condicional -> Condicional OperadorCondicional Condicional .
-    (33) Condicional -> Condicional . OperadorCondicional Condicional
-    (34) OperadorCondicional -> . >
-    (35) OperadorCondicional -> . BIGEQUAL
-    (36) OperadorCondicional -> . <
-    (37) OperadorCondicional -> . LESSEREQUAL
-    (38) OperadorCondicional -> . EQUALS
-    (39) OperadorCondicional -> . NOTEQUALS
+    (29) ListaCondicionais -> ListaCondicionais OperadorLogico Condicional .
+    (35) Condicional -> Condicional . OperadorCondicional Condicional
+    (36) OperadorCondicional -> . >
+    (37) OperadorCondicional -> . BIGEQUAL
+    (38) OperadorCondicional -> . <
+    (39) OperadorCondicional -> . LESSEREQUAL
+    (40) OperadorCondicional -> . EQUALS
+    (41) OperadorCondicional -> . NOTEQUALS
+
+    )               reduce using rule 29 (ListaCondicionais -> ListaCondicionais OperadorLogico Condicional .)
+    AND             reduce using rule 29 (ListaCondicionais -> ListaCondicionais OperadorLogico Condicional .)
+    OR              reduce using rule 29 (ListaCondicionais -> ListaCondicionais OperadorLogico Condicional .)
+    >               shift and go to state 67
+    BIGEQUAL        shift and go to state 68
+    <               shift and go to state 69
+    LESSEREQUAL     shift and go to state 70
+    EQUALS          shift and go to state 71
+    NOTEQUALS       shift and go to state 72
+
+    OperadorCondicional            shift and go to state 66
+
+state 90
+
+    (33) Condicional -> ! . ( Condicional )
+
+    (               shift and go to state 105
+
+
+state 91
+
+    (34) Condicional -> ( . Condicional )
+    (32) Condicional -> . Var
+    (33) Condicional -> . ! ( Condicional )
+    (34) Condicional -> . ( Condicional )
+    (35) Condicional -> . Condicional OperadorCondicional Condicional
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
+
+    !               shift and go to state 90
+    (               shift and go to state 91
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
+
+    Condicional                    shift and go to state 106
+    Var                            shift and go to state 45
+
+state 92
+
+    (35) Condicional -> Condicional OperadorCondicional Condicional .
+    (35) Condicional -> Condicional . OperadorCondicional Condicional
+    (36) OperadorCondicional -> . >
+    (37) OperadorCondicional -> . BIGEQUAL
+    (38) OperadorCondicional -> . <
+    (39) OperadorCondicional -> . LESSEREQUAL
+    (40) OperadorCondicional -> . EQUALS
+    (41) OperadorCondicional -> . NOTEQUALS
 
   ! shift/reduce conflict for > resolved as shift
   ! shift/reduce conflict for BIGEQUAL resolved as shift
@@ -1490,350 +1641,117 @@ state 89
   ! shift/reduce conflict for LESSEREQUAL resolved as shift
   ! shift/reduce conflict for EQUALS resolved as shift
   ! shift/reduce conflict for NOTEQUALS resolved as shift
-    )               reduce using rule 33 (Condicional -> Condicional OperadorCondicional Condicional .)
-    AND             reduce using rule 33 (Condicional -> Condicional OperadorCondicional Condicional .)
-    OR              reduce using rule 33 (Condicional -> Condicional OperadorCondicional Condicional .)
-    >               shift and go to state 64
-    BIGEQUAL        shift and go to state 65
-    <               shift and go to state 66
-    LESSEREQUAL     shift and go to state 67
-    EQUALS          shift and go to state 68
-    NOTEQUALS       shift and go to state 69
+    )               reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .)
+    AND             reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .)
+    OR              reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .)
+    >               shift and go to state 67
+    BIGEQUAL        shift and go to state 68
+    <               shift and go to state 69
+    LESSEREQUAL     shift and go to state 70
+    EQUALS          shift and go to state 71
+    NOTEQUALS       shift and go to state 72
 
-  ! >               [ reduce using rule 33 (Condicional -> Condicional OperadorCondicional Condicional .) ]
-  ! BIGEQUAL        [ reduce using rule 33 (Condicional -> Condicional OperadorCondicional Condicional .) ]
-  ! <               [ reduce using rule 33 (Condicional -> Condicional OperadorCondicional Condicional .) ]
-  ! LESSEREQUAL     [ reduce using rule 33 (Condicional -> Condicional OperadorCondicional Condicional .) ]
-  ! EQUALS          [ reduce using rule 33 (Condicional -> Condicional OperadorCondicional Condicional .) ]
-  ! NOTEQUALS       [ reduce using rule 33 (Condicional -> Condicional OperadorCondicional Condicional .) ]
+  ! >               [ reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .) ]
+  ! BIGEQUAL        [ reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .) ]
+  ! <               [ reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .) ]
+  ! LESSEREQUAL     [ reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .) ]
+  ! EQUALS          [ reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .) ]
+  ! NOTEQUALS       [ reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .) ]
 
-    OperadorCondicional            shift and go to state 63
-
-state 90
-
-    (26) ListaCondicionais -> ! ( ListaCondicionais . )
-    (27) ListaCondicionais -> ListaCondicionais . OperadorLogico Condicional
-    (28) OperadorLogico -> . AND
-    (29) OperadorLogico -> . OR
-
-    )               shift and go to state 104
-    AND             shift and go to state 61
-    OR              shift and go to state 62
-
-    OperadorLogico                 shift and go to state 60
-
-state 91
-
-    (31) Condicional -> ! ( Condicional . )
-    (24) ListaCondicionais -> Condicional .
-    (33) Condicional -> Condicional . OperadorCondicional Condicional
-    (34) OperadorCondicional -> . >
-    (35) OperadorCondicional -> . BIGEQUAL
-    (36) OperadorCondicional -> . <
-    (37) OperadorCondicional -> . LESSEREQUAL
-    (38) OperadorCondicional -> . EQUALS
-    (39) OperadorCondicional -> . NOTEQUALS
-
-  ! shift/reduce conflict for ) resolved as shift
-    )               shift and go to state 105
-    AND             reduce using rule 24 (ListaCondicionais -> Condicional .)
-    OR              reduce using rule 24 (ListaCondicionais -> Condicional .)
-    >               shift and go to state 64
-    BIGEQUAL        shift and go to state 65
-    <               shift and go to state 66
-    LESSEREQUAL     shift and go to state 67
-    EQUALS          shift and go to state 68
-    NOTEQUALS       shift and go to state 69
-
-  ! )               [ reduce using rule 24 (ListaCondicionais -> Condicional .) ]
-
-    OperadorCondicional            shift and go to state 63
-
-state 92
-
-    (41) BlocoWhileDo -> WHILE ( ListaCondicionais ) DO . { BlocosCodigo }
-
-    {               shift and go to state 106
-
+    OperadorCondicional            shift and go to state 66
 
 state 93
 
-    (45) Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .
+    (28) ListaCondicionais -> ! ( ListaCondicionais . )
+    (29) ListaCondicionais -> ListaCondicionais . OperadorLogico Condicional
+    (30) OperadorLogico -> . AND
+    (31) OperadorLogico -> . OR
 
-    INT             reduce using rule 45 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
-    ID              reduce using rule 45 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
-    IF              reduce using rule 45 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
-    WHILE           reduce using rule 45 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
-    STDOUT          reduce using rule 45 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
-    COMMENT         reduce using rule 45 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
-    DEFINE          reduce using rule 45 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
-    CALL            reduce using rule 45 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
-    $end            reduce using rule 45 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
-    }               reduce using rule 45 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
+    )               shift and go to state 107
+    AND             shift and go to state 64
+    OR              shift and go to state 65
 
+    OperadorLogico                 shift and go to state 63
 
 state 94
 
-    (49) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { . BlocosCodigo }
-    (2) BlocosCodigo -> . Codigo
-    (3) BlocosCodigo -> . BlocosCodigo Codigo
-    (4) Codigo -> . Declaracao
-    (6) Codigo -> . Atribuicao
-    (21) Codigo -> . BlocoIF
-    (40) Codigo -> . BlocoWhileDo
-    (42) Codigo -> . BlocoLerSTDIN
-    (44) Codigo -> . Bloco_EscreverSTDOUT
-    (46) Codigo -> . Bloco_Comentario
-    (48) Codigo -> . Bloco_DEFINEFUNC
-    (54) Codigo -> . Bloco_CALLFUNC
-    (5) Declaracao -> . INT ID ;
-    (7) Atribuicao -> . ID = Expressao ;
-    (8) Atribuicao -> . ID = Bloco_CALLFUNC
-    (22) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
-    (23) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-    (41) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
-    (43) BlocoLerSTDIN -> . ID = STDIN ( ) ;
-    (45) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
-    (47) Bloco_Comentario -> . COMMENT
-    (49) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (55) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (56) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (33) Condicional -> ! ( Condicional . )
+    (26) ListaCondicionais -> Condicional .
+    (35) Condicional -> Condicional . OperadorCondicional Condicional
+    (36) OperadorCondicional -> . >
+    (37) OperadorCondicional -> . BIGEQUAL
+    (38) OperadorCondicional -> . <
+    (39) OperadorCondicional -> . LESSEREQUAL
+    (40) OperadorCondicional -> . EQUALS
+    (41) OperadorCondicional -> . NOTEQUALS
 
-    INT             shift and go to state 13
-    ID              shift and go to state 14
-    IF              shift and go to state 15
-    WHILE           shift and go to state 16
-    STDOUT          shift and go to state 17
-    COMMENT         shift and go to state 18
-    DEFINE          shift and go to state 19
-    CALL            shift and go to state 20
+  ! shift/reduce conflict for ) resolved as shift
+    )               shift and go to state 108
+    AND             reduce using rule 26 (ListaCondicionais -> Condicional .)
+    OR              reduce using rule 26 (ListaCondicionais -> Condicional .)
+    >               shift and go to state 67
+    BIGEQUAL        shift and go to state 68
+    <               shift and go to state 69
+    LESSEREQUAL     shift and go to state 70
+    EQUALS          shift and go to state 71
+    NOTEQUALS       shift and go to state 72
 
-    BlocosCodigo                   shift and go to state 107
-    Codigo                         shift and go to state 3
-    Declaracao                     shift and go to state 4
-    Atribuicao                     shift and go to state 5
-    BlocoIF                        shift and go to state 6
-    BlocoWhileDo                   shift and go to state 7
-    BlocoLerSTDIN                  shift and go to state 8
-    Bloco_EscreverSTDOUT           shift and go to state 9
-    Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
+  ! )               [ reduce using rule 26 (ListaCondicionais -> Condicional .) ]
+
+    OperadorCondicional            shift and go to state 66
 
 state 95
 
-    (50) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) . { BlocosCodigo }
+    (43) BlocoWhileDo -> WHILE ( ListaCondicionais ) DO . { BlocosCodigo }
 
-    {               shift and go to state 108
+    {               shift and go to state 109
 
 
 state 96
 
-    (52) ListaAtributos -> ListaAtributos , . Atributo
-    (53) Atributo -> . INT
+    (47) Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .
 
-    INT             shift and go to state 76
+    INT             reduce using rule 47 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
+    ID              reduce using rule 47 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
+    IF              reduce using rule 47 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
+    WHILE           reduce using rule 47 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
+    STDOUT          reduce using rule 47 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
+    COMMENT         reduce using rule 47 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
+    DEFINE          reduce using rule 47 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
+    CALL            reduce using rule 47 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
+    $end            reduce using rule 47 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
+    }               reduce using rule 47 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
 
-    Atributo                       shift and go to state 109
 
 state 97
 
-    (55) Bloco_CALLFUNC -> CALL FUNC ( ) ; .
-
-    INT             reduce using rule 55 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    ID              reduce using rule 55 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    IF              reduce using rule 55 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    WHILE           reduce using rule 55 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    STDOUT          reduce using rule 55 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    COMMENT         reduce using rule 55 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    DEFINE          reduce using rule 55 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    CALL            reduce using rule 55 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    $end            reduce using rule 55 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    }               reduce using rule 55 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-
-
-state 98
-
-    (56) Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) . ;
-
-    ;               shift and go to state 110
-
-
-state 99
-
-    (58) INPUTVar -> INPUTVar , . Var
-    (10) Var -> . NUM
-    (11) Var -> . ID
-    (12) Var -> . TRUE
-    (13) Var -> . FALSE
-
-    NUM             shift and go to state 36
-    ID              shift and go to state 30
-    TRUE            shift and go to state 37
-    FALSE           shift and go to state 38
-
-    Var                            shift and go to state 111
-
-state 100
-
-    (43) BlocoLerSTDIN -> ID = STDIN ( ) ; .
-
-    INT             reduce using rule 43 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
-    ID              reduce using rule 43 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
-    IF              reduce using rule 43 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
-    WHILE           reduce using rule 43 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
-    STDOUT          reduce using rule 43 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
-    COMMENT         reduce using rule 43 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
-    DEFINE          reduce using rule 43 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
-    CALL            reduce using rule 43 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
-    $end            reduce using rule 43 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
-    }               reduce using rule 43 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
-
-
-state 101
-
-    (22) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo . }
-    (23) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo . } ELSE { BlocosCodigo }
-    (3) BlocosCodigo -> BlocosCodigo . Codigo
-    (4) Codigo -> . Declaracao
-    (6) Codigo -> . Atribuicao
-    (21) Codigo -> . BlocoIF
-    (40) Codigo -> . BlocoWhileDo
-    (42) Codigo -> . BlocoLerSTDIN
-    (44) Codigo -> . Bloco_EscreverSTDOUT
-    (46) Codigo -> . Bloco_Comentario
-    (48) Codigo -> . Bloco_DEFINEFUNC
-    (54) Codigo -> . Bloco_CALLFUNC
-    (5) Declaracao -> . INT ID ;
-    (7) Atribuicao -> . ID = Expressao ;
-    (8) Atribuicao -> . ID = Bloco_CALLFUNC
-    (22) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
-    (23) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-    (41) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
-    (43) BlocoLerSTDIN -> . ID = STDIN ( ) ;
-    (45) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
-    (47) Bloco_Comentario -> . COMMENT
-    (49) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (55) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (56) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-
-    }               shift and go to state 112
-    INT             shift and go to state 13
-    ID              shift and go to state 14
-    IF              shift and go to state 15
-    WHILE           shift and go to state 16
-    STDOUT          shift and go to state 17
-    COMMENT         shift and go to state 18
-    DEFINE          shift and go to state 19
-    CALL            shift and go to state 20
-
-    Codigo                         shift and go to state 21
-    Declaracao                     shift and go to state 4
-    Atribuicao                     shift and go to state 5
-    BlocoIF                        shift and go to state 6
-    BlocoWhileDo                   shift and go to state 7
-    BlocoLerSTDIN                  shift and go to state 8
-    Bloco_EscreverSTDOUT           shift and go to state 9
-    Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-
-state 102
-
-    (31) Condicional -> ! ( . Condicional )
-    (30) Condicional -> . Var
-    (31) Condicional -> . ! ( Condicional )
-    (32) Condicional -> . ( Condicional )
-    (33) Condicional -> . Condicional OperadorCondicional Condicional
-    (10) Var -> . NUM
-    (11) Var -> . ID
-    (12) Var -> . TRUE
-    (13) Var -> . FALSE
-
-    !               shift and go to state 87
-    (               shift and go to state 88
-    NUM             shift and go to state 36
-    ID              shift and go to state 30
-    TRUE            shift and go to state 37
-    FALSE           shift and go to state 38
-
-    Condicional                    shift and go to state 113
-    Var                            shift and go to state 43
-
-state 103
-
-    (32) Condicional -> ( Condicional . )
-    (33) Condicional -> Condicional . OperadorCondicional Condicional
-    (34) OperadorCondicional -> . >
-    (35) OperadorCondicional -> . BIGEQUAL
-    (36) OperadorCondicional -> . <
-    (37) OperadorCondicional -> . LESSEREQUAL
-    (38) OperadorCondicional -> . EQUALS
-    (39) OperadorCondicional -> . NOTEQUALS
-
-    )               shift and go to state 84
-    >               shift and go to state 64
-    BIGEQUAL        shift and go to state 65
-    <               shift and go to state 66
-    LESSEREQUAL     shift and go to state 67
-    EQUALS          shift and go to state 68
-    NOTEQUALS       shift and go to state 69
-
-    OperadorCondicional            shift and go to state 63
-
-state 104
-
-    (26) ListaCondicionais -> ! ( ListaCondicionais ) .
-
-    )               reduce using rule 26 (ListaCondicionais -> ! ( ListaCondicionais ) .)
-    AND             reduce using rule 26 (ListaCondicionais -> ! ( ListaCondicionais ) .)
-    OR              reduce using rule 26 (ListaCondicionais -> ! ( ListaCondicionais ) .)
-
-
-state 105
-
-    (31) Condicional -> ! ( Condicional ) .
-
-    >               reduce using rule 31 (Condicional -> ! ( Condicional ) .)
-    BIGEQUAL        reduce using rule 31 (Condicional -> ! ( Condicional ) .)
-    <               reduce using rule 31 (Condicional -> ! ( Condicional ) .)
-    LESSEREQUAL     reduce using rule 31 (Condicional -> ! ( Condicional ) .)
-    EQUALS          reduce using rule 31 (Condicional -> ! ( Condicional ) .)
-    NOTEQUALS       reduce using rule 31 (Condicional -> ! ( Condicional ) .)
-    )               reduce using rule 31 (Condicional -> ! ( Condicional ) .)
-    AND             reduce using rule 31 (Condicional -> ! ( Condicional ) .)
-    OR              reduce using rule 31 (Condicional -> ! ( Condicional ) .)
-
-
-state 106
-
-    (41) BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { . BlocosCodigo }
+    (51) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { . BlocosCodigo }
     (2) BlocosCodigo -> . Codigo
     (3) BlocosCodigo -> . BlocosCodigo Codigo
     (4) Codigo -> . Declaracao
-    (6) Codigo -> . Atribuicao
-    (21) Codigo -> . BlocoIF
-    (40) Codigo -> . BlocoWhileDo
-    (42) Codigo -> . BlocoLerSTDIN
-    (44) Codigo -> . Bloco_EscreverSTDOUT
-    (46) Codigo -> . Bloco_Comentario
-    (48) Codigo -> . Bloco_DEFINEFUNC
-    (54) Codigo -> . Bloco_CALLFUNC
+    (8) Codigo -> . Atribuicao
+    (23) Codigo -> . BlocoIF
+    (42) Codigo -> . BlocoWhileDo
+    (44) Codigo -> . BlocoLerSTDIN
+    (46) Codigo -> . Bloco_EscreverSTDOUT
+    (48) Codigo -> . Bloco_Comentario
+    (50) Codigo -> . Bloco_DEFINEFUNC
+    (56) Codigo -> . Bloco_CALLFUNC
     (5) Declaracao -> . INT ID ;
-    (7) Atribuicao -> . ID = Expressao ;
-    (8) Atribuicao -> . ID = Bloco_CALLFUNC
-    (22) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
-    (23) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-    (41) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
-    (43) BlocoLerSTDIN -> . ID = STDIN ( ) ;
-    (45) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
-    (47) Bloco_Comentario -> . COMMENT
-    (49) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (55) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (56) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (6) Declaracao -> . INT ID = Expressao
+    (7) Declaracao -> . INT BlocoLerSTDIN
+    (9) Atribuicao -> . ID = Expressao ;
+    (10) Atribuicao -> . ID = Bloco_CALLFUNC
+    (24) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
+    (25) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+    (43) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
+    (45) BlocoLerSTDIN -> . ID = STDIN ( ) ;
+    (47) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
+    (49) Bloco_Comentario -> . COMMENT
+    (51) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (57) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (58) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
 
     INT             shift and go to state 13
     ID              shift and go to state 14
@@ -1844,7 +1762,7 @@ state 106
     DEFINE          shift and go to state 19
     CALL            shift and go to state 20
 
-    BlocosCodigo                   shift and go to state 114
+    BlocosCodigo                   shift and go to state 110
     Codigo                         shift and go to state 3
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
@@ -1856,32 +1774,105 @@ state 106
     Bloco_DEFINEFUNC               shift and go to state 11
     Bloco_CALLFUNC                 shift and go to state 12
 
-state 107
+state 98
 
-    (49) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo . }
+    (52) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) . { BlocosCodigo }
+
+    {               shift and go to state 111
+
+
+state 99
+
+    (54) ListaAtributos -> ListaAtributos , . Atributo
+    (55) Atributo -> . INT
+
+    INT             shift and go to state 79
+
+    Atributo                       shift and go to state 112
+
+state 100
+
+    (57) Bloco_CALLFUNC -> CALL FUNC ( ) ; .
+
+    INT             reduce using rule 57 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    ID              reduce using rule 57 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    IF              reduce using rule 57 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    WHILE           reduce using rule 57 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    STDOUT          reduce using rule 57 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    COMMENT         reduce using rule 57 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    DEFINE          reduce using rule 57 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    CALL            reduce using rule 57 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    $end            reduce using rule 57 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    }               reduce using rule 57 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+
+
+state 101
+
+    (58) Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) . ;
+
+    ;               shift and go to state 113
+
+
+state 102
+
+    (60) INPUTVar -> INPUTVar , . Var
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
+
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
+
+    Var                            shift and go to state 114
+
+state 103
+
+    (45) BlocoLerSTDIN -> ID = STDIN ( ) ; .
+
+    INT             reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
+    ID              reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
+    IF              reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
+    WHILE           reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
+    STDOUT          reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
+    COMMENT         reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
+    DEFINE          reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
+    CALL            reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
+    $end            reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
+    }               reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
+
+
+state 104
+
+    (24) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo . }
+    (25) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo . } ELSE { BlocosCodigo }
     (3) BlocosCodigo -> BlocosCodigo . Codigo
     (4) Codigo -> . Declaracao
-    (6) Codigo -> . Atribuicao
-    (21) Codigo -> . BlocoIF
-    (40) Codigo -> . BlocoWhileDo
-    (42) Codigo -> . BlocoLerSTDIN
-    (44) Codigo -> . Bloco_EscreverSTDOUT
-    (46) Codigo -> . Bloco_Comentario
-    (48) Codigo -> . Bloco_DEFINEFUNC
-    (54) Codigo -> . Bloco_CALLFUNC
+    (8) Codigo -> . Atribuicao
+    (23) Codigo -> . BlocoIF
+    (42) Codigo -> . BlocoWhileDo
+    (44) Codigo -> . BlocoLerSTDIN
+    (46) Codigo -> . Bloco_EscreverSTDOUT
+    (48) Codigo -> . Bloco_Comentario
+    (50) Codigo -> . Bloco_DEFINEFUNC
+    (56) Codigo -> . Bloco_CALLFUNC
     (5) Declaracao -> . INT ID ;
-    (7) Atribuicao -> . ID = Expressao ;
-    (8) Atribuicao -> . ID = Bloco_CALLFUNC
-    (22) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
-    (23) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-    (41) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
-    (43) BlocoLerSTDIN -> . ID = STDIN ( ) ;
-    (45) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
-    (47) Bloco_Comentario -> . COMMENT
-    (49) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (55) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (56) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (6) Declaracao -> . INT ID = Expressao
+    (7) Declaracao -> . INT BlocoLerSTDIN
+    (9) Atribuicao -> . ID = Expressao ;
+    (10) Atribuicao -> . ID = Bloco_CALLFUNC
+    (24) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
+    (25) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+    (43) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
+    (45) BlocoLerSTDIN -> . ID = STDIN ( ) ;
+    (47) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
+    (49) Bloco_Comentario -> . COMMENT
+    (51) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (57) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (58) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
 
     }               shift and go to state 115
     INT             shift and go to state 13
@@ -1904,33 +1895,102 @@ state 107
     Bloco_DEFINEFUNC               shift and go to state 11
     Bloco_CALLFUNC                 shift and go to state 12
 
+state 105
+
+    (33) Condicional -> ! ( . Condicional )
+    (32) Condicional -> . Var
+    (33) Condicional -> . ! ( Condicional )
+    (34) Condicional -> . ( Condicional )
+    (35) Condicional -> . Condicional OperadorCondicional Condicional
+    (12) Var -> . NUM
+    (13) Var -> . ID
+    (14) Var -> . TRUE
+    (15) Var -> . FALSE
+
+    !               shift and go to state 90
+    (               shift and go to state 91
+    NUM             shift and go to state 38
+    ID              shift and go to state 32
+    TRUE            shift and go to state 39
+    FALSE           shift and go to state 40
+
+    Condicional                    shift and go to state 116
+    Var                            shift and go to state 45
+
+state 106
+
+    (34) Condicional -> ( Condicional . )
+    (35) Condicional -> Condicional . OperadorCondicional Condicional
+    (36) OperadorCondicional -> . >
+    (37) OperadorCondicional -> . BIGEQUAL
+    (38) OperadorCondicional -> . <
+    (39) OperadorCondicional -> . LESSEREQUAL
+    (40) OperadorCondicional -> . EQUALS
+    (41) OperadorCondicional -> . NOTEQUALS
+
+    )               shift and go to state 87
+    >               shift and go to state 67
+    BIGEQUAL        shift and go to state 68
+    <               shift and go to state 69
+    LESSEREQUAL     shift and go to state 70
+    EQUALS          shift and go to state 71
+    NOTEQUALS       shift and go to state 72
+
+    OperadorCondicional            shift and go to state 66
+
+state 107
+
+    (28) ListaCondicionais -> ! ( ListaCondicionais ) .
+
+    )               reduce using rule 28 (ListaCondicionais -> ! ( ListaCondicionais ) .)
+    AND             reduce using rule 28 (ListaCondicionais -> ! ( ListaCondicionais ) .)
+    OR              reduce using rule 28 (ListaCondicionais -> ! ( ListaCondicionais ) .)
+
+
 state 108
 
-    (50) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { . BlocosCodigo }
+    (33) Condicional -> ! ( Condicional ) .
+
+    >               reduce using rule 33 (Condicional -> ! ( Condicional ) .)
+    BIGEQUAL        reduce using rule 33 (Condicional -> ! ( Condicional ) .)
+    <               reduce using rule 33 (Condicional -> ! ( Condicional ) .)
+    LESSEREQUAL     reduce using rule 33 (Condicional -> ! ( Condicional ) .)
+    EQUALS          reduce using rule 33 (Condicional -> ! ( Condicional ) .)
+    NOTEQUALS       reduce using rule 33 (Condicional -> ! ( Condicional ) .)
+    )               reduce using rule 33 (Condicional -> ! ( Condicional ) .)
+    AND             reduce using rule 33 (Condicional -> ! ( Condicional ) .)
+    OR              reduce using rule 33 (Condicional -> ! ( Condicional ) .)
+
+
+state 109
+
+    (43) BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { . BlocosCodigo }
     (2) BlocosCodigo -> . Codigo
     (3) BlocosCodigo -> . BlocosCodigo Codigo
     (4) Codigo -> . Declaracao
-    (6) Codigo -> . Atribuicao
-    (21) Codigo -> . BlocoIF
-    (40) Codigo -> . BlocoWhileDo
-    (42) Codigo -> . BlocoLerSTDIN
-    (44) Codigo -> . Bloco_EscreverSTDOUT
-    (46) Codigo -> . Bloco_Comentario
-    (48) Codigo -> . Bloco_DEFINEFUNC
-    (54) Codigo -> . Bloco_CALLFUNC
+    (8) Codigo -> . Atribuicao
+    (23) Codigo -> . BlocoIF
+    (42) Codigo -> . BlocoWhileDo
+    (44) Codigo -> . BlocoLerSTDIN
+    (46) Codigo -> . Bloco_EscreverSTDOUT
+    (48) Codigo -> . Bloco_Comentario
+    (50) Codigo -> . Bloco_DEFINEFUNC
+    (56) Codigo -> . Bloco_CALLFUNC
     (5) Declaracao -> . INT ID ;
-    (7) Atribuicao -> . ID = Expressao ;
-    (8) Atribuicao -> . ID = Bloco_CALLFUNC
-    (22) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
-    (23) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-    (41) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
-    (43) BlocoLerSTDIN -> . ID = STDIN ( ) ;
-    (45) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
-    (47) Bloco_Comentario -> . COMMENT
-    (49) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (55) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (56) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (6) Declaracao -> . INT ID = Expressao
+    (7) Declaracao -> . INT BlocoLerSTDIN
+    (9) Atribuicao -> . ID = Expressao ;
+    (10) Atribuicao -> . ID = Bloco_CALLFUNC
+    (24) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
+    (25) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+    (43) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
+    (45) BlocoLerSTDIN -> . ID = STDIN ( ) ;
+    (47) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
+    (49) Bloco_Comentario -> . COMMENT
+    (51) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (57) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (58) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
 
     INT             shift and go to state 13
     ID              shift and go to state 14
@@ -1941,7 +2001,7 @@ state 108
     DEFINE          shift and go to state 19
     CALL            shift and go to state 20
 
-    BlocosCodigo                   shift and go to state 116
+    BlocosCodigo                   shift and go to state 117
     Codigo                         shift and go to state 3
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
@@ -1953,103 +2013,34 @@ state 108
     Bloco_DEFINEFUNC               shift and go to state 11
     Bloco_CALLFUNC                 shift and go to state 12
 
-state 109
-
-    (52) ListaAtributos -> ListaAtributos , Atributo .
-
-    )               reduce using rule 52 (ListaAtributos -> ListaAtributos , Atributo .)
-    ,               reduce using rule 52 (ListaAtributos -> ListaAtributos , Atributo .)
-
-
 state 110
 
-    (56) Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .
-
-    INT             reduce using rule 56 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    ID              reduce using rule 56 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    IF              reduce using rule 56 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    WHILE           reduce using rule 56 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    STDOUT          reduce using rule 56 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    COMMENT         reduce using rule 56 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    DEFINE          reduce using rule 56 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    CALL            reduce using rule 56 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    $end            reduce using rule 56 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    }               reduce using rule 56 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-
-
-state 111
-
-    (58) INPUTVar -> INPUTVar , Var .
-
-    )               reduce using rule 58 (INPUTVar -> INPUTVar , Var .)
-    ,               reduce using rule 58 (INPUTVar -> INPUTVar , Var .)
-
-
-state 112
-
-    (22) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .
-    (23) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } . ELSE { BlocosCodigo }
-
-    INT             reduce using rule 22 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
-    ID              reduce using rule 22 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
-    IF              reduce using rule 22 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
-    WHILE           reduce using rule 22 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
-    STDOUT          reduce using rule 22 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
-    COMMENT         reduce using rule 22 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
-    DEFINE          reduce using rule 22 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
-    CALL            reduce using rule 22 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
-    $end            reduce using rule 22 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
-    }               reduce using rule 22 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
-    ELSE            shift and go to state 117
-
-
-state 113
-
-    (31) Condicional -> ! ( Condicional . )
-    (33) Condicional -> Condicional . OperadorCondicional Condicional
-    (34) OperadorCondicional -> . >
-    (35) OperadorCondicional -> . BIGEQUAL
-    (36) OperadorCondicional -> . <
-    (37) OperadorCondicional -> . LESSEREQUAL
-    (38) OperadorCondicional -> . EQUALS
-    (39) OperadorCondicional -> . NOTEQUALS
-
-    )               shift and go to state 105
-    >               shift and go to state 64
-    BIGEQUAL        shift and go to state 65
-    <               shift and go to state 66
-    LESSEREQUAL     shift and go to state 67
-    EQUALS          shift and go to state 68
-    NOTEQUALS       shift and go to state 69
-
-    OperadorCondicional            shift and go to state 63
-
-state 114
-
-    (41) BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo . }
+    (51) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo . }
     (3) BlocosCodigo -> BlocosCodigo . Codigo
     (4) Codigo -> . Declaracao
-    (6) Codigo -> . Atribuicao
-    (21) Codigo -> . BlocoIF
-    (40) Codigo -> . BlocoWhileDo
-    (42) Codigo -> . BlocoLerSTDIN
-    (44) Codigo -> . Bloco_EscreverSTDOUT
-    (46) Codigo -> . Bloco_Comentario
-    (48) Codigo -> . Bloco_DEFINEFUNC
-    (54) Codigo -> . Bloco_CALLFUNC
+    (8) Codigo -> . Atribuicao
+    (23) Codigo -> . BlocoIF
+    (42) Codigo -> . BlocoWhileDo
+    (44) Codigo -> . BlocoLerSTDIN
+    (46) Codigo -> . Bloco_EscreverSTDOUT
+    (48) Codigo -> . Bloco_Comentario
+    (50) Codigo -> . Bloco_DEFINEFUNC
+    (56) Codigo -> . Bloco_CALLFUNC
     (5) Declaracao -> . INT ID ;
-    (7) Atribuicao -> . ID = Expressao ;
-    (8) Atribuicao -> . ID = Bloco_CALLFUNC
-    (22) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
-    (23) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-    (41) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
-    (43) BlocoLerSTDIN -> . ID = STDIN ( ) ;
-    (45) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
-    (47) Bloco_Comentario -> . COMMENT
-    (49) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (55) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (56) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (6) Declaracao -> . INT ID = Expressao
+    (7) Declaracao -> . INT BlocoLerSTDIN
+    (9) Atribuicao -> . ID = Expressao ;
+    (10) Atribuicao -> . ID = Bloco_CALLFUNC
+    (24) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
+    (25) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+    (43) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
+    (45) BlocoLerSTDIN -> . ID = STDIN ( ) ;
+    (47) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
+    (49) Bloco_Comentario -> . COMMENT
+    (51) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (57) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (58) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
 
     }               shift and go to state 118
     INT             shift and go to state 13
@@ -2072,50 +2063,158 @@ state 114
     Bloco_DEFINEFUNC               shift and go to state 11
     Bloco_CALLFUNC                 shift and go to state 12
 
+state 111
+
+    (52) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { . BlocosCodigo }
+    (2) BlocosCodigo -> . Codigo
+    (3) BlocosCodigo -> . BlocosCodigo Codigo
+    (4) Codigo -> . Declaracao
+    (8) Codigo -> . Atribuicao
+    (23) Codigo -> . BlocoIF
+    (42) Codigo -> . BlocoWhileDo
+    (44) Codigo -> . BlocoLerSTDIN
+    (46) Codigo -> . Bloco_EscreverSTDOUT
+    (48) Codigo -> . Bloco_Comentario
+    (50) Codigo -> . Bloco_DEFINEFUNC
+    (56) Codigo -> . Bloco_CALLFUNC
+    (5) Declaracao -> . INT ID ;
+    (6) Declaracao -> . INT ID = Expressao
+    (7) Declaracao -> . INT BlocoLerSTDIN
+    (9) Atribuicao -> . ID = Expressao ;
+    (10) Atribuicao -> . ID = Bloco_CALLFUNC
+    (24) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
+    (25) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+    (43) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
+    (45) BlocoLerSTDIN -> . ID = STDIN ( ) ;
+    (47) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
+    (49) Bloco_Comentario -> . COMMENT
+    (51) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (57) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (58) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+
+    INT             shift and go to state 13
+    ID              shift and go to state 14
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    STDOUT          shift and go to state 17
+    COMMENT         shift and go to state 18
+    DEFINE          shift and go to state 19
+    CALL            shift and go to state 20
+
+    BlocosCodigo                   shift and go to state 119
+    Codigo                         shift and go to state 3
+    Declaracao                     shift and go to state 4
+    Atribuicao                     shift and go to state 5
+    BlocoIF                        shift and go to state 6
+    BlocoWhileDo                   shift and go to state 7
+    BlocoLerSTDIN                  shift and go to state 8
+    Bloco_EscreverSTDOUT           shift and go to state 9
+    Bloco_Comentario               shift and go to state 10
+    Bloco_DEFINEFUNC               shift and go to state 11
+    Bloco_CALLFUNC                 shift and go to state 12
+
+state 112
+
+    (54) ListaAtributos -> ListaAtributos , Atributo .
+
+    )               reduce using rule 54 (ListaAtributos -> ListaAtributos , Atributo .)
+    ,               reduce using rule 54 (ListaAtributos -> ListaAtributos , Atributo .)
+
+
+state 113
+
+    (58) Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .
+
+    INT             reduce using rule 58 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    ID              reduce using rule 58 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    IF              reduce using rule 58 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    WHILE           reduce using rule 58 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    STDOUT          reduce using rule 58 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    COMMENT         reduce using rule 58 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    DEFINE          reduce using rule 58 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    CALL            reduce using rule 58 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    $end            reduce using rule 58 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    }               reduce using rule 58 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+
+
+state 114
+
+    (60) INPUTVar -> INPUTVar , Var .
+
+    )               reduce using rule 60 (INPUTVar -> INPUTVar , Var .)
+    ,               reduce using rule 60 (INPUTVar -> INPUTVar , Var .)
+
+
 state 115
 
-    (49) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .
+    (24) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .
+    (25) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } . ELSE { BlocosCodigo }
 
-    INT             reduce using rule 49 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    ID              reduce using rule 49 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    IF              reduce using rule 49 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    WHILE           reduce using rule 49 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    STDOUT          reduce using rule 49 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    COMMENT         reduce using rule 49 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    DEFINE          reduce using rule 49 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    CALL            reduce using rule 49 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    $end            reduce using rule 49 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    }               reduce using rule 49 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    INT             reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
+    ID              reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
+    IF              reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
+    WHILE           reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
+    STDOUT          reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
+    COMMENT         reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
+    DEFINE          reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
+    CALL            reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
+    $end            reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
+    }               reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
+    ELSE            shift and go to state 120
 
 
 state 116
 
-    (50) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo . }
+    (33) Condicional -> ! ( Condicional . )
+    (35) Condicional -> Condicional . OperadorCondicional Condicional
+    (36) OperadorCondicional -> . >
+    (37) OperadorCondicional -> . BIGEQUAL
+    (38) OperadorCondicional -> . <
+    (39) OperadorCondicional -> . LESSEREQUAL
+    (40) OperadorCondicional -> . EQUALS
+    (41) OperadorCondicional -> . NOTEQUALS
+
+    )               shift and go to state 108
+    >               shift and go to state 67
+    BIGEQUAL        shift and go to state 68
+    <               shift and go to state 69
+    LESSEREQUAL     shift and go to state 70
+    EQUALS          shift and go to state 71
+    NOTEQUALS       shift and go to state 72
+
+    OperadorCondicional            shift and go to state 66
+
+state 117
+
+    (43) BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo . }
     (3) BlocosCodigo -> BlocosCodigo . Codigo
     (4) Codigo -> . Declaracao
-    (6) Codigo -> . Atribuicao
-    (21) Codigo -> . BlocoIF
-    (40) Codigo -> . BlocoWhileDo
-    (42) Codigo -> . BlocoLerSTDIN
-    (44) Codigo -> . Bloco_EscreverSTDOUT
-    (46) Codigo -> . Bloco_Comentario
-    (48) Codigo -> . Bloco_DEFINEFUNC
-    (54) Codigo -> . Bloco_CALLFUNC
+    (8) Codigo -> . Atribuicao
+    (23) Codigo -> . BlocoIF
+    (42) Codigo -> . BlocoWhileDo
+    (44) Codigo -> . BlocoLerSTDIN
+    (46) Codigo -> . Bloco_EscreverSTDOUT
+    (48) Codigo -> . Bloco_Comentario
+    (50) Codigo -> . Bloco_DEFINEFUNC
+    (56) Codigo -> . Bloco_CALLFUNC
     (5) Declaracao -> . INT ID ;
-    (7) Atribuicao -> . ID = Expressao ;
-    (8) Atribuicao -> . ID = Bloco_CALLFUNC
-    (22) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
-    (23) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-    (41) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
-    (43) BlocoLerSTDIN -> . ID = STDIN ( ) ;
-    (45) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
-    (47) Bloco_Comentario -> . COMMENT
-    (49) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (55) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (56) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (6) Declaracao -> . INT ID = Expressao
+    (7) Declaracao -> . INT BlocoLerSTDIN
+    (9) Atribuicao -> . ID = Expressao ;
+    (10) Atribuicao -> . ID = Bloco_CALLFUNC
+    (24) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
+    (25) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+    (43) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
+    (45) BlocoLerSTDIN -> . ID = STDIN ( ) ;
+    (47) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
+    (49) Bloco_Comentario -> . COMMENT
+    (51) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (57) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (58) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
 
-    }               shift and go to state 119
+    }               shift and go to state 121
     INT             shift and go to state 13
     ID              shift and go to state 14
     IF              shift and go to state 15
@@ -2136,120 +2235,50 @@ state 116
     Bloco_DEFINEFUNC               shift and go to state 11
     Bloco_CALLFUNC                 shift and go to state 12
 
-state 117
-
-    (23) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE . { BlocosCodigo }
-
-    {               shift and go to state 120
-
-
 state 118
 
-    (41) BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .
+    (51) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .
 
-    INT             reduce using rule 41 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
-    ID              reduce using rule 41 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
-    IF              reduce using rule 41 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
-    WHILE           reduce using rule 41 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
-    STDOUT          reduce using rule 41 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
-    COMMENT         reduce using rule 41 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
-    DEFINE          reduce using rule 41 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
-    CALL            reduce using rule 41 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
-    $end            reduce using rule 41 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
-    }               reduce using rule 41 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
+    INT             reduce using rule 51 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    ID              reduce using rule 51 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    IF              reduce using rule 51 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    WHILE           reduce using rule 51 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    STDOUT          reduce using rule 51 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    COMMENT         reduce using rule 51 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    DEFINE          reduce using rule 51 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    CALL            reduce using rule 51 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    $end            reduce using rule 51 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    }               reduce using rule 51 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
 
 
 state 119
 
-    (50) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .
-
-    INT             reduce using rule 50 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    ID              reduce using rule 50 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    IF              reduce using rule 50 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    WHILE           reduce using rule 50 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    STDOUT          reduce using rule 50 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    COMMENT         reduce using rule 50 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    DEFINE          reduce using rule 50 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    CALL            reduce using rule 50 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    $end            reduce using rule 50 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    }               reduce using rule 50 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-
-
-state 120
-
-    (23) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { . BlocosCodigo }
-    (2) BlocosCodigo -> . Codigo
-    (3) BlocosCodigo -> . BlocosCodigo Codigo
-    (4) Codigo -> . Declaracao
-    (6) Codigo -> . Atribuicao
-    (21) Codigo -> . BlocoIF
-    (40) Codigo -> . BlocoWhileDo
-    (42) Codigo -> . BlocoLerSTDIN
-    (44) Codigo -> . Bloco_EscreverSTDOUT
-    (46) Codigo -> . Bloco_Comentario
-    (48) Codigo -> . Bloco_DEFINEFUNC
-    (54) Codigo -> . Bloco_CALLFUNC
-    (5) Declaracao -> . INT ID ;
-    (7) Atribuicao -> . ID = Expressao ;
-    (8) Atribuicao -> . ID = Bloco_CALLFUNC
-    (22) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
-    (23) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-    (41) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
-    (43) BlocoLerSTDIN -> . ID = STDIN ( ) ;
-    (45) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
-    (47) Bloco_Comentario -> . COMMENT
-    (49) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (55) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (56) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-
-    INT             shift and go to state 13
-    ID              shift and go to state 14
-    IF              shift and go to state 15
-    WHILE           shift and go to state 16
-    STDOUT          shift and go to state 17
-    COMMENT         shift and go to state 18
-    DEFINE          shift and go to state 19
-    CALL            shift and go to state 20
-
-    BlocosCodigo                   shift and go to state 121
-    Codigo                         shift and go to state 3
-    Declaracao                     shift and go to state 4
-    Atribuicao                     shift and go to state 5
-    BlocoIF                        shift and go to state 6
-    BlocoWhileDo                   shift and go to state 7
-    BlocoLerSTDIN                  shift and go to state 8
-    Bloco_EscreverSTDOUT           shift and go to state 9
-    Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-
-state 121
-
-    (23) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo . }
+    (52) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo . }
     (3) BlocosCodigo -> BlocosCodigo . Codigo
     (4) Codigo -> . Declaracao
-    (6) Codigo -> . Atribuicao
-    (21) Codigo -> . BlocoIF
-    (40) Codigo -> . BlocoWhileDo
-    (42) Codigo -> . BlocoLerSTDIN
-    (44) Codigo -> . Bloco_EscreverSTDOUT
-    (46) Codigo -> . Bloco_Comentario
-    (48) Codigo -> . Bloco_DEFINEFUNC
-    (54) Codigo -> . Bloco_CALLFUNC
+    (8) Codigo -> . Atribuicao
+    (23) Codigo -> . BlocoIF
+    (42) Codigo -> . BlocoWhileDo
+    (44) Codigo -> . BlocoLerSTDIN
+    (46) Codigo -> . Bloco_EscreverSTDOUT
+    (48) Codigo -> . Bloco_Comentario
+    (50) Codigo -> . Bloco_DEFINEFUNC
+    (56) Codigo -> . Bloco_CALLFUNC
     (5) Declaracao -> . INT ID ;
-    (7) Atribuicao -> . ID = Expressao ;
-    (8) Atribuicao -> . ID = Bloco_CALLFUNC
-    (22) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
-    (23) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-    (41) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
-    (43) BlocoLerSTDIN -> . ID = STDIN ( ) ;
-    (45) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
-    (47) Bloco_Comentario -> . COMMENT
-    (49) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (50) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (55) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (56) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (6) Declaracao -> . INT ID = Expressao
+    (7) Declaracao -> . INT BlocoLerSTDIN
+    (9) Atribuicao -> . ID = Expressao ;
+    (10) Atribuicao -> . ID = Bloco_CALLFUNC
+    (24) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
+    (25) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+    (43) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
+    (45) BlocoLerSTDIN -> . ID = STDIN ( ) ;
+    (47) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
+    (49) Bloco_Comentario -> . COMMENT
+    (51) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (57) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (58) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
 
     }               shift and go to state 122
     INT             shift and go to state 13
@@ -2272,29 +2301,169 @@ state 121
     Bloco_DEFINEFUNC               shift and go to state 11
     Bloco_CALLFUNC                 shift and go to state 12
 
+state 120
+
+    (25) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE . { BlocosCodigo }
+
+    {               shift and go to state 123
+
+
+state 121
+
+    (43) BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .
+
+    INT             reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
+    ID              reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
+    IF              reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
+    WHILE           reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
+    STDOUT          reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
+    COMMENT         reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
+    DEFINE          reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
+    CALL            reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
+    $end            reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
+    }               reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
+
+
 state 122
 
-    (23) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .
+    (52) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .
 
-    INT             reduce using rule 23 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
-    ID              reduce using rule 23 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
-    IF              reduce using rule 23 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
-    WHILE           reduce using rule 23 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
-    STDOUT          reduce using rule 23 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
-    COMMENT         reduce using rule 23 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
-    DEFINE          reduce using rule 23 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
-    CALL            reduce using rule 23 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
-    $end            reduce using rule 23 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
-    }               reduce using rule 23 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
+    INT             reduce using rule 52 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    ID              reduce using rule 52 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    IF              reduce using rule 52 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    WHILE           reduce using rule 52 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    STDOUT          reduce using rule 52 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    COMMENT         reduce using rule 52 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    DEFINE          reduce using rule 52 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    CALL            reduce using rule 52 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    $end            reduce using rule 52 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    }               reduce using rule 52 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+
+
+state 123
+
+    (25) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { . BlocosCodigo }
+    (2) BlocosCodigo -> . Codigo
+    (3) BlocosCodigo -> . BlocosCodigo Codigo
+    (4) Codigo -> . Declaracao
+    (8) Codigo -> . Atribuicao
+    (23) Codigo -> . BlocoIF
+    (42) Codigo -> . BlocoWhileDo
+    (44) Codigo -> . BlocoLerSTDIN
+    (46) Codigo -> . Bloco_EscreverSTDOUT
+    (48) Codigo -> . Bloco_Comentario
+    (50) Codigo -> . Bloco_DEFINEFUNC
+    (56) Codigo -> . Bloco_CALLFUNC
+    (5) Declaracao -> . INT ID ;
+    (6) Declaracao -> . INT ID = Expressao
+    (7) Declaracao -> . INT BlocoLerSTDIN
+    (9) Atribuicao -> . ID = Expressao ;
+    (10) Atribuicao -> . ID = Bloco_CALLFUNC
+    (24) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
+    (25) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+    (43) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
+    (45) BlocoLerSTDIN -> . ID = STDIN ( ) ;
+    (47) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
+    (49) Bloco_Comentario -> . COMMENT
+    (51) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (57) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (58) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+
+    INT             shift and go to state 13
+    ID              shift and go to state 14
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    STDOUT          shift and go to state 17
+    COMMENT         shift and go to state 18
+    DEFINE          shift and go to state 19
+    CALL            shift and go to state 20
+
+    BlocosCodigo                   shift and go to state 124
+    Codigo                         shift and go to state 3
+    Declaracao                     shift and go to state 4
+    Atribuicao                     shift and go to state 5
+    BlocoIF                        shift and go to state 6
+    BlocoWhileDo                   shift and go to state 7
+    BlocoLerSTDIN                  shift and go to state 8
+    Bloco_EscreverSTDOUT           shift and go to state 9
+    Bloco_Comentario               shift and go to state 10
+    Bloco_DEFINEFUNC               shift and go to state 11
+    Bloco_CALLFUNC                 shift and go to state 12
+
+state 124
+
+    (25) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo . }
+    (3) BlocosCodigo -> BlocosCodigo . Codigo
+    (4) Codigo -> . Declaracao
+    (8) Codigo -> . Atribuicao
+    (23) Codigo -> . BlocoIF
+    (42) Codigo -> . BlocoWhileDo
+    (44) Codigo -> . BlocoLerSTDIN
+    (46) Codigo -> . Bloco_EscreverSTDOUT
+    (48) Codigo -> . Bloco_Comentario
+    (50) Codigo -> . Bloco_DEFINEFUNC
+    (56) Codigo -> . Bloco_CALLFUNC
+    (5) Declaracao -> . INT ID ;
+    (6) Declaracao -> . INT ID = Expressao
+    (7) Declaracao -> . INT BlocoLerSTDIN
+    (9) Atribuicao -> . ID = Expressao ;
+    (10) Atribuicao -> . ID = Bloco_CALLFUNC
+    (24) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo }
+    (25) BlocoIF -> . IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+    (43) BlocoWhileDo -> . WHILE ( ListaCondicionais ) DO { BlocosCodigo }
+    (45) BlocoLerSTDIN -> . ID = STDIN ( ) ;
+    (47) Bloco_EscreverSTDOUT -> . STDOUT ( Var ) ;
+    (49) Bloco_Comentario -> . COMMENT
+    (51) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (52) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (57) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (58) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+
+    }               shift and go to state 125
+    INT             shift and go to state 13
+    ID              shift and go to state 14
+    IF              shift and go to state 15
+    WHILE           shift and go to state 16
+    STDOUT          shift and go to state 17
+    COMMENT         shift and go to state 18
+    DEFINE          shift and go to state 19
+    CALL            shift and go to state 20
+
+    Codigo                         shift and go to state 21
+    Declaracao                     shift and go to state 4
+    Atribuicao                     shift and go to state 5
+    BlocoIF                        shift and go to state 6
+    BlocoWhileDo                   shift and go to state 7
+    BlocoLerSTDIN                  shift and go to state 8
+    Bloco_EscreverSTDOUT           shift and go to state 9
+    Bloco_Comentario               shift and go to state 10
+    Bloco_DEFINEFUNC               shift and go to state 11
+    Bloco_CALLFUNC                 shift and go to state 12
+
+state 125
+
+    (25) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .
+
+    INT             reduce using rule 25 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
+    ID              reduce using rule 25 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
+    IF              reduce using rule 25 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
+    WHILE           reduce using rule 25 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
+    STDOUT          reduce using rule 25 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
+    COMMENT         reduce using rule 25 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
+    DEFINE          reduce using rule 25 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
+    CALL            reduce using rule 25 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
+    $end            reduce using rule 25 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
+    }               reduce using rule 25 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for ) in state 58 resolved as shift
-WARNING: shift/reduce conflict for > in state 89 resolved as shift
-WARNING: shift/reduce conflict for BIGEQUAL in state 89 resolved as shift
-WARNING: shift/reduce conflict for < in state 89 resolved as shift
-WARNING: shift/reduce conflict for LESSEREQUAL in state 89 resolved as shift
-WARNING: shift/reduce conflict for EQUALS in state 89 resolved as shift
-WARNING: shift/reduce conflict for NOTEQUALS in state 89 resolved as shift
-WARNING: shift/reduce conflict for ) in state 91 resolved as shift
+WARNING: shift/reduce conflict for ) in state 61 resolved as shift
+WARNING: shift/reduce conflict for > in state 92 resolved as shift
+WARNING: shift/reduce conflict for BIGEQUAL in state 92 resolved as shift
+WARNING: shift/reduce conflict for < in state 92 resolved as shift
+WARNING: shift/reduce conflict for LESSEREQUAL in state 92 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 92 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUALS in state 92 resolved as shift
+WARNING: shift/reduce conflict for ) in state 94 resolved as shift

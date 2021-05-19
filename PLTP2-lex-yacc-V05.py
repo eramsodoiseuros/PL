@@ -69,7 +69,19 @@ def p_Codigo_Declaracao(p):
 def p_Declaracao(p):
     "Declaracao :  INT ID ';' "
     tupleX= ('Declaracao',p[1],p[2])
-    print(','.join(tupleX))
+    #print(','.join(tupleX))
+    p[0]=tupleX
+
+def p_Declaracao_Atribuicao(p):
+    "Declaracao :  INT ID '=' Expressao "
+    tupleX= ('Declaracao_e_Atribuicao',p[1],p[2],p[4])
+    #print(','.join(tupleX))
+    p[0]=tupleX
+
+def p_Declaracao_STDIN(p):
+    "Declaracao :  INT BlocoLerSTDIN "
+    tupleX= ('Declaracao_STDIN',p[1],p[2])
+    #print(','.join(tupleX))
     p[0]=tupleX
 
     ####----------------------------------------------------------------------
@@ -136,6 +148,8 @@ def p_Expressao_Rec2(p):
     #tupleX = ()
     p[0]=p[2]
     
+
+    
 def p_Operador_MAIS(p):
     " Operador : '+' "
     p[0]=p[1]
@@ -152,6 +166,8 @@ def p_Operador_Div(p):
 def p_Operador_Rest(p):
     " Operador : '%' "
     p[0]=p[1]
+
+
 
 
     ####----------------------------------IF------------------------------------
@@ -389,24 +405,24 @@ def p_error(p):
 #Perguntas 
 
 pergunta_1= """ 
-INT x;
-INT y;
-INT w;
-INT z;
-
-x = STDIN();
-y = STDIN();
-w = STDIN();
-z = STDIN();
+INT x = STDIN();
+INT y = STDIN();
+INT w = STDIN();
+INT z = STDIN();
 
 
 
-IF((x==y)&&(x==w)&&(x==z)) { STDOUT(TRUE); }  ELSE { STDOUT(FALSE); }"""
+IF((x==y)&&(x==w)&&(x==z)) { STDOUT(TRUE); }  ELSE { STDOUT(FALSE); }
+
+INT a = STDIN();
+INT b = STDIN();
+INT d = STDIN();
+INT s = STDIN();"""
 
  
 pergunta_2=""" 
-INT n ;
-n = STDIN();
+INT n = STDIN();
+
 INT x;
 INT y;
 x = 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
@@ -468,7 +484,6 @@ STDOUT(c); """
 
 
 
-
 ###inicio do parsing
 parser = yacc.yacc()
 parser.success = True
@@ -506,35 +521,109 @@ fonteoption=    """
      result = parser.parse(source)
      """
      
-   
-def assembliza(tupleX):
+dict_var = {
+}
+l=[]
+print(dict_var)
+def assembliza(tupleX,fp):
     if (tupleX[0] == 'CodigoRec') :# ('Codigorec' ,BlocodeCodigo, Codigo )
-        assembliza(tupleX[1])
-        assembliza(tupleX[2])
+        fp=assembliza(tupleX[1],fp)
+        fp=assembliza(tupleX[2],fp)
     
     if (tupleX[0] == 'Declaracao') :#('Declaracao', 'INT', 'x')
         
         print('PUSHI',tupleX[2])
+    
+    if (tupleX[0] == 'Declaracao_e_Atribuicao') :#('Declaracao_e_Atribuicao', 'INT', 'x','NUM')
+        
+        print('Declaracao_e_Atribuicao',tupleX[2])
+        
+    
+    if (tupleX[0] == 'Declaracao_STDIN') :#('Declaracao_STDIN', ( ('STDIN', 'n') )
+        
+        print ('read')
+        print ('atoi')
+        
+        dict_var[tupleX[2][1]] = fp
+        fp+=1
+
+        
     if (tupleX[0] == 'STDIN') :#('STDIN', 'n')
         
         print(tupleX)
+        print(tupleX[1])
+        dict_var[tupleX[1]] = fp
+        fp=fp+1
+        
     if (tupleX[0] == 'OperacaoLogica') :#
+        #fp=assembliza(tupleX[], fp)
+        if(tupleX[1]=='&&'):
+            fp=assembliza(tupleX[2], fp)
+            if(tupleX[2][0]!= 'OperacaoLogica'): print('jz labeltestELSE')
+            fp=assembliza(tupleX[3], fp)
+            if(tupleX[2][0]!= 'OperacaoLogica'): print('jz labeltestELSE')
         
-        print(tupleX)
+        
+        #print(tupleX)
     if (tupleX[0] == 'OperacaoCondicional') :#('OperacaoCondicional', '>', ('ID', 'n'), ('NUM', '0'))
+        if(tupleX[1]=='>'):
+            print('pushg ', dict_var.get(tupleX[2][1]))
+            print('pushg ', dict_var.get(tupleX[3][1]))
+            print('sup')
+            fp+=1
+        if(tupleX[1]=='=<'):
+            print('pushg ', dict_var.get(tupleX[2][1]))
+            print('pushg ', dict_var.get(tupleX[3][1]))
+            print('inf')
+            fp+=1
+    
+        if(tupleX[1]=='=='):
+            print('pushg ', dict_var.get(tupleX[2][1]))
+            print('pushg ', dict_var.get(tupleX[3][1]))
+            print('equal')
+            fp+=1
+    
+    
         
-        print(tupleX)
+        #print(tupleX)
     if (tupleX[0] == 'IF') :#('IF', ('OperacaoLogica', '&&', ('OperacaoLogica', '&&', ('OperacaoCondicional', '==', ('ID', 'x'), ('ID', 'y')), ('OperacaoCondicional', '==', ('ID', 'x'), ('ID', 'w'))), ('OperacaoCondicional', '==', ('ID', 'x'), ('ID', 'z'))), ('STDOUT', ('ID', 'a')))
+        assembliza(tupleX[1],fp)
         
-        print(tupleX)
+        #print(tupleX)
+        
+        
     if (tupleX[0] == 'IFELSE') :
-        print(tupleX)
+        
+        print ('label_IFELSE:')
+        fp=assembliza(tupleX[1],fp)
+        print('jump label_IFDO')
+        print('jz labeltestELSE')
+        
+        fp,text=assemblizatoList(tupleX[2],fp)
+        l.append('label_IFDO:\n'+text+'stop')
+        
+        fp,text=assemblizatoList(tupleX[3],fp)
+        l.append('label_ELSE:\n'+text+'stop')
+        
+        
+    
+        
+        
+        #print(tupleX)
     if (tupleX[0] == 'ID') :#('ID', 'x')
         
         print(tupleX)
     if (tupleX[0] == 'STDOUT') :#('STDOUT', ('ID', 'x')) 
+        #print(tupleX)
         
-        print(tupleX)
+        if(tupleX[1][0]=='ID'):
+            print('pushg ', dict_var.get(tupleX[1][1]))
+        else:
+            print('pushs ', tupleX[1][0])
+            
+        print('writes')    
+        
+        
     if (tupleX[0] == 'COMMENT') :#('COMMENT', '*/ atenção aqui estou ainda a pensar como garantir que o numero é INT /*')
         
         print(tupleX)
@@ -553,20 +642,39 @@ def assembliza(tupleX):
     if (tupleX[0] == 'Operacao') :#('Operacao', '-', ('Var', ('ID', 'n')), ('NUM', '1')))
         
         print(tupleX)
+    return fp
 
 # é preciso ter em atenção a ordem da recursividade e que algumas das cenas devemos verificar se tem outros tuplos dentro
     
+
+
+def assemblizatoList(tupleX,fp):
+    if (tupleX[0] == 'STDOUT') :#('STDOUT', ('ID', 'x')) 
+        #print(tupleX)
+        aaa=""
+        if(tupleX[1][0]=='ID'):
+            aaa=aaa+'pushg '+ dict_var.get(tupleX[1][1])+'\n'
+        else:
+            aaa=aaa+'pushs '+ tupleX[1][0] +'\n'
+            
+        aaa=aaa + 'writes \n'   
+    return fp,aaa
 
         
         
             
 
 struct_to_assemblizar=parser.parse(pergunta_1)
+
 print(struct_to_assemblizar)
 if parser.success:
    print('Parsing completed!')
+print('--------divide-----')
 
+assembliza(struct_to_assemblizar,0)
+print('stop')
 
-assembliza(struct_to_assemblizar)
+for i in l:
+    print(i)
    
-   
+print(dict_var)
