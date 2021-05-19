@@ -2,12 +2,13 @@ import ply.yacc as yacc
 import sys
 import ply.lex as lex
 
-tokens=['INT','ID','NUM','IF','OR','AND','BIGEQUAL','LESSEREQUAL','EQUALS','WHILE','DO','STDIN','STDOUT','COMMENT','NOTEQUALS','TRUE','FALSE','DEFINE','FUNC', 'CALL']
+tokens=['INT','ID','NUM','IF','OR','AND','BIGEQUAL','LESSEREQUAL','EQUALS','WHILE','DO','STDIN','STDOUT','COMMENT','NOTEQUALS','TRUE','FALSE','DEFINE','FUNC', 'CALL','ELSE']
 
 literals=('=', '+','-','*','/','%', ';', '!', '>','<',')','(','{','}')
 
 t_INT = r'INT'
 t_IF = r'IF'
+t_ELSE = r'ELSE'
 t_WHILE = r'WHILE'
 t_DO = r'DO'
 t_CALL = r'CALL'
@@ -165,6 +166,12 @@ def p_BlocoIF(p):
     " BlocoIF : IF '(' ListaCondicionais ')' '{' BlocosCodigo '}' "
     tupleX=('IF', p[3],p[6])
     p[0]=tupleX
+
+def p_BlocoIF_ELSE(p):
+    " BlocoIF : IF '(' ListaCondicionais ')' '{' BlocosCodigo '}' ELSE '{' BlocosCodigo '}'"
+    tupleX=('IFELSE', p[3],p[6],p[10])
+    p[0]=tupleX
+
 
 def p_ListaCondicionais_fin(p):
     " ListaCondicionais : Condicional"
@@ -392,8 +399,9 @@ y = STDIN();
 w = STDIN();
 z = STDIN();
 
-IF((x==y)&&(x==w)&&(x==z)) { STDOUT(a); } 
-IF (!((x==y)&&(x==w)&&(x==z)&&(y==w)&&(y==z)&&(z==w))) { STDOUT(x) ; }"""
+
+
+IF((x==y)&&(x==w)&&(x==z)) { STDOUT(TRUE); }  ELSE { STDOUT(FALSE); }"""
 
  
 pergunta_2=""" 
@@ -519,6 +527,8 @@ def assembliza(tupleX):
     if (tupleX[0] == 'IF') :#('IF', ('OperacaoLogica', '&&', ('OperacaoLogica', '&&', ('OperacaoCondicional', '==', ('ID', 'x'), ('ID', 'y')), ('OperacaoCondicional', '==', ('ID', 'x'), ('ID', 'w'))), ('OperacaoCondicional', '==', ('ID', 'x'), ('ID', 'z'))), ('STDOUT', ('ID', 'a')))
         
         print(tupleX)
+    if (tupleX[0] == 'IFELSE') :
+        print(tupleX)
     if (tupleX[0] == 'ID') :#('ID', 'x')
         
         print(tupleX)
@@ -551,12 +561,12 @@ def assembliza(tupleX):
         
             
 
-struct_to_assemblizar=parser.parse(pergunta_4)
+struct_to_assemblizar=parser.parse(pergunta_1)
 print(struct_to_assemblizar)
 if parser.success:
    print('Parsing completed!')
-   
-   
+
+
 assembliza(struct_to_assemblizar)
    
    
