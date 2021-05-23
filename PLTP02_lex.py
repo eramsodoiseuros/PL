@@ -1,7 +1,7 @@
 import sys
 import ply.lex as lex
 
-tokens=['INT','ID','NUM','IF','OR','AND','BIGEQUAL','LESSEREQUAL','EQUALS','WHILE','DO','STDIN','STDOUT','COMMENT','NOTEQUALS','TRUE','FALSE','DEFINE','FUNC', 'CALL','ELSE']
+tokens=['INT','ID','NUM','IF','OR','AND','BIGEQUAL','LESSEREQUAL','EQUALS','WHILE','DO','STDIN','STDOUT','COMMENT','NOTEQUALS','TRUE','FALSE','DEFINE','FUNC', 'CALL','ELSE','PAL']
 
 literals=('=', '+','-','*','/','%', ';', '!', '>','<',')','(','{','}')
 
@@ -16,7 +16,7 @@ t_TRUE = r'TRUE'
 t_FALSE = r'FALSE'
 t_STDIN = r'STDIN'
 t_STDOUT = r'STDOUT'
-t_ID= r'[a-z]'
+t_ID= r'[a-z]+'
 t_NUM = r'\d+'
 t_OR = r'\|\|'
 t_AND = r'\&\&'
@@ -26,6 +26,7 @@ t_EQUALS = r'=='
 t_NOTEQUALS= r'!='
 t_COMMENT = r'\*\/[^\/\*]*/\*'
 t_FUNC = r'\_\w+\_'
+t_PAL = r'\"[A-Z]+\"'
 
 
 

@@ -82,34 +82,37 @@ WHILE (n > 0)  DO {
 STDOUT(x);"""
 
 pergunta_3=""" 
-INT n ; n = 5+1 ; INT x ; x = 1;
-INT y ;
+INT n = 10;
 
-WHILE(n >0) 
-DO { 
+INT total = 1;
+
+WHILE(n > 0) DO { 
+    INT novo = STDIN();
+    total = total * novo;
     n = n-1; 
-    y = STDIN();
-    x = x*y;
-    }
+}
     
-STDOUT(x);"""
+STDOUT(INICIO);"""
 
 pergunta_4=""" 
-INT x;
-INT c;
-INT a;
-c = 0;
-x= STDIN();
-a = CALL _isNUMBER_(x);
-WHILE( a )  
-DO { a= x % 2;  */ atenção aqui estou ainda a pensar como garantir que o numero é INT /*
-    IF(( a != 0 ))
-        {
-        c = c +1;
-        STDOUT(x);
-        }
+INT contar = 0;
+INT aux;
+INT atual = 1;
+INT fim = 8;
+
+STDOUT("INICIO");
+
+WHILE( atual != fim ) DO { 
+    aux = atual % 2;
+    
+    IF(( aux != 0 )) {
+        contar = contar + 1;
+        STDOUT(contar);
     }
-STDOUT(c); """
+    atual = atual + 1;
+}
+
+STDOUT("FIM"); """
 
 
 pList=[pergunta_1,pergunta_2,pergunta_3,pergunta_4]
