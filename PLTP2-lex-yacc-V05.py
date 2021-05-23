@@ -5,7 +5,7 @@ from PLTP02_Perguntas import pList
 import ply.yacc as yacc
 import sys
 
-pergunta = pList[0]
+pergunta = pList[1]
 
 
 def p_Programa(p):
