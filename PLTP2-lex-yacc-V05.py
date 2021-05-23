@@ -5,8 +5,58 @@ from PLTP02_Perguntas import pList
 import ply.yacc as yacc
 import sys
 
-pergunta = pList[1]
+a3_WHILEDO= """INT x = STDIN(); 
+        WHILE(x==x) 
+        DO{STDOUT(x);}
+        """
 
+a1_Atribuicao= """INT x; x = (1+1)+2;"""
+
+
+pergunta_2=""" 
+INT n = STDIN();
+
+IF(n > 1) {
+    INT y = STDIN();
+    n = n - 1;
+    
+    WHILE(n > 0) 
+    DO {
+        IF(n == 1) 
+        {
+            INT x = STDIN();
+            
+            IF(x < y) {
+                STDOUT(x);
+            } ELSE {
+                STDOUT(y);
+            }
+        } 
+        ELSE {
+            INT x = STDIN();
+            IF(x < y) {
+                y = x;
+            }
+        }
+
+        n = n - 1;
+    }
+
+} ELSE {
+
+    IF(n == 1){
+        INT x = STDIN();
+        STDOUT(x);
+    } 
+}
+        """
+        
+
+
+
+
+
+pergunta = a1_Atribuicao#pList[0]#pergunta_2#a3_WHILEDO
 
 def p_Programa(p):
     "Programa : BlocosCodigo"
@@ -373,20 +423,32 @@ parser.success = True
 dict_var = {
 }
 l=[]
+labelStack=[]
+contador_de_Ciclos=0
+
+
+
+
+
+
 
 print('--------Estrutura Parsed--------\n')
-def assembliza(tupleX,fp):
+def assembliza(tupleX,fp,labelStack,contador_de_Ciclos):
     if (tupleX[0] == 'CodigoRec') :# ('Codigorec' ,BlocodeCodigo, Codigo )
-        fp=assembliza(tupleX[1],fp)
-        fp=assembliza(tupleX[2],fp)
+        fp,contador_de_Ciclos=assembliza(tupleX[1],fp,labelStack,contador_de_Ciclos)
+        fp,contador_de_Ciclos=assembliza(tupleX[2],fp,labelStack,contador_de_Ciclos)
     
     if (tupleX[0] == 'Declaracao') :#('Declaracao', 'INT', 'x')
         
-        print('PUSHI',tupleX[2])
+        print('pushi',tupleX[2])
+        dict_var[tupleX[2]] = fp
+        fp+=1
     
-    if (tupleX[0] == 'Declaracao_e_Atribuicao') :#('Declaracao_e_Atribuicao', 'INT', 'x','NUM')
+    if (tupleX[0] == 'Declaracao_e_Atribuicao') :#('Declaracao_e_Atribuicao', 'INT', 'x','=','NUM')
         
         print('Declaracao_e_Atribuicao',tupleX[2])
+        dict_var[tupleX[2]] = fp
+        fp+=1
         
     
     if (tupleX[0] == 'Declaracao_STDIN') :#('Declaracao_STDIN', ( ('STDIN', 'n') )
@@ -408,10 +470,10 @@ def assembliza(tupleX,fp):
     if (tupleX[0] == 'OperacaoLogica') :#
         #fp=assembliza(tupleX[], fp)
         if(tupleX[1]=='&&'):
-            fp=assembliza(tupleX[2], fp)
-            if(tupleX[2][0]!= 'OperacaoLogica'): print('jz labeltestELSE')
-            fp=assembliza(tupleX[3], fp)
-            if(tupleX[2][0]!= 'OperacaoLogica'): print('jz labeltestELSE')
+            fp,contador_de_Ciclos=assembliza(tupleX[2], fp,labelStack,contador_de_Ciclos)
+            if(tupleX[2][0]!= 'OperacaoLogica'): print('jz label_IF_ELSE_'+str(contador_de_Ciclos))
+            fp,contador_de_Ciclos=assembliza(tupleX[3], fp,labelStack,contador_de_Ciclos)
+            if(tupleX[2][0]!= 'OperacaoLogica'): print('jz label_IF_ELSE_'+str(contador_de_Ciclos))
         
         
         #print(tupleX)
@@ -437,23 +499,38 @@ def assembliza(tupleX,fp):
         
         #print(tupleX)
     if (tupleX[0] == 'IF') :#('IF', ('OperacaoLogica', '&&', ('OperacaoLogica', '&&', ('OperacaoCondicional', '==', ('ID', 'x'), ('ID', 'y')), ('OperacaoCondicional', '==', ('ID', 'x'), ('ID', 'w'))), ('OperacaoCondicional', '==', ('ID', 'x'), ('ID', 'z'))), ('STDOUT', ('ID', 'a')))
-        assembliza(tupleX[1],fp)
+        assembliza(tupleX[1],fp,labelStack,contador_de_Ciclos)
+        
+        contador_de_Ciclos+=1
+        cicleID = contador_de_Ciclos
+        print ('label_Startof_SimpleIF:')
+        print('jump label_SimpleIF_DO'+str(cicleID))
+        #Do de IFElse
+        fp,text=assemblizatoList(tupleX[2],fp,labelStack,contador_de_Ciclos)
+        l.append('label_IF_DO_'+str(cicleID)+':\n'+text+'stop')
         
         #print(tupleX)
         
         
     if (tupleX[0] == 'IFELSE') :
         
-        print ('label_IFELSE:')
-        fp=assembliza(tupleX[1],fp)
-        print('jump label_IFDO')
-        print('jz labeltestELSE')
+        contador_de_Ciclos+=1
+        cicleID = contador_de_Ciclos
+        print ('label_Startof_IFELSE:')
+        #Condição de IFElse
+        fp,contador_de_Ciclos=assembliza(tupleX[1],fp,labelStack,contador_de_Ciclos)
         
-        fp,text=assemblizatoList(tupleX[2],fp)
-        l.append('label_IFDO:\n'+text+'stop')
+        print('jump label_IF_DO_'+str(cicleID))
+        print('jz label_IF_ELSE_'+str(cicleID))
         
-        fp,text=assemblizatoList(tupleX[3],fp)
-        l.append('label_ELSE:\n'+text+'stop')
+        #Do de IFElse
+        fp,text=assemblizatoList(tupleX[2],fp,labelStack,contador_de_Ciclos)
+        l.append('label_IF_DO_'+str(cicleID)+':\n'+text+'stop')
+        
+        
+        #Else de IFElse
+        fp,text=assemblizatoList(tupleX[3],fp,labelStack,contador_de_Ciclos)
+        l.append('label_IF_ELSE_'+str(cicleID)+':\n'+text+'stop')
         
         
     
@@ -461,8 +538,9 @@ def assembliza(tupleX,fp):
         
         #print(tupleX)
     if (tupleX[0] == 'ID') :#('ID', 'x')
+        print('pushg', dict_var.get(tupleX[1]))
         
-        print(tupleX)
+        
     if (tupleX[0] == 'STDOUT') :#('STDOUT', ('ID', 'x')) 
         #print(tupleX)
         
@@ -477,37 +555,88 @@ def assembliza(tupleX,fp):
     if (tupleX[0] == 'COMMENT') :#('COMMENT', '*/ atenção aqui estou ainda a pensar como garantir que o numero é INT /*')
         
         print(tupleX)
+        
     if (tupleX[0] == 'Atribuicao') :#('Atribuicao', 'c', ('Var', ('NUM', '0')))
+    
+    
+        fp,contador_de_Ciclos=assembliza(tupleX[2],fp,labelStack,contador_de_Ciclos)
         
-        print(tupleX)
+        print('storeg', dict_var.get(tupleX[1]))
+        
+    if (tupleX[0] == 'Operacao') :#('Operacao', '-', ('Var', ('ID', 'n')), ('NUM', '1')))
+    
+    
+        fp,contador_de_Ciclos=assembliza(tupleX[2],fp,labelStack,contador_de_Ciclos)
+        
+        if(tupleX[2]=='-'):
+            print('sub')
+        if(tupleX[2]=='+'):
+            print('add')    
+        
+        
+        
     if (tupleX[0] == 'Var') : #('Var', ('ID', 'x'))
+        fp,contador_de_Ciclos=assembliza(tupleX[1],fp,labelStack,contador_de_Ciclos)
         
-        print(tupleX)
-    if (tupleX[0] == 'WHILE') :#
+    if (tupleX[0] == 'WHILE') :#('WHILE', ('OperacaoCondicional', '==', ('ID', 'x'), ('ID', 'x')), 'DO', ('Declaracao', 'INT', 'y'))
+        contador_de_Ciclos+=1
+        cicleID = contador_de_Ciclos
+        print ('label_Startof_While:')
         
-        print(tupleX)
+        #Condição de While
+        fp,contador_de_Ciclos=assembliza(tupleX[1],fp,labelStack,contador_de_Ciclos)
+        
+        print('jump label_While_On_'+str(cicleID))
+        
+        
+        
+        
+        #Do de While
+        fp,text=assemblizatoList(tupleX[3],fp,labelStack,contador_de_Ciclos)
+        l.append('label_While_On_'+str(cicleID)+':\n'+text+'stop')
+        
+        
+        
+    
+        #print(tupleX)
     if (tupleX[0] == 'NUM') :#('NUM', '1')
         
-        print(tupleX)
-    if (tupleX[0] == 'Operacao') :#('Operacao', '-', ('Var', ('ID', 'n')), ('NUM', '1')))
+        print('pushi',tupleX[1])
+    
+    
         
-        print(tupleX)
-    return fp
+        
+    return fp,contador_de_Ciclos
 
 # é preciso ter em atenção a ordem da recursividade e que algumas das cenas devemos verificar se tem outros tuplos dentro
     
 
 
-def assemblizatoList(tupleX,fp):
+def assemblizatoList(tupleX,fp,labelStack,contador_de_Ciclos):
+    aaa=""
     if (tupleX[0] == 'STDOUT') :#('STDOUT', ('ID', 'x')) 
         #print(tupleX)
-        aaa=""
+        
+        
         if(tupleX[1][0]=='ID'):
-            aaa=aaa+'pushg '+ dict_var.get(tupleX[1][1])+'\n'
+            aaa=aaa+'pushg '+ str(dict_var.get(tupleX[1][1]))+'\n'
         else:
             aaa=aaa+'pushs '+ tupleX[1][0] +'\n'
             
         aaa=aaa + 'writes \n'   
+        
+        
+    
+    
+    
+    if (tupleX[0] == 'Declaracao_STDIN') :#('Declaracao_STDIN', ( ('STDIN', 'n') )
+        
+        aaa=aaa+'read\n'
+        aaa=aaa+'atoi\n'
+        
+        dict_var[tupleX[2][1]] = fp
+        fp+=1
+
     return fp,aaa
 
         
@@ -521,7 +650,7 @@ if parser.success:
    print('Parsing completed!\n')
 print('--------Assembly Code:-----\n')
 
-assembliza(struct_to_assemblizar,0)
+assembliza(struct_to_assemblizar,0,labelStack,contador_de_Ciclos)
 print('stop')
 
 for i in l:

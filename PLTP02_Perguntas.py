@@ -26,6 +26,47 @@ IF((x==y)&&(x==w)&&(x==z)) { STDOUT(TRUE); }  ELSE { STDOUT(FALSE); }
 
 pergunta_2=""" 
 INT n = STDIN();
+
+IF(n > 1) {
+    INT y = STDIN();
+    n = n - 1;
+    
+    WHILE(n > 0) 
+    DO {
+        IF(n == 1) 
+        {
+            INT x = STDIN();
+            
+            IF(x < y) {
+                STDOUT(x);
+            } ELSE {
+                STDOUT(y);
+            }
+        } ELSE {
+            INT x = STDIN();
+            IF(x < y) {
+                y = x;
+            }
+        }
+
+        n = n - 1;
+    }
+
+} ELSE {
+
+    IF(n == 1){
+        INT x = STDIN();
+        STDOUT(x);
+    } 
+}
+        """
+        
+
+
+p_extra="""
+
+
+INT n = STDIN();
 INT x;
 INT y;
 
@@ -39,8 +80,6 @@ WHILE (n > 0)  DO {
     }
 
 STDOUT(x);"""
-
-
 
 pergunta_3=""" 
 INT n ; n = 5+1 ; INT x ; x = 1;
