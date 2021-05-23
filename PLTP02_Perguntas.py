@@ -23,7 +23,6 @@ IF((x==y)&&(x==w)&&(x==z)) { STDOUT(TRUE); }  ELSE { STDOUT(FALSE); }
  
 
 
-
 pergunta_2=""" 
 INT n = STDIN();
 
@@ -42,7 +41,8 @@ IF(n > 1) {
             } ELSE {
                 STDOUT(y);
             }
-        } ELSE {
+        } 
+        ELSE {
             INT x = STDIN();
             IF(x < y) {
                 y = x;
