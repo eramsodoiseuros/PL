@@ -18,7 +18,7 @@ a1_Atribuicao= """INT x = (1+1)+2;"""
 
 
 
-pergunta = pList[0]#pergunta_2#a3_WHILEDO
+pergunta = pList[1]#pergunta_2#a3_WHILEDO
 
 def p_Programa(p):
     "Programa : BlocosCodigo"
@@ -387,13 +387,13 @@ parser.success = True
 
 #a1_Atribuicao= """INT x; x = (1+1)+2;"""
 
-def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var):
+def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer):
     
     if (tupleX[0] == 'CodigoRec') :# ('Codigorec' ,BlocodeCodigo, Codigo )
         
-            fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[1],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
-            
-            fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[2],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
+            fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[1],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
+        
+            fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[2],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
        
         
     if (tupleX[0] == 'Declaracao') :#('Declaracao', 'INT', 'x')
@@ -404,15 +404,15 @@ def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var):
         
     
     if (tupleX[0] == 'Declaracao_e_Atribuicao') :#('Declaracao_e_Atribuicao',dec , atribuicao)
-        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[1],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
-        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[2],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
+        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[1],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
+        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[2],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
         
         
     
     if (tupleX[0] == 'Declaracao_STDIN') :#('Declaracao_STDIN', ( ('STDIN', 'n') )
     
         if(delay):
-            extra=extra+'read\natoi\n'
+            extra[extrapointer]=extra[extrapointer]+'read\natoi\n'
         else:
             corpo=corpo+'read\natoi\n'
             
@@ -424,10 +424,10 @@ def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var):
     if (tupleX[0] == 'Atribuicao') :#('Atribuicao', 'c', ('Var', ('NUM', '0')))
     
         
-        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[2],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
+        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[2],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
         
         if(delay):
-            extra=extra+'storeg '+ str(dict_var.get(tupleX[1])) + '\n'
+            extra[extrapointer]=extra[extrapointer]+'storeg '+ str(dict_var.get(tupleX[1])) + '\n'
         else:
             corpo=corpo+'storeg '+ str(dict_var.get(tupleX[1])) + '\n'
         
@@ -435,18 +435,18 @@ def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var):
         
     if (tupleX[0] == 'Operacao') :#('Operacao', '-', ('Var', ('ID', 'n')), ('NUM', '1')))
     
-        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[2],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
-        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[3],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
+        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[2],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
+        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[3],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
         
         if(delay):
             if(tupleX[1]=='-'):
-                extra=extra+'sub\n'
+                extra[extrapointer]=extra[extrapointer]+'sub\n'
             if(tupleX[1]=='+'):
-                extra=extra+'add\n'
+                extra[extrapointer]=extra[extrapointer]+'add\n'
             if(tupleX[1]=='/'):
-                extra=extra+'div\n' 
+                extra[extrapointer]=extra[extrapointer]+'div\n' 
             if(tupleX[1]=='*'):
-                extra=extra+'mul\n'
+                extra[extrapointer]=extra[extrapointer]+'mul\n'
                 
         else:
             if(tupleX[1]=='-'):
@@ -464,7 +464,7 @@ def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var):
     if (tupleX[0] == 'STDIN') :#('STDIN', 'n')
     
         if(delay):
-            extra=extra+'read\n'+ 'storeg' +str(dict_var.get(tupleX[1])) + '\n'
+            extra[extrapointer]=extra[extrapointer]+'read\n'+ 'storeg' +str(dict_var.get(tupleX[1])) + '\n'
         else:
             corpo=corpo+'read\n'+ 'storeg' +str(dict_var.get(tupleX[1])) + '\n'
         
@@ -477,12 +477,12 @@ def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var):
         
         if(tupleX[1]=='&&'):
             
-            fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[2],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
-            fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[3],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
+            fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[2],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
+            fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[3],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
             
             if(delay):
-                if(tupleX[2][0] != 'OperacaoLogica'): extra=extra+'jz label_IF_ELSE_'+str(cicleTag)+'\n'
-                if(tupleX[2][0] != 'OperacaoLogica'): extra=extra+'jz label_IF_ELSE_'+str(cicleTag)+'\n'
+                if(tupleX[2][0] != 'OperacaoLogica'): extra[extrapointer]=extra[extrapointer]+'jz label_IF_ELSE_'+str(cicleTag)+'\n'
+                if(tupleX[2][0] != 'OperacaoLogica'): extra[extrapointer]=extra[extrapointer]+'jz label_IF_ELSE_'+str(cicleTag)+'\n'
                 
             else:   
                 if(tupleX[2][0] != 'OperacaoLogica'): corpo=corpo+'jz label_IF_ELSE_'+str(cicleTag)+'\n'
@@ -513,7 +513,7 @@ def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var):
             fp+=1
     
         if(delay):
-                extra=extra+aux
+                extra[extrapointer]=extra[extrapointer]+aux
         else:
                 corpo=corpo+aux
     
@@ -531,25 +531,27 @@ def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var):
         #condição do if
         aux=aux+'label_Startof_SimpleIF:'+'\n'
         if(delay):
-            extra=extra+aux
+            extra[extrapointer]=extra[extrapointer]+aux
         else:
             corpo=corpo+aux
         aux=""
-        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[1],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
+        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[1],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
         
         
         aux=aux+'jump label_SimpleIF_DO'+str(cicleID)+'\n'
         if(delay):
-            extra=extra+aux
+            extra[extrapointer]=extra[extrapointer]+aux
         else:
             corpo=corpo+aux
+        extrapointer+=1
         delayaux=delay
         delay=True
         #Do de IF
-        extra=extra+'label_SimpleIF_DO'+str(cicleID)+':\n'
-        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[2],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
-        extra=extra+'stop\n'
+        extra[extrapointer]=extra[extrapointer]+'label_SimpleIF_DO'+str(cicleID)+':\n'
+        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[2],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
+        extra[extrapointer]=extra[extrapointer]+'stop\n'
         delay=delayaux
+        extrapointer-=1
         
         
         #
@@ -563,33 +565,36 @@ def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var):
         
         aux=aux+'label_Startof_IFELSE:'+'\n'
         if(delay):
-            extra=extra+aux
+            extra[extrapointer]=extra[extrapointer]+aux
         else:
             corpo=corpo+aux
         aux=""
-        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[1],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
+        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[1],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
         if(delay):
-            extra=extra+'jz label_IF_ELSE_'+str(cicleID)+'\n'
-            extra=extra+'jump label_IF_DO_'+str(cicleID)+'\n'
+            extra[extrapointer]=extra[extrapointer]+'jz label_IF_ELSE_'+str(cicleID)+'\n'
+            extra[extrapointer]=extra[extrapointer]+'jump label_IF_DO_'+str(cicleID)+'\n'
         else:
             corpo=corpo+'jz label_IF_ELSE_'+str(cicleID)+'\n'
             corpo=corpo+'jump label_IF_DO_'+str(cicleID)+'\n'
+            
+        extrapointer+=1
         
         delayaux=delay
         delay=True
         #Do de IFElse
-        extra = extra + 'label_IF_DO_'+str(cicleID)+':\n'
-        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[2],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
+        extra[extrapointer]=extra[extrapointer] + 'label_IF_DO_'+str(cicleID)+':\n'
+        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[2],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
        # print(extra)
-        extra = extra +'stop\n'
+        extra[extrapointer]=extra[extrapointer] +'stop\n'
         
         
         #Else de IFElse
-        extra=extra+'label_IF_ELSE_'+str(cicleID)+':\n'
-        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[3],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
-        extra=extra+'stop\n'
+        extra[extrapointer]=extra[extrapointer]+'label_IF_ELSE_'+str(cicleID)+':\n'
+        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[3],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
+        extra[extrapointer]=extra[extrapointer]+'stop\n'
         
         delay=delayaux
+        extrapointer-=1
         
     if (tupleX[0] == 'ID') :#('ID', 'x')
         print('')
@@ -600,14 +605,14 @@ def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var):
         
         if(tupleX[1][0]=='ID'):
             if(delay):
-                extra=extra+'pushg '+ str(dict_var.get(tupleX[1][1]))+'\n' + 'writes\n' 
+                extra[extrapointer]=extra[extrapointer]+'pushg '+ str(dict_var.get(tupleX[1][1]))+'\n' + 'writes\n' 
             else:
                 corpo=corpo+'pushg '+ str(dict_var.get(tupleX[1][1]))+'\n' + 'writes\n' 
             print()
             
         else:
             if(delay):
-                extra=extra+'pushs '+ str(tupleX[1][0])+'\n' + 'writes\n' 
+                extra[extrapointer]=extra[extrapointer]+'pushs '+ str(tupleX[1][0])+'\n' + 'writes\n' 
             else:
                 corpo=corpo+'pushs '+ str(tupleX[1][0])+'\n' + 'writes\n' 
             
@@ -619,7 +624,7 @@ def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var):
     if (tupleX[0] == 'COMMENT') :#('COMMENT', '*/ atenção aqui estou ainda a pensar como garantir que o numero é INT /*')
         
         
-        print(tupleX)
+        print('found comment')
         
     
         
@@ -637,16 +642,17 @@ def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var):
         #condição do if
         aux=aux+'label_Startof_While:'+'\n'
         if(delay):
-            extra=extra+aux
+            extra[extrapointer]=extra[extrapointer]+aux
         else:
             corpo=corpo+aux
         aux=""
         #Condição de While
-        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[1],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
+        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[1],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
         
         aux=aux+'jump label_While_On_'+str(cicleID)+'\n'
+        extrapointer+=1
         if(delay):
-            extra=extra+aux
+            extra[extrapointer]=extra[extrapointer]+aux
         else:
             corpo=corpo+aux
         delayaux=delay
@@ -654,10 +660,11 @@ def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var):
         
         
         #Do de While
-        extra=extra+'label_While_On_'+str(cicleID)+':\n'
-        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var = assembliza(tupleX[3],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var)
-        extra=extra+'stop\n'
+        extra[extrapointer]=extra[extrapointer]+'label_While_On_'+str(cicleID)+':\n'
+        fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[3],fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
+        extra[extrapointer]=extra[extrapointer]+'stop\n'
         delay = delayaux
+        extrapointer-=1
         
         
         
@@ -672,7 +679,7 @@ def assembliza(tupleX,fp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var):
     
         
         
-    return fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var
+    return fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer
 
 # é preciso ter em atenção a ordem da recursividade e que algumas das cenas devemos verificar se tem outros tuplos dentro
     
@@ -690,9 +697,10 @@ dict_var = {}
 l=[]
 contador_de_Ciclos=0
 fp=0
+extrapointer=0
 cabeca=""
 corpo=""
-extra=""
+extra=["","","","","","","",""]
 
 
 
@@ -709,7 +717,7 @@ if parser.success:
 
 
 
-fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var= assembliza(struct_to_assemblizar,fp,contador_de_Ciclos,False,cabeca,corpo,extra,dict_var)
+fp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer= assembliza(struct_to_assemblizar,fp,contador_de_Ciclos,False,cabeca,corpo,extra,dict_var,extrapointer)
 
 
     
@@ -724,4 +732,6 @@ print('start')
 print(corpo)
 print('stop')
 print('--------extra:-----')
-print(extra)
+for i in extra:
+    print(i)
+
