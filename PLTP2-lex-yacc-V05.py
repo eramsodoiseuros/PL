@@ -1,43 +1,12 @@
+
+
+from PLTP02_lex import tokens
+from PLTP02_Perguntas import pList
 import ply.yacc as yacc
 import sys
-import ply.lex as lex
 
-tokens=['INT','ID','NUM','IF','OR','AND','BIGEQUAL','LESSEREQUAL','EQUALS','WHILE','DO','STDIN','STDOUT','COMMENT','NOTEQUALS','TRUE','FALSE','DEFINE','FUNC', 'CALL','ELSE']
+pergunta = pList[0]
 
-literals=('=', '+','-','*','/','%', ';', '!', '>','<',')','(','{','}')
-
-t_INT = r'INT'
-t_IF = r'IF'
-t_ELSE = r'ELSE'
-t_WHILE = r'WHILE'
-t_DO = r'DO'
-t_CALL = r'CALL'
-t_DEFINE = r'DEFINE'
-t_TRUE = r'TRUE'
-t_FALSE = r'FALSE'
-t_STDIN = r'STDIN'
-t_STDOUT = r'STDOUT'
-t_ID= r'[a-z]'
-t_NUM = r'\d+'
-t_OR = r'\|\|'
-t_AND = r'\&\&'
-t_BIGEQUAL = r'>='
-t_LESSEREQUAL = r'<='
-t_EQUALS = r'=='
-t_NOTEQUALS= r'!='
-t_COMMENT = r'\*\/[^\/\*]*/\*'
-t_FUNC = r'\_\w+\_'
-
-
-
-#t_ = r''
-
-t_ignore  = ' \n\t'
-
-def t_error(t):
-    print('Illegal character: %s', t.value[0])
-
-lexer = lex.lex()
 
 def p_Programa(p):
     "Programa : BlocosCodigo"
@@ -206,10 +175,10 @@ def p_ListaCondicionais_Neg(p):
 
 def p_ListaCondicionais_Rec(p):
     " ListaCondicionais : ListaCondicionais OperadorLogico Condicional"
-    print('--------------')
+    
     tupleX=('OperacaoLogica',p[2],p[1],p[3])
     p[0]=tupleX
-    print('--------------')
+    #print('--------------')
     
     
 
@@ -394,94 +363,6 @@ def p_error(p):
     parser.success = False
     print('Syntax error!', p)
 
-    ####----------------------------------------------------------------------
-    ####----------------------------------------------------------------------
-    ####----------------------------------------------------------------------
-    ####----------------------------------------------------------------------
-    ####----------------------------------------------------------------------
-    ####----------------------------------------------------------------------
-    ####----------------------------------------------------------------------
-    ####----------------------------------------------------------------------
-#Perguntas 
-
-pergunta_1= """ 
-INT x = STDIN();
-INT y = STDIN();
-INT w = STDIN();
-INT z = STDIN();
-
-
-
-IF((x==y)&&(x==w)&&(x==z)) { STDOUT(TRUE); }  ELSE { STDOUT(FALSE); }
-
-INT a = STDIN();
-INT b = STDIN();
-INT d = STDIN();
-INT s = STDIN();"""
-
- 
-pergunta_2=""" 
-INT n = STDIN();
-
-INT x;
-INT y;
-x = 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
-
-
-WHILE (n > 0)  DO {  
-    n = n - 1 ;
-    y = STDIN();
-    IF( y < x ) { x = y ; }
-    }
-
-STDOUT(x);"""
-
-
-
-pergunta_3=""" 
-INT n ; n = 5+1 ; INT x ; x = 1;
-INT y ;
-
-WHILE(n >0) 
-DO { 
-    n = n-1; 
-    y = STDIN();
-    x = x*y;
-    }
-    
-STDOUT(x);"""
-
-pergunta_4=""" 
-INT x;
-INT c;
-INT a;
-c = 0;
-x= STDIN();
-a = CALL _isNUMBER_(x);
-WHILE( a )  
-DO { a= x % 2;  */ atenção aqui estou ainda a pensar como garantir que o numero é INT /*
-    IF(( a != 0 ))
-        {
-        c = c +1;
-        STDOUT(x);
-        }
-    }
-STDOUT(c); """
-
-#pergunta_5=""" """
-
-
-    ####----------------------------------------------------------------------
-    ####----------------------------------------------------------------------
-    ####----------------------------------------------------------------------
-    ####----------------------------------------------------------------------
-    ####----------------------------------------------------------------------
-    ####----------------------------------------------------------------------
-    ####----------------------------------------------------------------------
-
-
-
-
 
 
 ###inicio do parsing
@@ -489,42 +370,11 @@ parser = yacc.yacc()
 parser.success = True
 
 
-
-
-a1_Declaracao_e_Atribuicao= """INT i ; x = (1+1)+2;"""
-a2_IF= """IF(x>x){INT y;}"""
-a3_WHILEDO= """WHILE(x==x) DO{INT y;}"""
-a4_STDIN= """x = STDIN() ; """
-a5_STDOUT= """ STDOUT(x) ; """
-a6_Comentario= """*/ AAASQDA< /*"""
-
-
-aCompleto = """INT i ; x = (1+1)+2; z=TRUE;
-                IF(x==x){INT y;}
-                WHILE(x==x) DO{INT y;*/ AAASQDA< /*}
-                x = STDIN() ;*/ Teste STDIN /*
-                
-                STDOUT(x) ; */ Teste STDOUT /*
-                """
-
-
-fonte = aCompleto
-
-
-     
-
-
-
-fonteoption=    """
-     for linha in sys.stdinb():
-         source+= linha
-     result = parser.parse(source)
-     """
-     
 dict_var = {
 }
 l=[]
-print(dict_var)
+
+print('--------Estrutura Parsed--------\n')
 def assembliza(tupleX,fp):
     if (tupleX[0] == 'CodigoRec') :# ('Codigorec' ,BlocodeCodigo, Codigo )
         fp=assembliza(tupleX[1],fp)
@@ -664,17 +514,17 @@ def assemblizatoList(tupleX,fp):
         
             
 
-struct_to_assemblizar=parser.parse(pergunta_1)
+struct_to_assemblizar=parser.parse(pergunta)
 
 print(struct_to_assemblizar)
 if parser.success:
-   print('Parsing completed!')
-print('--------divide-----')
+   print('Parsing completed!\n')
+print('--------Assembly Code:-----\n')
 
 assembliza(struct_to_assemblizar,0)
 print('stop')
 
 for i in l:
     print(i)
-   
+print('--------Dicionário de Variaveis:-----')
 print(dict_var)
