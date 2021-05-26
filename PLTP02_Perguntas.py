@@ -88,11 +88,11 @@ INT total = 1;
 
 WHILE(n > 0) DO { 
     INT novo = STDIN();
-    total = total * novo;
+    total = total*novo;
     n = n-1; 
 }
     
-STDOUT(INICIO);"""
+STDOUT(total);"""
 
 pergunta_4=""" 
 INT contar = 0;

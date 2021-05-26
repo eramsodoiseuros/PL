@@ -5,6 +5,7 @@ tokens=['INT','ID','NUM','IF','OR','AND','BIGEQUAL','LESSEREQUAL','EQUALS','WHIL
 
 literals=('=', '+','-','*','/','%', ';', '!', '>','<',')','(','{','}')
 
+#tenho de definir como funções
 t_INT = r'INT'
 t_IF = r'IF'
 t_ELSE = r'ELSE'
