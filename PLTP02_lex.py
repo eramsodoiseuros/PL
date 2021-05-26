@@ -1,13 +1,14 @@
 import sys
 import ply.lex as lex
 
-tokens=['INT','ID','NUM','IF','OR','AND','BIGEQUAL','LESSEREQUAL','EQUALS','WHILE','DO','STDIN','STDOUT','COMMENT','NOTEQUALS','TRUE','FALSE','DEFINE','FUNC', 'CALL','ELSE','PAL']
+tokens=['INT','ID','NUM','IF','IFELSE','OR','AND','BIGEQUAL','LESSEREQUAL','EQUALS','WHILE','DO','STDIN','STDOUT','COMMENT','NOTEQUALS','TRUE','FALSE','DEFINE','FUNC', 'CALL','ELSE','PAL']
 
 literals=('=', '+','-','*','/','%', ';', '!', '>','<',')','(','{','}')
 
 #tenho de definir como funções
 t_INT = r'INT'
 t_IF = r'IF'
+t_IFELSE = r'IFELSE'
 t_ELSE = r'ELSE'
 t_WHILE = r'WHILE'
 t_DO = r'DO'

@@ -17,33 +17,39 @@ INT z = STDIN();
 
 
 
-IF((x==y)&&(x==w)&&(x==z)) { STDOUT(TRUE); }  ELSE { STDOUT(FALSE); }
+IFELSE((x==y)&&(x==w)&&(x==z)) { STDOUT(TRUE); }  ELSE { STDOUT(FALSE); }
 """
 
  
 
 
 pergunta_2=""" 
-INT n = STDIN();
+INT n ;
 
-IF(n > 1) {
-    INT y = STDIN();
+n = STDIN();
+INT y;
+INT x;
+
+IFELSE (n > 1) 
+{
+    y = STDIN();
     n = n - 1;
-    
-    WHILE(n > 0) 
-    DO {
-        IF(n == 1) 
+    WHILE(n > 0) DO 
+    {
+        IFELSE(n == 1) 
         {
-            INT x = STDIN();
-            
-            IF(x < y) {
+            x = STDIN();
+            IFELSE(x < y) 
+            {
                 STDOUT(x);
-            } ELSE {
+            } 
+            ELSE 
+            {
                 STDOUT(y);
             }
         } 
         ELSE {
-            INT x = STDIN();
+            x = STDIN();
             IF(x < y) {
                 y = x;
             }
@@ -52,14 +58,16 @@ IF(n > 1) {
         n = n - 1;
     }
 
-} ELSE {
+} 
+ELSE 
+{
 
-    IF(n == 1){
-        INT x = STDIN();
+    IF(n == 1)
+    {
+        x = STDIN();
         STDOUT(x);
     } 
-}
-        """
+} """
         
 
 
@@ -83,11 +91,12 @@ STDOUT(x);"""
 
 pergunta_3=""" 
 INT n = 10;
+INT novo ;
 
 INT total = 1;
 
 WHILE(n > 0) DO { 
-    INT novo = STDIN();
+    novo = STDIN();
     total = total*novo;
     n = n-1; 
 }
@@ -95,7 +104,7 @@ WHILE(n > 0) DO {
 STDOUT(total);"""
 
 pergunta_4=""" 
-INT contar = 0;
+INT conta = 0;
 INT aux;
 INT atual = 1;
 INT fim = 8;
@@ -105,9 +114,9 @@ STDOUT("INICIO");
 WHILE( atual != fim ) DO { 
     aux = atual % 2;
     
-    IF(( aux != 0 )) {
-        contar = contar + 1;
-        STDOUT(contar);
+    IF( aux != 0 ) {
+        conta = conta + 1;
+        STDOUT(atual);
     }
     atual = atual + 1;
 }
