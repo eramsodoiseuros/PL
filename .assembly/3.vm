@@ -1,0 +1,31 @@
+// PERGUNTA 3
+
+pushi 10
+pushi 0
+pushi 1
+
+start
+While1:
+	pushg 0
+	pushi 0
+	sup
+	jz EndOfWhile1
+	
+	read
+	atoi
+	storeg 1
+	pushg 2
+	pushg 1
+	mul
+	storeg 2
+	pushg 0
+	pushi 1
+	sub
+	storeg 0
+	jump While1
+
+EndOfWhile1:
+	pushg 2
+	writei
+
+stop

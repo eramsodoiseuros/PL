@@ -1,0 +1,35 @@
+// PERGUNTA 1
+
+start
+	read
+	atoi
+	read
+	atoi
+	read
+	atoi
+	read
+	atoi
+	pushg 0
+	pushg 1
+	equal
+	pushg 0
+	pushg 2
+	equal
+	mul
+	pushg 0
+	pushg 3
+	equal
+	mul
+	jz ELSE1
+	
+	pushs “TRUE”
+	writes
+	jump ENDIFELSE1
+
+ELSE1:
+	pushs “FALSE”
+	writes
+
+ENDIFELSE1:     
+
+stop
