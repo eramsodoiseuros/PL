@@ -1,0 +1,76 @@
+// PERGUNTA 5
+
+start
+
+    pushi 0     // indice do array
+    read
+    atoi         // tamanho do array
+
+pushi 0 // indice do for
+for0:
+    pushg 1
+    pushg 2
+    sup
+    jz outoffor0
+
+    pushi 0
+
+    pushg 2
+    pushi 1
+    add
+    storeg 2
+    jump for0
+
+// for(int i = 0; i < N; i++){ cria array }
+
+
+outoffor0:
+
+for1:
+    pushg 0
+    pushg 1
+    inf
+    jz outoffor1
+
+    pushgp
+    pushi 3
+    padd            // posiciona no endereço V[]
+    pushg 0         // calcula indice do V[i]
+    read
+    atoi
+    storen            // V[i] = STDIN()
+
+    pushg 0
+    pushi 1
+    add
+    storeg 0
+    jump for1
+
+outoffor1:
+    pushg 0
+    pushi 1
+    sub
+    storeg 0
+
+for2:
+    pushg 0
+    pushi 0
+    supeq
+    jz outoffor2
+
+    pushgp
+    pushi 3
+    padd            // posiciona no endereço V[]
+    pushg 0         // calcula indice do V[i]
+
+    loadn
+    writei
+
+    pushg 0
+    pushi 1
+    sub
+    storeg 0
+    jump for2
+
+outoffor2:
+    stop

@@ -20,7 +20,7 @@ start
 	pushi 1
 	sub
 	storeg 0
-	While2:
+While2:
 	pushg 0
 	pushi 0
 	sup
