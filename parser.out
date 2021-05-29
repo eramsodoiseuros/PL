@@ -55,95 +55,100 @@ Rule 49    Bloco_EscreverSTDOUT -> STDOUT ( PAL ) ;
 Rule 50    Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY ID ID ) ;
 Rule 51    Codigo -> Bloco_Comentario
 Rule 52    Bloco_Comentario -> COMMENT
-Rule 53    Codigo -> Bloco_DEFINEFUNC
-Rule 54    Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo }
-Rule 55    Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-Rule 56    ListaAtributos -> Atributo
-Rule 57    ListaAtributos -> ListaAtributos , Atributo
-Rule 58    Atributo -> INT
-Rule 59    Codigo -> Bloco_CALLFUNC
-Rule 60    Bloco_CALLFUNC -> CALL FUNC ( ) ;
-Rule 61    Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ;
-Rule 62    INPUTVar -> Var
-Rule 63    INPUTVar -> INPUTVar , Var
-Rule 64    Codigo -> Array
-Rule 65    Array -> ARRAYNUM NUM ID ;
-Rule 66    Array -> ARRAYID ID ID ;
-Rule 67    Codigo -> BlocoFOR
-Rule 68    BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+Rule 53    Codigo -> Bloco_Return
+Rule 54    Bloco_Return -> RETURN ID ;
+Rule 55    Bloco_Return -> RETURN NUM ;
+Rule 56    Codigo -> Bloco_DEFINEFUNC
+Rule 57    Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo }
+Rule 58    Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+Rule 59    ListaAtributos -> Atributo
+Rule 60    ListaAtributos -> ListaAtributos , Atributo
+Rule 61    Atributo -> INT
+Rule 62    Codigo -> Bloco_CALLFUNC
+Rule 63    Bloco_CALLFUNC -> CALL FUNC ( ) ;
+Rule 64    Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ;
+Rule 65    INPUTVar -> Var
+Rule 66    INPUTVar -> INPUTVar , Var
+Rule 67    Codigo -> Array
+Rule 68    Array -> ARRAYNUM NUM ID ;
+Rule 69    Array -> ARRAYID ID ID ;
+Rule 70    Codigo -> BlocoFOR
+Rule 71    BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
 Terminals, with rules where they appear
 
 !                    : 28 33
 %                    : 22
-(                    : 17 24 25 27 28 33 34 43 45 46 48 49 50 54 55 60 61 68
-)                    : 17 24 25 27 28 33 34 43 45 46 48 49 50 54 55 60 61 68
+(                    : 17 24 25 27 28 33 34 43 45 46 48 49 50 57 58 63 64 71
+)                    : 17 24 25 27 28 33 34 43 45 46 48 49 50 57 58 63 64 71
 *                    : 20
 +                    : 18
-,                    : 57 63
+,                    : 60 66
 -                    : 19
 /                    : 21
-;                    : 5 6 9 45 46 48 49 50 60 61 65 66
+;                    : 5 6 9 45 46 48 49 50 54 55 63 64 68 69
 <                    : 38
 =                    : 6 9 10 45 46
 >                    : 36
 AND                  : 30
-ARRAYID              : 66
-ARRAYNUM             : 65
+ARRAYID              : 69
+ARRAYNUM             : 68
 BIGEQUAL             : 37
-CALL                 : 60 61
+CALL                 : 63 64
 COMMENT              : 52
-DEFINE               : 54 55
+DEFINE               : 57 58
 DO                   : 43
 ELSE                 : 25
 EQUALS               : 40
 FALSE                : 15
-FOR                  : 68
-FUNC                 : 54 55 60 61
-ID                   : 5 6 9 10 13 45 46 46 50 50 65 66 66 68
+FOR                  : 71
+FUNC                 : 57 58 63 64
+ID                   : 5 6 9 10 13 45 46 46 50 50 54 68 69 69 71
 IF                   : 24
 IFELSE               : 25
-INT                  : 5 6 7 58
+INT                  : 5 6 7 61
 LESSEREQUAL          : 39
 NOTEQUALS            : 41
-NUM                  : 12 65
+NUM                  : 12 55 68
 OR                   : 31
 PAL                  : 49
+RETURN               : 54 55
 STDIN                : 45 46
 STDOUT               : 48 49 50
 STRUCTARRAY          : 46 50
 TRUE                 : 14
 WHILE                : 43
 error                : 
-{                    : 24 25 25 43 54 55 68
-}                    : 24 25 25 43 54 55 68
+{                    : 24 25 25 43 57 58 71
+}                    : 24 25 25 43 57 58 71
 
 Nonterminals, with rules where they appear
 
-Array                : 64
-Atribuicao           : 8 68
-Atributo             : 56 57
-BlocoFOR             : 67
+Array                : 67
+Atribuicao           : 8 71
+Atributo             : 59 60
+BlocoFOR             : 70
 BlocoIF              : 23
 BlocoLerSTDIN        : 7 44
 BlocoWhileDo         : 42
-Bloco_CALLFUNC       : 10 59
+Bloco_CALLFUNC       : 10 62
 Bloco_Comentario     : 51
-Bloco_DEFINEFUNC     : 53
+Bloco_DEFINEFUNC     : 56
 Bloco_EscreverSTDOUT : 47
-BlocosCodigo         : 1 3 24 25 25 43 54 55 68
+Bloco_Return         : 53
+BlocosCodigo         : 1 3 24 25 25 43 57 58 71
 Codigo               : 2 3
-Condicional          : 26 29 33 34 35 35 68
+Condicional          : 26 29 33 34 35 35 71
 Declaracao           : 4
 Expressao            : 6 9 16 17
-INPUTVar             : 61 63
-ListaAtributos       : 55 57
+INPUTVar             : 64 66
+ListaAtributos       : 58 60
 ListaCondicionais    : 24 25 27 28 29 43
 Operador             : 16
 OperadorCondicional  : 35
 OperadorLogico       : 29
 Programa             : 0
-Var                  : 11 16 32 48 62 63
+Var                  : 11 16 32 48 65 66
 
 Parsing method: LALR
 
@@ -160,10 +165,11 @@ state 0
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -178,27 +184,30 @@ state 0
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
     Programa                       shift and go to state 1
     BlocosCodigo                   shift and go to state 2
@@ -210,10 +219,11 @@ state 0
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
 state 1
 
@@ -232,10 +242,11 @@ state 2
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -250,30 +261,33 @@ state 2
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
     $end            reduce using rule 1 (Programa -> BlocosCodigo .)
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
-    Codigo                         shift and go to state 28
+    Codigo                         shift and go to state 30
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
     BlocoIF                        shift and go to state 6
@@ -281,10 +295,11 @@ state 2
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
 state 3
 
@@ -298,6 +313,7 @@ state 3
     STRUCTARRAY     reduce using rule 2 (BlocosCodigo -> Codigo .)
     STDOUT          reduce using rule 2 (BlocosCodigo -> Codigo .)
     COMMENT         reduce using rule 2 (BlocosCodigo -> Codigo .)
+    RETURN          reduce using rule 2 (BlocosCodigo -> Codigo .)
     DEFINE          reduce using rule 2 (BlocosCodigo -> Codigo .)
     CALL            reduce using rule 2 (BlocosCodigo -> Codigo .)
     ARRAYNUM        reduce using rule 2 (BlocosCodigo -> Codigo .)
@@ -319,6 +335,7 @@ state 4
     STRUCTARRAY     reduce using rule 4 (Codigo -> Declaracao .)
     STDOUT          reduce using rule 4 (Codigo -> Declaracao .)
     COMMENT         reduce using rule 4 (Codigo -> Declaracao .)
+    RETURN          reduce using rule 4 (Codigo -> Declaracao .)
     DEFINE          reduce using rule 4 (Codigo -> Declaracao .)
     CALL            reduce using rule 4 (Codigo -> Declaracao .)
     ARRAYNUM        reduce using rule 4 (Codigo -> Declaracao .)
@@ -340,6 +357,7 @@ state 5
     STRUCTARRAY     reduce using rule 8 (Codigo -> Atribuicao .)
     STDOUT          reduce using rule 8 (Codigo -> Atribuicao .)
     COMMENT         reduce using rule 8 (Codigo -> Atribuicao .)
+    RETURN          reduce using rule 8 (Codigo -> Atribuicao .)
     DEFINE          reduce using rule 8 (Codigo -> Atribuicao .)
     CALL            reduce using rule 8 (Codigo -> Atribuicao .)
     ARRAYNUM        reduce using rule 8 (Codigo -> Atribuicao .)
@@ -361,6 +379,7 @@ state 6
     STRUCTARRAY     reduce using rule 23 (Codigo -> BlocoIF .)
     STDOUT          reduce using rule 23 (Codigo -> BlocoIF .)
     COMMENT         reduce using rule 23 (Codigo -> BlocoIF .)
+    RETURN          reduce using rule 23 (Codigo -> BlocoIF .)
     DEFINE          reduce using rule 23 (Codigo -> BlocoIF .)
     CALL            reduce using rule 23 (Codigo -> BlocoIF .)
     ARRAYNUM        reduce using rule 23 (Codigo -> BlocoIF .)
@@ -382,6 +401,7 @@ state 7
     STRUCTARRAY     reduce using rule 42 (Codigo -> BlocoWhileDo .)
     STDOUT          reduce using rule 42 (Codigo -> BlocoWhileDo .)
     COMMENT         reduce using rule 42 (Codigo -> BlocoWhileDo .)
+    RETURN          reduce using rule 42 (Codigo -> BlocoWhileDo .)
     DEFINE          reduce using rule 42 (Codigo -> BlocoWhileDo .)
     CALL            reduce using rule 42 (Codigo -> BlocoWhileDo .)
     ARRAYNUM        reduce using rule 42 (Codigo -> BlocoWhileDo .)
@@ -403,6 +423,7 @@ state 8
     STRUCTARRAY     reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
     STDOUT          reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
     COMMENT         reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
+    RETURN          reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
     DEFINE          reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
     CALL            reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
     ARRAYNUM        reduce using rule 44 (Codigo -> BlocoLerSTDIN .)
@@ -424,6 +445,7 @@ state 9
     STRUCTARRAY     reduce using rule 47 (Codigo -> Bloco_EscreverSTDOUT .)
     STDOUT          reduce using rule 47 (Codigo -> Bloco_EscreverSTDOUT .)
     COMMENT         reduce using rule 47 (Codigo -> Bloco_EscreverSTDOUT .)
+    RETURN          reduce using rule 47 (Codigo -> Bloco_EscreverSTDOUT .)
     DEFINE          reduce using rule 47 (Codigo -> Bloco_EscreverSTDOUT .)
     CALL            reduce using rule 47 (Codigo -> Bloco_EscreverSTDOUT .)
     ARRAYNUM        reduce using rule 47 (Codigo -> Bloco_EscreverSTDOUT .)
@@ -445,6 +467,7 @@ state 10
     STRUCTARRAY     reduce using rule 51 (Codigo -> Bloco_Comentario .)
     STDOUT          reduce using rule 51 (Codigo -> Bloco_Comentario .)
     COMMENT         reduce using rule 51 (Codigo -> Bloco_Comentario .)
+    RETURN          reduce using rule 51 (Codigo -> Bloco_Comentario .)
     DEFINE          reduce using rule 51 (Codigo -> Bloco_Comentario .)
     CALL            reduce using rule 51 (Codigo -> Bloco_Comentario .)
     ARRAYNUM        reduce using rule 51 (Codigo -> Bloco_Comentario .)
@@ -456,89 +479,115 @@ state 10
 
 state 11
 
-    (53) Codigo -> Bloco_DEFINEFUNC .
+    (53) Codigo -> Bloco_Return .
 
-    INT             reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
-    ID              reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
-    IF              reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
-    IFELSE          reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
-    WHILE           reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
-    STRUCTARRAY     reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
-    STDOUT          reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
-    COMMENT         reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
-    DEFINE          reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
-    CALL            reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
-    ARRAYNUM        reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
-    ARRAYID         reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
-    FOR             reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
-    $end            reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
-    }               reduce using rule 53 (Codigo -> Bloco_DEFINEFUNC .)
+    INT             reduce using rule 53 (Codigo -> Bloco_Return .)
+    ID              reduce using rule 53 (Codigo -> Bloco_Return .)
+    IF              reduce using rule 53 (Codigo -> Bloco_Return .)
+    IFELSE          reduce using rule 53 (Codigo -> Bloco_Return .)
+    WHILE           reduce using rule 53 (Codigo -> Bloco_Return .)
+    STRUCTARRAY     reduce using rule 53 (Codigo -> Bloco_Return .)
+    STDOUT          reduce using rule 53 (Codigo -> Bloco_Return .)
+    COMMENT         reduce using rule 53 (Codigo -> Bloco_Return .)
+    RETURN          reduce using rule 53 (Codigo -> Bloco_Return .)
+    DEFINE          reduce using rule 53 (Codigo -> Bloco_Return .)
+    CALL            reduce using rule 53 (Codigo -> Bloco_Return .)
+    ARRAYNUM        reduce using rule 53 (Codigo -> Bloco_Return .)
+    ARRAYID         reduce using rule 53 (Codigo -> Bloco_Return .)
+    FOR             reduce using rule 53 (Codigo -> Bloco_Return .)
+    $end            reduce using rule 53 (Codigo -> Bloco_Return .)
+    }               reduce using rule 53 (Codigo -> Bloco_Return .)
 
 
 state 12
 
-    (59) Codigo -> Bloco_CALLFUNC .
+    (56) Codigo -> Bloco_DEFINEFUNC .
 
-    INT             reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
-    ID              reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
-    IF              reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
-    IFELSE          reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
-    WHILE           reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
-    STRUCTARRAY     reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
-    STDOUT          reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
-    COMMENT         reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
-    DEFINE          reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
-    CALL            reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
-    ARRAYNUM        reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
-    ARRAYID         reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
-    FOR             reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
-    $end            reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
-    }               reduce using rule 59 (Codigo -> Bloco_CALLFUNC .)
+    INT             reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    ID              reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    IF              reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    IFELSE          reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    WHILE           reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    STRUCTARRAY     reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    STDOUT          reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    COMMENT         reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    RETURN          reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    DEFINE          reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    CALL            reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    ARRAYNUM        reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    ARRAYID         reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    FOR             reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    $end            reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
+    }               reduce using rule 56 (Codigo -> Bloco_DEFINEFUNC .)
 
 
 state 13
 
-    (64) Codigo -> Array .
+    (62) Codigo -> Bloco_CALLFUNC .
 
-    INT             reduce using rule 64 (Codigo -> Array .)
-    ID              reduce using rule 64 (Codigo -> Array .)
-    IF              reduce using rule 64 (Codigo -> Array .)
-    IFELSE          reduce using rule 64 (Codigo -> Array .)
-    WHILE           reduce using rule 64 (Codigo -> Array .)
-    STRUCTARRAY     reduce using rule 64 (Codigo -> Array .)
-    STDOUT          reduce using rule 64 (Codigo -> Array .)
-    COMMENT         reduce using rule 64 (Codigo -> Array .)
-    DEFINE          reduce using rule 64 (Codigo -> Array .)
-    CALL            reduce using rule 64 (Codigo -> Array .)
-    ARRAYNUM        reduce using rule 64 (Codigo -> Array .)
-    ARRAYID         reduce using rule 64 (Codigo -> Array .)
-    FOR             reduce using rule 64 (Codigo -> Array .)
-    $end            reduce using rule 64 (Codigo -> Array .)
-    }               reduce using rule 64 (Codigo -> Array .)
+    INT             reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    ID              reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    IF              reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    IFELSE          reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    WHILE           reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    STRUCTARRAY     reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    STDOUT          reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    COMMENT         reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    RETURN          reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    DEFINE          reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    CALL            reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    ARRAYNUM        reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    ARRAYID         reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    FOR             reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    $end            reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
+    }               reduce using rule 62 (Codigo -> Bloco_CALLFUNC .)
 
 
 state 14
 
-    (67) Codigo -> BlocoFOR .
+    (67) Codigo -> Array .
 
-    INT             reduce using rule 67 (Codigo -> BlocoFOR .)
-    ID              reduce using rule 67 (Codigo -> BlocoFOR .)
-    IF              reduce using rule 67 (Codigo -> BlocoFOR .)
-    IFELSE          reduce using rule 67 (Codigo -> BlocoFOR .)
-    WHILE           reduce using rule 67 (Codigo -> BlocoFOR .)
-    STRUCTARRAY     reduce using rule 67 (Codigo -> BlocoFOR .)
-    STDOUT          reduce using rule 67 (Codigo -> BlocoFOR .)
-    COMMENT         reduce using rule 67 (Codigo -> BlocoFOR .)
-    DEFINE          reduce using rule 67 (Codigo -> BlocoFOR .)
-    CALL            reduce using rule 67 (Codigo -> BlocoFOR .)
-    ARRAYNUM        reduce using rule 67 (Codigo -> BlocoFOR .)
-    ARRAYID         reduce using rule 67 (Codigo -> BlocoFOR .)
-    FOR             reduce using rule 67 (Codigo -> BlocoFOR .)
-    $end            reduce using rule 67 (Codigo -> BlocoFOR .)
-    }               reduce using rule 67 (Codigo -> BlocoFOR .)
+    INT             reduce using rule 67 (Codigo -> Array .)
+    ID              reduce using rule 67 (Codigo -> Array .)
+    IF              reduce using rule 67 (Codigo -> Array .)
+    IFELSE          reduce using rule 67 (Codigo -> Array .)
+    WHILE           reduce using rule 67 (Codigo -> Array .)
+    STRUCTARRAY     reduce using rule 67 (Codigo -> Array .)
+    STDOUT          reduce using rule 67 (Codigo -> Array .)
+    COMMENT         reduce using rule 67 (Codigo -> Array .)
+    RETURN          reduce using rule 67 (Codigo -> Array .)
+    DEFINE          reduce using rule 67 (Codigo -> Array .)
+    CALL            reduce using rule 67 (Codigo -> Array .)
+    ARRAYNUM        reduce using rule 67 (Codigo -> Array .)
+    ARRAYID         reduce using rule 67 (Codigo -> Array .)
+    FOR             reduce using rule 67 (Codigo -> Array .)
+    $end            reduce using rule 67 (Codigo -> Array .)
+    }               reduce using rule 67 (Codigo -> Array .)
 
 
 state 15
+
+    (70) Codigo -> BlocoFOR .
+
+    INT             reduce using rule 70 (Codigo -> BlocoFOR .)
+    ID              reduce using rule 70 (Codigo -> BlocoFOR .)
+    IF              reduce using rule 70 (Codigo -> BlocoFOR .)
+    IFELSE          reduce using rule 70 (Codigo -> BlocoFOR .)
+    WHILE           reduce using rule 70 (Codigo -> BlocoFOR .)
+    STRUCTARRAY     reduce using rule 70 (Codigo -> BlocoFOR .)
+    STDOUT          reduce using rule 70 (Codigo -> BlocoFOR .)
+    COMMENT         reduce using rule 70 (Codigo -> BlocoFOR .)
+    RETURN          reduce using rule 70 (Codigo -> BlocoFOR .)
+    DEFINE          reduce using rule 70 (Codigo -> BlocoFOR .)
+    CALL            reduce using rule 70 (Codigo -> BlocoFOR .)
+    ARRAYNUM        reduce using rule 70 (Codigo -> BlocoFOR .)
+    ARRAYID         reduce using rule 70 (Codigo -> BlocoFOR .)
+    FOR             reduce using rule 70 (Codigo -> BlocoFOR .)
+    $end            reduce using rule 70 (Codigo -> BlocoFOR .)
+    }               reduce using rule 70 (Codigo -> BlocoFOR .)
+
+
+state 16
 
     (5) Declaracao -> INT . ID ;
     (6) Declaracao -> INT . ID = Expressao ;
@@ -546,58 +595,58 @@ state 15
     (45) BlocoLerSTDIN -> . ID = STDIN ( ) ;
     (46) BlocoLerSTDIN -> . STRUCTARRAY ID ID = STDIN ( ) ;
 
-    ID              shift and go to state 29
-    STRUCTARRAY     shift and go to state 20
+    ID              shift and go to state 31
+    STRUCTARRAY     shift and go to state 21
 
-    BlocoLerSTDIN                  shift and go to state 30
+    BlocoLerSTDIN                  shift and go to state 32
 
-state 16
+state 17
 
     (9) Atribuicao -> ID . = Expressao ;
     (10) Atribuicao -> ID . = Bloco_CALLFUNC
     (45) BlocoLerSTDIN -> ID . = STDIN ( ) ;
 
-    =               shift and go to state 31
-
-
-state 17
-
-    (24) BlocoIF -> IF . ( ListaCondicionais ) { BlocosCodigo }
-
-    (               shift and go to state 32
+    =               shift and go to state 33
 
 
 state 18
 
-    (25) BlocoIF -> IFELSE . ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
-
-    (               shift and go to state 33
-
-
-state 19
-
-    (43) BlocoWhileDo -> WHILE . ( ListaCondicionais ) DO { BlocosCodigo }
+    (24) BlocoIF -> IF . ( ListaCondicionais ) { BlocosCodigo }
 
     (               shift and go to state 34
 
 
+state 19
+
+    (25) BlocoIF -> IFELSE . ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
+
+    (               shift and go to state 35
+
+
 state 20
 
-    (46) BlocoLerSTDIN -> STRUCTARRAY . ID ID = STDIN ( ) ;
+    (43) BlocoWhileDo -> WHILE . ( ListaCondicionais ) DO { BlocosCodigo }
 
-    ID              shift and go to state 35
+    (               shift and go to state 36
 
 
 state 21
+
+    (46) BlocoLerSTDIN -> STRUCTARRAY . ID ID = STDIN ( ) ;
+
+    ID              shift and go to state 37
+
+
+state 22
 
     (48) Bloco_EscreverSTDOUT -> STDOUT . ( Var ) ;
     (49) Bloco_EscreverSTDOUT -> STDOUT . ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> STDOUT . ( STRUCTARRAY ID ID ) ;
 
-    (               shift and go to state 36
+    (               shift and go to state 38
 
 
-state 22
+state 23
 
     (52) Bloco_Comentario -> COMMENT .
 
@@ -609,6 +658,7 @@ state 22
     STRUCTARRAY     reduce using rule 52 (Bloco_Comentario -> COMMENT .)
     STDOUT          reduce using rule 52 (Bloco_Comentario -> COMMENT .)
     COMMENT         reduce using rule 52 (Bloco_Comentario -> COMMENT .)
+    RETURN          reduce using rule 52 (Bloco_Comentario -> COMMENT .)
     DEFINE          reduce using rule 52 (Bloco_Comentario -> COMMENT .)
     CALL            reduce using rule 52 (Bloco_Comentario -> COMMENT .)
     ARRAYNUM        reduce using rule 52 (Bloco_Comentario -> COMMENT .)
@@ -618,44 +668,53 @@ state 22
     }               reduce using rule 52 (Bloco_Comentario -> COMMENT .)
 
 
-state 23
-
-    (54) Bloco_DEFINEFUNC -> DEFINE . FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> DEFINE . FUNC ( ListaAtributos ) { BlocosCodigo }
-
-    FUNC            shift and go to state 37
-
-
 state 24
 
-    (60) Bloco_CALLFUNC -> CALL . FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> CALL . FUNC ( INPUTVar ) ;
+    (54) Bloco_Return -> RETURN . ID ;
+    (55) Bloco_Return -> RETURN . NUM ;
 
-    FUNC            shift and go to state 38
+    ID              shift and go to state 39
+    NUM             shift and go to state 40
 
 
 state 25
 
-    (65) Array -> ARRAYNUM . NUM ID ;
+    (57) Bloco_DEFINEFUNC -> DEFINE . FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> DEFINE . FUNC ( ListaAtributos ) { BlocosCodigo }
 
-    NUM             shift and go to state 39
+    FUNC            shift and go to state 41
 
 
 state 26
 
-    (66) Array -> ARRAYID . ID ID ;
+    (63) Bloco_CALLFUNC -> CALL . FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> CALL . FUNC ( INPUTVar ) ;
 
-    ID              shift and go to state 40
+    FUNC            shift and go to state 42
 
 
 state 27
 
-    (68) BlocoFOR -> FOR . ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (68) Array -> ARRAYNUM . NUM ID ;
 
-    ID              shift and go to state 41
+    NUM             shift and go to state 43
 
 
 state 28
+
+    (69) Array -> ARRAYID . ID ID ;
+
+    ID              shift and go to state 44
+
+
+state 29
+
+    (71) BlocoFOR -> FOR . ID ( Condicional ) Atribuicao { BlocosCodigo }
+
+    ID              shift and go to state 45
+
+
+state 30
 
     (3) BlocosCodigo -> BlocosCodigo Codigo .
 
@@ -667,6 +726,7 @@ state 28
     STRUCTARRAY     reduce using rule 3 (BlocosCodigo -> BlocosCodigo Codigo .)
     STDOUT          reduce using rule 3 (BlocosCodigo -> BlocosCodigo Codigo .)
     COMMENT         reduce using rule 3 (BlocosCodigo -> BlocosCodigo Codigo .)
+    RETURN          reduce using rule 3 (BlocosCodigo -> BlocosCodigo Codigo .)
     DEFINE          reduce using rule 3 (BlocosCodigo -> BlocosCodigo Codigo .)
     CALL            reduce using rule 3 (BlocosCodigo -> BlocosCodigo Codigo .)
     ARRAYNUM        reduce using rule 3 (BlocosCodigo -> BlocosCodigo Codigo .)
@@ -676,17 +736,17 @@ state 28
     }               reduce using rule 3 (BlocosCodigo -> BlocosCodigo Codigo .)
 
 
-state 29
+state 31
 
     (5) Declaracao -> INT ID . ;
     (6) Declaracao -> INT ID . = Expressao ;
     (45) BlocoLerSTDIN -> ID . = STDIN ( ) ;
 
-    ;               shift and go to state 42
-    =               shift and go to state 43
+    ;               shift and go to state 46
+    =               shift and go to state 47
 
 
-state 30
+state 32
 
     (7) Declaracao -> INT BlocoLerSTDIN .
 
@@ -698,6 +758,7 @@ state 30
     STRUCTARRAY     reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
     STDOUT          reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
     COMMENT         reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
+    RETURN          reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
     DEFINE          reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
     CALL            reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
     ARRAYNUM        reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
@@ -707,7 +768,7 @@ state 30
     }               reduce using rule 7 (Declaracao -> INT BlocoLerSTDIN .)
 
 
-state 31
+state 33
 
     (9) Atribuicao -> ID = . Expressao ;
     (10) Atribuicao -> ID = . Bloco_CALLFUNC
@@ -715,26 +776,26 @@ state 31
     (11) Expressao -> . Var
     (16) Expressao -> . Expressao Operador Var
     (17) Expressao -> . ( Expressao )
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
     (12) Var -> . NUM
     (13) Var -> . ID
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    STDIN           shift and go to state 47
-    (               shift and go to state 48
-    CALL            shift and go to state 24
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    STDIN           shift and go to state 51
+    (               shift and go to state 52
+    CALL            shift and go to state 26
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    Expressao                      shift and go to state 45
-    Bloco_CALLFUNC                 shift and go to state 46
-    Var                            shift and go to state 49
+    Expressao                      shift and go to state 49
+    Bloco_CALLFUNC                 shift and go to state 50
+    Var                            shift and go to state 53
 
-state 32
+state 34
 
     (24) BlocoIF -> IF ( . ListaCondicionais ) { BlocosCodigo }
     (26) ListaCondicionais -> . Condicional
@@ -750,18 +811,18 @@ state 32
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    (               shift and go to state 53
-    !               shift and go to state 56
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    (               shift and go to state 57
+    !               shift and go to state 60
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    ListaCondicionais              shift and go to state 54
-    Condicional                    shift and go to state 55
-    Var                            shift and go to state 57
+    ListaCondicionais              shift and go to state 58
+    Condicional                    shift and go to state 59
+    Var                            shift and go to state 61
 
-state 33
+state 35
 
     (25) BlocoIF -> IFELSE ( . ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo }
     (26) ListaCondicionais -> . Condicional
@@ -777,18 +838,18 @@ state 33
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    (               shift and go to state 53
-    !               shift and go to state 56
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    (               shift and go to state 57
+    !               shift and go to state 60
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    ListaCondicionais              shift and go to state 58
-    Condicional                    shift and go to state 55
-    Var                            shift and go to state 57
+    ListaCondicionais              shift and go to state 62
+    Condicional                    shift and go to state 59
+    Var                            shift and go to state 61
 
-state 34
+state 36
 
     (43) BlocoWhileDo -> WHILE ( . ListaCondicionais ) DO { BlocosCodigo }
     (26) ListaCondicionais -> . Condicional
@@ -804,25 +865,25 @@ state 34
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    (               shift and go to state 53
-    !               shift and go to state 56
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    (               shift and go to state 57
+    !               shift and go to state 60
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    ListaCondicionais              shift and go to state 59
-    Condicional                    shift and go to state 55
-    Var                            shift and go to state 57
+    ListaCondicionais              shift and go to state 63
+    Condicional                    shift and go to state 59
+    Var                            shift and go to state 61
 
-state 35
+state 37
 
     (46) BlocoLerSTDIN -> STRUCTARRAY ID . ID = STDIN ( ) ;
 
-    ID              shift and go to state 60
+    ID              shift and go to state 64
 
 
-state 36
+state 38
 
     (48) Bloco_EscreverSTDOUT -> STDOUT ( . Var ) ;
     (49) Bloco_EscreverSTDOUT -> STDOUT ( . PAL ) ;
@@ -832,53 +893,67 @@ state 36
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    PAL             shift and go to state 62
-    STRUCTARRAY     shift and go to state 63
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    PAL             shift and go to state 66
+    STRUCTARRAY     shift and go to state 67
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    Var                            shift and go to state 61
-
-state 37
-
-    (54) Bloco_DEFINEFUNC -> DEFINE FUNC . ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> DEFINE FUNC . ( ListaAtributos ) { BlocosCodigo }
-
-    (               shift and go to state 64
-
-
-state 38
-
-    (60) Bloco_CALLFUNC -> CALL FUNC . ( ) ;
-    (61) Bloco_CALLFUNC -> CALL FUNC . ( INPUTVar ) ;
-
-    (               shift and go to state 65
-
+    Var                            shift and go to state 65
 
 state 39
 
-    (65) Array -> ARRAYNUM NUM . ID ;
+    (54) Bloco_Return -> RETURN ID . ;
 
-    ID              shift and go to state 66
+    ;               shift and go to state 68
 
 
 state 40
 
-    (66) Array -> ARRAYID ID . ID ;
+    (55) Bloco_Return -> RETURN NUM . ;
 
-    ID              shift and go to state 67
+    ;               shift and go to state 69
 
 
 state 41
 
-    (68) BlocoFOR -> FOR ID . ( Condicional ) Atribuicao { BlocosCodigo }
+    (57) Bloco_DEFINEFUNC -> DEFINE FUNC . ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> DEFINE FUNC . ( ListaAtributos ) { BlocosCodigo }
 
-    (               shift and go to state 68
+    (               shift and go to state 70
 
 
 state 42
+
+    (63) Bloco_CALLFUNC -> CALL FUNC . ( ) ;
+    (64) Bloco_CALLFUNC -> CALL FUNC . ( INPUTVar ) ;
+
+    (               shift and go to state 71
+
+
+state 43
+
+    (68) Array -> ARRAYNUM NUM . ID ;
+
+    ID              shift and go to state 72
+
+
+state 44
+
+    (69) Array -> ARRAYID ID . ID ;
+
+    ID              shift and go to state 73
+
+
+state 45
+
+    (71) BlocoFOR -> FOR ID . ( Condicional ) Atribuicao { BlocosCodigo }
+
+    (               shift and go to state 74
+
+
+state 46
 
     (5) Declaracao -> INT ID ; .
 
@@ -890,6 +965,7 @@ state 42
     STRUCTARRAY     reduce using rule 5 (Declaracao -> INT ID ; .)
     STDOUT          reduce using rule 5 (Declaracao -> INT ID ; .)
     COMMENT         reduce using rule 5 (Declaracao -> INT ID ; .)
+    RETURN          reduce using rule 5 (Declaracao -> INT ID ; .)
     DEFINE          reduce using rule 5 (Declaracao -> INT ID ; .)
     CALL            reduce using rule 5 (Declaracao -> INT ID ; .)
     ARRAYNUM        reduce using rule 5 (Declaracao -> INT ID ; .)
@@ -899,7 +975,7 @@ state 42
     }               reduce using rule 5 (Declaracao -> INT ID ; .)
 
 
-state 43
+state 47
 
     (6) Declaracao -> INT ID = . Expressao ;
     (45) BlocoLerSTDIN -> ID = . STDIN ( ) ;
@@ -911,17 +987,17 @@ state 43
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    STDIN           shift and go to state 47
-    (               shift and go to state 48
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    STDIN           shift and go to state 51
+    (               shift and go to state 52
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    Expressao                      shift and go to state 69
-    Var                            shift and go to state 49
+    Expressao                      shift and go to state 75
+    Var                            shift and go to state 53
 
-state 44
+state 48
 
     (13) Var -> ID .
 
@@ -943,7 +1019,7 @@ state 44
     ,               reduce using rule 13 (Var -> ID .)
 
 
-state 45
+state 49
 
     (9) Atribuicao -> ID = Expressao . ;
     (16) Expressao -> Expressao . Operador Var
@@ -953,16 +1029,16 @@ state 45
     (21) Operador -> . /
     (22) Operador -> . %
 
-    ;               shift and go to state 70
-    +               shift and go to state 72
-    -               shift and go to state 73
-    *               shift and go to state 74
-    /               shift and go to state 75
-    %               shift and go to state 76
+    ;               shift and go to state 76
+    +               shift and go to state 78
+    -               shift and go to state 79
+    *               shift and go to state 80
+    /               shift and go to state 81
+    %               shift and go to state 82
 
-    Operador                       shift and go to state 71
+    Operador                       shift and go to state 77
 
-state 46
+state 50
 
     (10) Atribuicao -> ID = Bloco_CALLFUNC .
 
@@ -974,6 +1050,7 @@ state 46
     STRUCTARRAY     reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
     STDOUT          reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
     COMMENT         reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
+    RETURN          reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
     DEFINE          reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
     CALL            reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
     ARRAYNUM        reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
@@ -984,14 +1061,14 @@ state 46
     {               reduce using rule 10 (Atribuicao -> ID = Bloco_CALLFUNC .)
 
 
-state 47
+state 51
 
     (45) BlocoLerSTDIN -> ID = STDIN . ( ) ;
 
-    (               shift and go to state 77
+    (               shift and go to state 83
 
 
-state 48
+state 52
 
     (17) Expressao -> ( . Expressao )
     (11) Expressao -> . Var
@@ -1002,16 +1079,16 @@ state 48
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    (               shift and go to state 48
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    (               shift and go to state 52
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    Expressao                      shift and go to state 78
-    Var                            shift and go to state 49
+    Expressao                      shift and go to state 84
+    Var                            shift and go to state 53
 
-state 49
+state 53
 
     (11) Expressao -> Var .
 
@@ -1024,7 +1101,7 @@ state 49
     )               reduce using rule 11 (Expressao -> Var .)
 
 
-state 50
+state 54
 
     (12) Var -> NUM .
 
@@ -1046,7 +1123,7 @@ state 50
     ,               reduce using rule 12 (Var -> NUM .)
 
 
-state 51
+state 55
 
     (14) Var -> TRUE .
 
@@ -1068,7 +1145,7 @@ state 51
     ,               reduce using rule 14 (Var -> TRUE .)
 
 
-state 52
+state 56
 
     (15) Var -> FALSE .
 
@@ -1090,7 +1167,7 @@ state 52
     ,               reduce using rule 15 (Var -> FALSE .)
 
 
-state 53
+state 57
 
     (27) ListaCondicionais -> ( . ListaCondicionais )
     (34) Condicional -> ( . Condicional )
@@ -1107,31 +1184,31 @@ state 53
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    (               shift and go to state 53
-    !               shift and go to state 56
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    (               shift and go to state 57
+    !               shift and go to state 60
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    ListaCondicionais              shift and go to state 79
-    Condicional                    shift and go to state 80
-    Var                            shift and go to state 57
+    ListaCondicionais              shift and go to state 85
+    Condicional                    shift and go to state 86
+    Var                            shift and go to state 61
 
-state 54
+state 58
 
     (24) BlocoIF -> IF ( ListaCondicionais . ) { BlocosCodigo }
     (29) ListaCondicionais -> ListaCondicionais . OperadorLogico Condicional
     (30) OperadorLogico -> . AND
     (31) OperadorLogico -> . OR
 
-    )               shift and go to state 81
-    AND             shift and go to state 83
-    OR              shift and go to state 84
+    )               shift and go to state 87
+    AND             shift and go to state 89
+    OR              shift and go to state 90
 
-    OperadorLogico                 shift and go to state 82
+    OperadorLogico                 shift and go to state 88
 
-state 55
+state 59
 
     (26) ListaCondicionais -> Condicional .
     (35) Condicional -> Condicional . OperadorCondicional Condicional
@@ -1145,24 +1222,24 @@ state 55
     )               reduce using rule 26 (ListaCondicionais -> Condicional .)
     AND             reduce using rule 26 (ListaCondicionais -> Condicional .)
     OR              reduce using rule 26 (ListaCondicionais -> Condicional .)
-    >               shift and go to state 86
-    BIGEQUAL        shift and go to state 87
-    <               shift and go to state 88
-    LESSEREQUAL     shift and go to state 89
-    EQUALS          shift and go to state 90
-    NOTEQUALS       shift and go to state 91
+    >               shift and go to state 92
+    BIGEQUAL        shift and go to state 93
+    <               shift and go to state 94
+    LESSEREQUAL     shift and go to state 95
+    EQUALS          shift and go to state 96
+    NOTEQUALS       shift and go to state 97
 
-    OperadorCondicional            shift and go to state 85
+    OperadorCondicional            shift and go to state 91
 
-state 56
+state 60
 
     (28) ListaCondicionais -> ! . ( ListaCondicionais )
     (33) Condicional -> ! . ( Condicional )
 
-    (               shift and go to state 92
+    (               shift and go to state 98
 
 
-state 57
+state 61
 
     (32) Condicional -> Var .
 
@@ -1177,111 +1254,155 @@ state 57
     OR              reduce using rule 32 (Condicional -> Var .)
 
 
-state 58
+state 62
 
     (25) BlocoIF -> IFELSE ( ListaCondicionais . ) { BlocosCodigo } ELSE { BlocosCodigo }
     (29) ListaCondicionais -> ListaCondicionais . OperadorLogico Condicional
     (30) OperadorLogico -> . AND
     (31) OperadorLogico -> . OR
 
-    )               shift and go to state 93
-    AND             shift and go to state 83
-    OR              shift and go to state 84
+    )               shift and go to state 99
+    AND             shift and go to state 89
+    OR              shift and go to state 90
 
-    OperadorLogico                 shift and go to state 82
+    OperadorLogico                 shift and go to state 88
 
-state 59
+state 63
 
     (43) BlocoWhileDo -> WHILE ( ListaCondicionais . ) DO { BlocosCodigo }
     (29) ListaCondicionais -> ListaCondicionais . OperadorLogico Condicional
     (30) OperadorLogico -> . AND
     (31) OperadorLogico -> . OR
 
-    )               shift and go to state 94
-    AND             shift and go to state 83
-    OR              shift and go to state 84
+    )               shift and go to state 100
+    AND             shift and go to state 89
+    OR              shift and go to state 90
 
-    OperadorLogico                 shift and go to state 82
-
-state 60
-
-    (46) BlocoLerSTDIN -> STRUCTARRAY ID ID . = STDIN ( ) ;
-
-    =               shift and go to state 95
-
-
-state 61
-
-    (48) Bloco_EscreverSTDOUT -> STDOUT ( Var . ) ;
-
-    )               shift and go to state 96
-
-
-state 62
-
-    (49) Bloco_EscreverSTDOUT -> STDOUT ( PAL . ) ;
-
-    )               shift and go to state 97
-
-
-state 63
-
-    (50) Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY . ID ID ) ;
-
-    ID              shift and go to state 98
-
+    OperadorLogico                 shift and go to state 88
 
 state 64
 
-    (54) Bloco_DEFINEFUNC -> DEFINE FUNC ( . ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> DEFINE FUNC ( . ListaAtributos ) { BlocosCodigo }
-    (56) ListaAtributos -> . Atributo
-    (57) ListaAtributos -> . ListaAtributos , Atributo
-    (58) Atributo -> . INT
+    (46) BlocoLerSTDIN -> STRUCTARRAY ID ID . = STDIN ( ) ;
 
-    )               shift and go to state 99
-    INT             shift and go to state 102
+    =               shift and go to state 101
 
-    ListaAtributos                 shift and go to state 100
-    Atributo                       shift and go to state 101
 
 state 65
 
-    (60) Bloco_CALLFUNC -> CALL FUNC ( . ) ;
-    (61) Bloco_CALLFUNC -> CALL FUNC ( . INPUTVar ) ;
-    (62) INPUTVar -> . Var
-    (63) INPUTVar -> . INPUTVar , Var
+    (48) Bloco_EscreverSTDOUT -> STDOUT ( Var . ) ;
+
+    )               shift and go to state 102
+
+
+state 66
+
+    (49) Bloco_EscreverSTDOUT -> STDOUT ( PAL . ) ;
+
+    )               shift and go to state 103
+
+
+state 67
+
+    (50) Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY . ID ID ) ;
+
+    ID              shift and go to state 104
+
+
+state 68
+
+    (54) Bloco_Return -> RETURN ID ; .
+
+    INT             reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    ID              reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    IF              reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    IFELSE          reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    WHILE           reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    STRUCTARRAY     reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    STDOUT          reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    COMMENT         reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    RETURN          reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    DEFINE          reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    CALL            reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    ARRAYNUM        reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    ARRAYID         reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    FOR             reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    $end            reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+    }               reduce using rule 54 (Bloco_Return -> RETURN ID ; .)
+
+
+state 69
+
+    (55) Bloco_Return -> RETURN NUM ; .
+
+    INT             reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    ID              reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    IF              reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    IFELSE          reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    WHILE           reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    STRUCTARRAY     reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    STDOUT          reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    COMMENT         reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    RETURN          reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    DEFINE          reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    CALL            reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    ARRAYNUM        reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    ARRAYID         reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    FOR             reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    $end            reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+    }               reduce using rule 55 (Bloco_Return -> RETURN NUM ; .)
+
+
+state 70
+
+    (57) Bloco_DEFINEFUNC -> DEFINE FUNC ( . ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> DEFINE FUNC ( . ListaAtributos ) { BlocosCodigo }
+    (59) ListaAtributos -> . Atributo
+    (60) ListaAtributos -> . ListaAtributos , Atributo
+    (61) Atributo -> . INT
+
+    )               shift and go to state 105
+    INT             shift and go to state 108
+
+    ListaAtributos                 shift and go to state 106
+    Atributo                       shift and go to state 107
+
+state 71
+
+    (63) Bloco_CALLFUNC -> CALL FUNC ( . ) ;
+    (64) Bloco_CALLFUNC -> CALL FUNC ( . INPUTVar ) ;
+    (65) INPUTVar -> . Var
+    (66) INPUTVar -> . INPUTVar , Var
     (12) Var -> . NUM
     (13) Var -> . ID
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    )               shift and go to state 103
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    )               shift and go to state 109
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    INPUTVar                       shift and go to state 104
-    Var                            shift and go to state 105
+    INPUTVar                       shift and go to state 110
+    Var                            shift and go to state 111
 
-state 66
+state 72
 
-    (65) Array -> ARRAYNUM NUM ID . ;
+    (68) Array -> ARRAYNUM NUM ID . ;
 
-    ;               shift and go to state 106
-
-
-state 67
-
-    (66) Array -> ARRAYID ID ID . ;
-
-    ;               shift and go to state 107
+    ;               shift and go to state 112
 
 
-state 68
+state 73
 
-    (68) BlocoFOR -> FOR ID ( . Condicional ) Atribuicao { BlocosCodigo }
+    (69) Array -> ARRAYID ID ID . ;
+
+    ;               shift and go to state 113
+
+
+state 74
+
+    (71) BlocoFOR -> FOR ID ( . Condicional ) Atribuicao { BlocosCodigo }
     (32) Condicional -> . Var
     (33) Condicional -> . ! ( Condicional )
     (34) Condicional -> . ( Condicional )
@@ -1291,17 +1412,17 @@ state 68
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    !               shift and go to state 110
-    (               shift and go to state 108
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    !               shift and go to state 116
+    (               shift and go to state 114
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    Condicional                    shift and go to state 109
-    Var                            shift and go to state 57
+    Condicional                    shift and go to state 115
+    Var                            shift and go to state 61
 
-state 69
+state 75
 
     (6) Declaracao -> INT ID = Expressao . ;
     (16) Expressao -> Expressao . Operador Var
@@ -1311,16 +1432,16 @@ state 69
     (21) Operador -> . /
     (22) Operador -> . %
 
-    ;               shift and go to state 111
-    +               shift and go to state 72
-    -               shift and go to state 73
-    *               shift and go to state 74
-    /               shift and go to state 75
-    %               shift and go to state 76
+    ;               shift and go to state 117
+    +               shift and go to state 78
+    -               shift and go to state 79
+    *               shift and go to state 80
+    /               shift and go to state 81
+    %               shift and go to state 82
 
-    Operador                       shift and go to state 71
+    Operador                       shift and go to state 77
 
-state 70
+state 76
 
     (9) Atribuicao -> ID = Expressao ; .
 
@@ -1332,6 +1453,7 @@ state 70
     STRUCTARRAY     reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
     STDOUT          reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
     COMMENT         reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
+    RETURN          reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
     DEFINE          reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
     CALL            reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
     ARRAYNUM        reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
@@ -1342,7 +1464,7 @@ state 70
     {               reduce using rule 9 (Atribuicao -> ID = Expressao ; .)
 
 
-state 71
+state 77
 
     (16) Expressao -> Expressao Operador . Var
     (12) Var -> . NUM
@@ -1350,14 +1472,14 @@ state 71
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    Var                            shift and go to state 112
+    Var                            shift and go to state 118
 
-state 72
+state 78
 
     (18) Operador -> + .
 
@@ -1367,7 +1489,7 @@ state 72
     FALSE           reduce using rule 18 (Operador -> + .)
 
 
-state 73
+state 79
 
     (19) Operador -> - .
 
@@ -1377,7 +1499,7 @@ state 73
     FALSE           reduce using rule 19 (Operador -> - .)
 
 
-state 74
+state 80
 
     (20) Operador -> * .
 
@@ -1387,7 +1509,7 @@ state 74
     FALSE           reduce using rule 20 (Operador -> * .)
 
 
-state 75
+state 81
 
     (21) Operador -> / .
 
@@ -1397,7 +1519,7 @@ state 75
     FALSE           reduce using rule 21 (Operador -> / .)
 
 
-state 76
+state 82
 
     (22) Operador -> % .
 
@@ -1407,14 +1529,14 @@ state 76
     FALSE           reduce using rule 22 (Operador -> % .)
 
 
-state 77
+state 83
 
     (45) BlocoLerSTDIN -> ID = STDIN ( . ) ;
 
-    )               shift and go to state 113
+    )               shift and go to state 119
 
 
-state 78
+state 84
 
     (17) Expressao -> ( Expressao . )
     (16) Expressao -> Expressao . Operador Var
@@ -1424,29 +1546,29 @@ state 78
     (21) Operador -> . /
     (22) Operador -> . %
 
-    )               shift and go to state 114
-    +               shift and go to state 72
-    -               shift and go to state 73
-    *               shift and go to state 74
-    /               shift and go to state 75
-    %               shift and go to state 76
+    )               shift and go to state 120
+    +               shift and go to state 78
+    -               shift and go to state 79
+    *               shift and go to state 80
+    /               shift and go to state 81
+    %               shift and go to state 82
 
-    Operador                       shift and go to state 71
+    Operador                       shift and go to state 77
 
-state 79
+state 85
 
     (27) ListaCondicionais -> ( ListaCondicionais . )
     (29) ListaCondicionais -> ListaCondicionais . OperadorLogico Condicional
     (30) OperadorLogico -> . AND
     (31) OperadorLogico -> . OR
 
-    )               shift and go to state 115
-    AND             shift and go to state 83
-    OR              shift and go to state 84
+    )               shift and go to state 121
+    AND             shift and go to state 89
+    OR              shift and go to state 90
 
-    OperadorLogico                 shift and go to state 82
+    OperadorLogico                 shift and go to state 88
 
-state 80
+state 86
 
     (34) Condicional -> ( Condicional . )
     (26) ListaCondicionais -> Condicional .
@@ -1459,28 +1581,28 @@ state 80
     (41) OperadorCondicional -> . NOTEQUALS
 
   ! shift/reduce conflict for ) resolved as shift
-    )               shift and go to state 116
+    )               shift and go to state 122
     AND             reduce using rule 26 (ListaCondicionais -> Condicional .)
     OR              reduce using rule 26 (ListaCondicionais -> Condicional .)
-    >               shift and go to state 86
-    BIGEQUAL        shift and go to state 87
-    <               shift and go to state 88
-    LESSEREQUAL     shift and go to state 89
-    EQUALS          shift and go to state 90
-    NOTEQUALS       shift and go to state 91
+    >               shift and go to state 92
+    BIGEQUAL        shift and go to state 93
+    <               shift and go to state 94
+    LESSEREQUAL     shift and go to state 95
+    EQUALS          shift and go to state 96
+    NOTEQUALS       shift and go to state 97
 
   ! )               [ reduce using rule 26 (ListaCondicionais -> Condicional .) ]
 
-    OperadorCondicional            shift and go to state 85
+    OperadorCondicional            shift and go to state 91
 
-state 81
+state 87
 
     (24) BlocoIF -> IF ( ListaCondicionais ) . { BlocosCodigo }
 
-    {               shift and go to state 117
+    {               shift and go to state 123
 
 
-state 82
+state 88
 
     (29) ListaCondicionais -> ListaCondicionais OperadorLogico . Condicional
     (32) Condicional -> . Var
@@ -1492,17 +1614,17 @@ state 82
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    !               shift and go to state 110
-    (               shift and go to state 108
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    !               shift and go to state 116
+    (               shift and go to state 114
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    Condicional                    shift and go to state 118
-    Var                            shift and go to state 57
+    Condicional                    shift and go to state 124
+    Var                            shift and go to state 61
 
-state 83
+state 89
 
     (30) OperadorLogico -> AND .
 
@@ -1514,7 +1636,7 @@ state 83
     FALSE           reduce using rule 30 (OperadorLogico -> AND .)
 
 
-state 84
+state 90
 
     (31) OperadorLogico -> OR .
 
@@ -1526,7 +1648,7 @@ state 84
     FALSE           reduce using rule 31 (OperadorLogico -> OR .)
 
 
-state 85
+state 91
 
     (35) Condicional -> Condicional OperadorCondicional . Condicional
     (32) Condicional -> . Var
@@ -1538,17 +1660,17 @@ state 85
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    !               shift and go to state 110
-    (               shift and go to state 108
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    !               shift and go to state 116
+    (               shift and go to state 114
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    Condicional                    shift and go to state 119
-    Var                            shift and go to state 57
+    Condicional                    shift and go to state 125
+    Var                            shift and go to state 61
 
-state 86
+state 92
 
     (36) OperadorCondicional -> > .
 
@@ -1560,7 +1682,7 @@ state 86
     FALSE           reduce using rule 36 (OperadorCondicional -> > .)
 
 
-state 87
+state 93
 
     (37) OperadorCondicional -> BIGEQUAL .
 
@@ -1572,7 +1694,7 @@ state 87
     FALSE           reduce using rule 37 (OperadorCondicional -> BIGEQUAL .)
 
 
-state 88
+state 94
 
     (38) OperadorCondicional -> < .
 
@@ -1584,7 +1706,7 @@ state 88
     FALSE           reduce using rule 38 (OperadorCondicional -> < .)
 
 
-state 89
+state 95
 
     (39) OperadorCondicional -> LESSEREQUAL .
 
@@ -1596,7 +1718,7 @@ state 89
     FALSE           reduce using rule 39 (OperadorCondicional -> LESSEREQUAL .)
 
 
-state 90
+state 96
 
     (40) OperadorCondicional -> EQUALS .
 
@@ -1608,7 +1730,7 @@ state 90
     FALSE           reduce using rule 40 (OperadorCondicional -> EQUALS .)
 
 
-state 91
+state 97
 
     (41) OperadorCondicional -> NOTEQUALS .
 
@@ -1620,7 +1742,7 @@ state 91
     FALSE           reduce using rule 41 (OperadorCondicional -> NOTEQUALS .)
 
 
-state 92
+state 98
 
     (28) ListaCondicionais -> ! ( . ListaCondicionais )
     (33) Condicional -> ! ( . Condicional )
@@ -1637,158 +1759,160 @@ state 92
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    (               shift and go to state 53
-    !               shift and go to state 56
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    (               shift and go to state 57
+    !               shift and go to state 60
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    ListaCondicionais              shift and go to state 120
-    Condicional                    shift and go to state 121
-    Var                            shift and go to state 57
-
-state 93
-
-    (25) BlocoIF -> IFELSE ( ListaCondicionais ) . { BlocosCodigo } ELSE { BlocosCodigo }
-
-    {               shift and go to state 122
-
-
-state 94
-
-    (43) BlocoWhileDo -> WHILE ( ListaCondicionais ) . DO { BlocosCodigo }
-
-    DO              shift and go to state 123
-
-
-state 95
-
-    (46) BlocoLerSTDIN -> STRUCTARRAY ID ID = . STDIN ( ) ;
-
-    STDIN           shift and go to state 124
-
-
-state 96
-
-    (48) Bloco_EscreverSTDOUT -> STDOUT ( Var ) . ;
-
-    ;               shift and go to state 125
-
-
-state 97
-
-    (49) Bloco_EscreverSTDOUT -> STDOUT ( PAL ) . ;
-
-    ;               shift and go to state 126
-
-
-state 98
-
-    (50) Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY ID . ID ) ;
-
-    ID              shift and go to state 127
-
+    ListaCondicionais              shift and go to state 126
+    Condicional                    shift and go to state 127
+    Var                            shift and go to state 61
 
 state 99
 
-    (54) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) . { BlocosCodigo }
+    (25) BlocoIF -> IFELSE ( ListaCondicionais ) . { BlocosCodigo } ELSE { BlocosCodigo }
 
     {               shift and go to state 128
 
 
 state 100
 
-    (55) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos . ) { BlocosCodigo }
-    (57) ListaAtributos -> ListaAtributos . , Atributo
+    (43) BlocoWhileDo -> WHILE ( ListaCondicionais ) . DO { BlocosCodigo }
 
-    )               shift and go to state 129
-    ,               shift and go to state 130
+    DO              shift and go to state 129
 
 
 state 101
 
-    (56) ListaAtributos -> Atributo .
+    (46) BlocoLerSTDIN -> STRUCTARRAY ID ID = . STDIN ( ) ;
 
-    )               reduce using rule 56 (ListaAtributos -> Atributo .)
-    ,               reduce using rule 56 (ListaAtributos -> Atributo .)
+    STDIN           shift and go to state 130
 
 
 state 102
 
-    (58) Atributo -> INT .
-
-    )               reduce using rule 58 (Atributo -> INT .)
-    ,               reduce using rule 58 (Atributo -> INT .)
-
-
-state 103
-
-    (60) Bloco_CALLFUNC -> CALL FUNC ( ) . ;
+    (48) Bloco_EscreverSTDOUT -> STDOUT ( Var ) . ;
 
     ;               shift and go to state 131
 
 
+state 103
+
+    (49) Bloco_EscreverSTDOUT -> STDOUT ( PAL ) . ;
+
+    ;               shift and go to state 132
+
+
 state 104
 
-    (61) Bloco_CALLFUNC -> CALL FUNC ( INPUTVar . ) ;
-    (63) INPUTVar -> INPUTVar . , Var
+    (50) Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY ID . ID ) ;
 
-    )               shift and go to state 132
-    ,               shift and go to state 133
+    ID              shift and go to state 133
 
 
 state 105
 
-    (62) INPUTVar -> Var .
+    (57) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) . { BlocosCodigo }
 
-    )               reduce using rule 62 (INPUTVar -> Var .)
-    ,               reduce using rule 62 (INPUTVar -> Var .)
+    {               shift and go to state 134
 
 
 state 106
 
-    (65) Array -> ARRAYNUM NUM ID ; .
+    (58) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos . ) { BlocosCodigo }
+    (60) ListaAtributos -> ListaAtributos . , Atributo
 
-    INT             reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
-    ID              reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
-    IF              reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
-    IFELSE          reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
-    WHILE           reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
-    STRUCTARRAY     reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
-    STDOUT          reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
-    COMMENT         reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
-    DEFINE          reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
-    CALL            reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
-    ARRAYNUM        reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
-    ARRAYID         reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
-    FOR             reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
-    $end            reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
-    }               reduce using rule 65 (Array -> ARRAYNUM NUM ID ; .)
+    )               shift and go to state 135
+    ,               shift and go to state 136
 
 
 state 107
 
-    (66) Array -> ARRAYID ID ID ; .
+    (59) ListaAtributos -> Atributo .
 
-    INT             reduce using rule 66 (Array -> ARRAYID ID ID ; .)
-    ID              reduce using rule 66 (Array -> ARRAYID ID ID ; .)
-    IF              reduce using rule 66 (Array -> ARRAYID ID ID ; .)
-    IFELSE          reduce using rule 66 (Array -> ARRAYID ID ID ; .)
-    WHILE           reduce using rule 66 (Array -> ARRAYID ID ID ; .)
-    STRUCTARRAY     reduce using rule 66 (Array -> ARRAYID ID ID ; .)
-    STDOUT          reduce using rule 66 (Array -> ARRAYID ID ID ; .)
-    COMMENT         reduce using rule 66 (Array -> ARRAYID ID ID ; .)
-    DEFINE          reduce using rule 66 (Array -> ARRAYID ID ID ; .)
-    CALL            reduce using rule 66 (Array -> ARRAYID ID ID ; .)
-    ARRAYNUM        reduce using rule 66 (Array -> ARRAYID ID ID ; .)
-    ARRAYID         reduce using rule 66 (Array -> ARRAYID ID ID ; .)
-    FOR             reduce using rule 66 (Array -> ARRAYID ID ID ; .)
-    $end            reduce using rule 66 (Array -> ARRAYID ID ID ; .)
-    }               reduce using rule 66 (Array -> ARRAYID ID ID ; .)
+    )               reduce using rule 59 (ListaAtributos -> Atributo .)
+    ,               reduce using rule 59 (ListaAtributos -> Atributo .)
 
 
 state 108
+
+    (61) Atributo -> INT .
+
+    )               reduce using rule 61 (Atributo -> INT .)
+    ,               reduce using rule 61 (Atributo -> INT .)
+
+
+state 109
+
+    (63) Bloco_CALLFUNC -> CALL FUNC ( ) . ;
+
+    ;               shift and go to state 137
+
+
+state 110
+
+    (64) Bloco_CALLFUNC -> CALL FUNC ( INPUTVar . ) ;
+    (66) INPUTVar -> INPUTVar . , Var
+
+    )               shift and go to state 138
+    ,               shift and go to state 139
+
+
+state 111
+
+    (65) INPUTVar -> Var .
+
+    )               reduce using rule 65 (INPUTVar -> Var .)
+    ,               reduce using rule 65 (INPUTVar -> Var .)
+
+
+state 112
+
+    (68) Array -> ARRAYNUM NUM ID ; .
+
+    INT             reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    ID              reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    IF              reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    IFELSE          reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    WHILE           reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    STRUCTARRAY     reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    STDOUT          reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    COMMENT         reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    RETURN          reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    DEFINE          reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    CALL            reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    ARRAYNUM        reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    ARRAYID         reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    FOR             reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    $end            reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+    }               reduce using rule 68 (Array -> ARRAYNUM NUM ID ; .)
+
+
+state 113
+
+    (69) Array -> ARRAYID ID ID ; .
+
+    INT             reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    ID              reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    IF              reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    IFELSE          reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    WHILE           reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    STRUCTARRAY     reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    STDOUT          reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    COMMENT         reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    RETURN          reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    DEFINE          reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    CALL            reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    ARRAYNUM        reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    ARRAYID         reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    FOR             reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    $end            reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+    }               reduce using rule 69 (Array -> ARRAYID ID ID ; .)
+
+
+state 114
 
     (34) Condicional -> ( . Condicional )
     (32) Condicional -> . Var
@@ -1800,19 +1924,19 @@ state 108
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    !               shift and go to state 110
-    (               shift and go to state 108
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    !               shift and go to state 116
+    (               shift and go to state 114
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    Condicional                    shift and go to state 134
-    Var                            shift and go to state 57
+    Condicional                    shift and go to state 140
+    Var                            shift and go to state 61
 
-state 109
+state 115
 
-    (68) BlocoFOR -> FOR ID ( Condicional . ) Atribuicao { BlocosCodigo }
+    (71) BlocoFOR -> FOR ID ( Condicional . ) Atribuicao { BlocosCodigo }
     (35) Condicional -> Condicional . OperadorCondicional Condicional
     (36) OperadorCondicional -> . >
     (37) OperadorCondicional -> . BIGEQUAL
@@ -1821,24 +1945,24 @@ state 109
     (40) OperadorCondicional -> . EQUALS
     (41) OperadorCondicional -> . NOTEQUALS
 
-    )               shift and go to state 135
-    >               shift and go to state 86
-    BIGEQUAL        shift and go to state 87
-    <               shift and go to state 88
-    LESSEREQUAL     shift and go to state 89
-    EQUALS          shift and go to state 90
-    NOTEQUALS       shift and go to state 91
+    )               shift and go to state 141
+    >               shift and go to state 92
+    BIGEQUAL        shift and go to state 93
+    <               shift and go to state 94
+    LESSEREQUAL     shift and go to state 95
+    EQUALS          shift and go to state 96
+    NOTEQUALS       shift and go to state 97
 
-    OperadorCondicional            shift and go to state 85
+    OperadorCondicional            shift and go to state 91
 
-state 110
+state 116
 
     (33) Condicional -> ! . ( Condicional )
 
-    (               shift and go to state 136
+    (               shift and go to state 142
 
 
-state 111
+state 117
 
     (6) Declaracao -> INT ID = Expressao ; .
 
@@ -1850,6 +1974,7 @@ state 111
     STRUCTARRAY     reduce using rule 6 (Declaracao -> INT ID = Expressao ; .)
     STDOUT          reduce using rule 6 (Declaracao -> INT ID = Expressao ; .)
     COMMENT         reduce using rule 6 (Declaracao -> INT ID = Expressao ; .)
+    RETURN          reduce using rule 6 (Declaracao -> INT ID = Expressao ; .)
     DEFINE          reduce using rule 6 (Declaracao -> INT ID = Expressao ; .)
     CALL            reduce using rule 6 (Declaracao -> INT ID = Expressao ; .)
     ARRAYNUM        reduce using rule 6 (Declaracao -> INT ID = Expressao ; .)
@@ -1859,7 +1984,7 @@ state 111
     }               reduce using rule 6 (Declaracao -> INT ID = Expressao ; .)
 
 
-state 112
+state 118
 
     (16) Expressao -> Expressao Operador Var .
 
@@ -1872,14 +1997,14 @@ state 112
     )               reduce using rule 16 (Expressao -> Expressao Operador Var .)
 
 
-state 113
+state 119
 
     (45) BlocoLerSTDIN -> ID = STDIN ( ) . ;
 
-    ;               shift and go to state 137
+    ;               shift and go to state 143
 
 
-state 114
+state 120
 
     (17) Expressao -> ( Expressao ) .
 
@@ -1892,7 +2017,7 @@ state 114
     )               reduce using rule 17 (Expressao -> ( Expressao ) .)
 
 
-state 115
+state 121
 
     (27) ListaCondicionais -> ( ListaCondicionais ) .
 
@@ -1901,7 +2026,7 @@ state 115
     OR              reduce using rule 27 (ListaCondicionais -> ( ListaCondicionais ) .)
 
 
-state 116
+state 122
 
     (34) Condicional -> ( Condicional ) .
 
@@ -1916,7 +2041,7 @@ state 116
     OR              reduce using rule 34 (Condicional -> ( Condicional ) .)
 
 
-state 117
+state 123
 
     (24) BlocoIF -> IF ( ListaCondicionais ) { . BlocosCodigo }
     (2) BlocosCodigo -> . Codigo
@@ -1928,10 +2053,11 @@ state 117
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -1946,29 +2072,32 @@ state 117
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
-    BlocosCodigo                   shift and go to state 138
+    BlocosCodigo                   shift and go to state 144
     Codigo                         shift and go to state 3
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
@@ -1977,12 +2106,13 @@ state 117
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
-state 118
+state 124
 
     (29) ListaCondicionais -> ListaCondicionais OperadorLogico Condicional .
     (35) Condicional -> Condicional . OperadorCondicional Condicional
@@ -1996,16 +2126,16 @@ state 118
     )               reduce using rule 29 (ListaCondicionais -> ListaCondicionais OperadorLogico Condicional .)
     AND             reduce using rule 29 (ListaCondicionais -> ListaCondicionais OperadorLogico Condicional .)
     OR              reduce using rule 29 (ListaCondicionais -> ListaCondicionais OperadorLogico Condicional .)
-    >               shift and go to state 86
-    BIGEQUAL        shift and go to state 87
-    <               shift and go to state 88
-    LESSEREQUAL     shift and go to state 89
-    EQUALS          shift and go to state 90
-    NOTEQUALS       shift and go to state 91
+    >               shift and go to state 92
+    BIGEQUAL        shift and go to state 93
+    <               shift and go to state 94
+    LESSEREQUAL     shift and go to state 95
+    EQUALS          shift and go to state 96
+    NOTEQUALS       shift and go to state 97
 
-    OperadorCondicional            shift and go to state 85
+    OperadorCondicional            shift and go to state 91
 
-state 119
+state 125
 
     (35) Condicional -> Condicional OperadorCondicional Condicional .
     (35) Condicional -> Condicional . OperadorCondicional Condicional
@@ -2025,12 +2155,12 @@ state 119
     )               reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .)
     AND             reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .)
     OR              reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .)
-    >               shift and go to state 86
-    BIGEQUAL        shift and go to state 87
-    <               shift and go to state 88
-    LESSEREQUAL     shift and go to state 89
-    EQUALS          shift and go to state 90
-    NOTEQUALS       shift and go to state 91
+    >               shift and go to state 92
+    BIGEQUAL        shift and go to state 93
+    <               shift and go to state 94
+    LESSEREQUAL     shift and go to state 95
+    EQUALS          shift and go to state 96
+    NOTEQUALS       shift and go to state 97
 
   ! >               [ reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .) ]
   ! BIGEQUAL        [ reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .) ]
@@ -2039,22 +2169,22 @@ state 119
   ! EQUALS          [ reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .) ]
   ! NOTEQUALS       [ reduce using rule 35 (Condicional -> Condicional OperadorCondicional Condicional .) ]
 
-    OperadorCondicional            shift and go to state 85
+    OperadorCondicional            shift and go to state 91
 
-state 120
+state 126
 
     (28) ListaCondicionais -> ! ( ListaCondicionais . )
     (29) ListaCondicionais -> ListaCondicionais . OperadorLogico Condicional
     (30) OperadorLogico -> . AND
     (31) OperadorLogico -> . OR
 
-    )               shift and go to state 139
-    AND             shift and go to state 83
-    OR              shift and go to state 84
+    )               shift and go to state 145
+    AND             shift and go to state 89
+    OR              shift and go to state 90
 
-    OperadorLogico                 shift and go to state 82
+    OperadorLogico                 shift and go to state 88
 
-state 121
+state 127
 
     (33) Condicional -> ! ( Condicional . )
     (26) ListaCondicionais -> Condicional .
@@ -2067,21 +2197,21 @@ state 121
     (41) OperadorCondicional -> . NOTEQUALS
 
   ! shift/reduce conflict for ) resolved as shift
-    )               shift and go to state 140
+    )               shift and go to state 146
     AND             reduce using rule 26 (ListaCondicionais -> Condicional .)
     OR              reduce using rule 26 (ListaCondicionais -> Condicional .)
-    >               shift and go to state 86
-    BIGEQUAL        shift and go to state 87
-    <               shift and go to state 88
-    LESSEREQUAL     shift and go to state 89
-    EQUALS          shift and go to state 90
-    NOTEQUALS       shift and go to state 91
+    >               shift and go to state 92
+    BIGEQUAL        shift and go to state 93
+    <               shift and go to state 94
+    LESSEREQUAL     shift and go to state 95
+    EQUALS          shift and go to state 96
+    NOTEQUALS       shift and go to state 97
 
   ! )               [ reduce using rule 26 (ListaCondicionais -> Condicional .) ]
 
-    OperadorCondicional            shift and go to state 85
+    OperadorCondicional            shift and go to state 91
 
-state 122
+state 128
 
     (25) BlocoIF -> IFELSE ( ListaCondicionais ) { . BlocosCodigo } ELSE { BlocosCodigo }
     (2) BlocosCodigo -> . Codigo
@@ -2093,10 +2223,11 @@ state 122
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -2111,29 +2242,32 @@ state 122
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
-    BlocosCodigo                   shift and go to state 141
+    BlocosCodigo                   shift and go to state 147
     Codigo                         shift and go to state 3
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
@@ -2142,26 +2276,27 @@ state 122
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
-state 123
+state 129
 
     (43) BlocoWhileDo -> WHILE ( ListaCondicionais ) DO . { BlocosCodigo }
 
-    {               shift and go to state 142
+    {               shift and go to state 148
 
 
-state 124
+state 130
 
     (46) BlocoLerSTDIN -> STRUCTARRAY ID ID = STDIN . ( ) ;
 
-    (               shift and go to state 143
+    (               shift and go to state 149
 
 
-state 125
+state 131
 
     (48) Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .
 
@@ -2173,6 +2308,7 @@ state 125
     STRUCTARRAY     reduce using rule 48 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
     STDOUT          reduce using rule 48 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
     COMMENT         reduce using rule 48 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
+    RETURN          reduce using rule 48 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
     DEFINE          reduce using rule 48 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
     CALL            reduce using rule 48 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
     ARRAYNUM        reduce using rule 48 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
@@ -2182,7 +2318,7 @@ state 125
     }               reduce using rule 48 (Bloco_EscreverSTDOUT -> STDOUT ( Var ) ; .)
 
 
-state 126
+state 132
 
     (49) Bloco_EscreverSTDOUT -> STDOUT ( PAL ) ; .
 
@@ -2194,6 +2330,7 @@ state 126
     STRUCTARRAY     reduce using rule 49 (Bloco_EscreverSTDOUT -> STDOUT ( PAL ) ; .)
     STDOUT          reduce using rule 49 (Bloco_EscreverSTDOUT -> STDOUT ( PAL ) ; .)
     COMMENT         reduce using rule 49 (Bloco_EscreverSTDOUT -> STDOUT ( PAL ) ; .)
+    RETURN          reduce using rule 49 (Bloco_EscreverSTDOUT -> STDOUT ( PAL ) ; .)
     DEFINE          reduce using rule 49 (Bloco_EscreverSTDOUT -> STDOUT ( PAL ) ; .)
     CALL            reduce using rule 49 (Bloco_EscreverSTDOUT -> STDOUT ( PAL ) ; .)
     ARRAYNUM        reduce using rule 49 (Bloco_EscreverSTDOUT -> STDOUT ( PAL ) ; .)
@@ -2203,16 +2340,16 @@ state 126
     }               reduce using rule 49 (Bloco_EscreverSTDOUT -> STDOUT ( PAL ) ; .)
 
 
-state 127
+state 133
 
     (50) Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY ID ID . ) ;
 
-    )               shift and go to state 144
+    )               shift and go to state 150
 
 
-state 128
+state 134
 
-    (54) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { . BlocosCodigo }
+    (57) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { . BlocosCodigo }
     (2) BlocosCodigo -> . Codigo
     (3) BlocosCodigo -> . BlocosCodigo Codigo
     (4) Codigo -> . Declaracao
@@ -2222,10 +2359,11 @@ state 128
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -2240,29 +2378,32 @@ state 128
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
-    BlocosCodigo                   shift and go to state 145
+    BlocosCodigo                   shift and go to state 151
     Codigo                         shift and go to state 3
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
@@ -2271,72 +2412,74 @@ state 128
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
-state 129
+state 135
 
-    (55) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) . { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) . { BlocosCodigo }
 
-    {               shift and go to state 146
-
-
-state 130
-
-    (57) ListaAtributos -> ListaAtributos , . Atributo
-    (58) Atributo -> . INT
-
-    INT             shift and go to state 102
-
-    Atributo                       shift and go to state 147
-
-state 131
-
-    (60) Bloco_CALLFUNC -> CALL FUNC ( ) ; .
-
-    INT             reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    ID              reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    IF              reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    IFELSE          reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    WHILE           reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    STRUCTARRAY     reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    STDOUT          reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    COMMENT         reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    DEFINE          reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    CALL            reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    ARRAYNUM        reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    ARRAYID         reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    FOR             reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    $end            reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    }               reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
-    {               reduce using rule 60 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    {               shift and go to state 152
 
 
-state 132
+state 136
 
-    (61) Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) . ;
+    (60) ListaAtributos -> ListaAtributos , . Atributo
+    (61) Atributo -> . INT
 
-    ;               shift and go to state 148
+    INT             shift and go to state 108
+
+    Atributo                       shift and go to state 153
+
+state 137
+
+    (63) Bloco_CALLFUNC -> CALL FUNC ( ) ; .
+
+    INT             reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    ID              reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    IF              reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    IFELSE          reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    WHILE           reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    STRUCTARRAY     reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    STDOUT          reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    COMMENT         reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    RETURN          reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    DEFINE          reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    CALL            reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    ARRAYNUM        reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    ARRAYID         reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    FOR             reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    $end            reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    }               reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
+    {               reduce using rule 63 (Bloco_CALLFUNC -> CALL FUNC ( ) ; .)
 
 
-state 133
+state 138
 
-    (63) INPUTVar -> INPUTVar , . Var
+    (64) Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) . ;
+
+    ;               shift and go to state 154
+
+
+state 139
+
+    (66) INPUTVar -> INPUTVar , . Var
     (12) Var -> . NUM
     (13) Var -> . ID
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    Var                            shift and go to state 149
+    Var                            shift and go to state 155
 
-state 134
+state 140
 
     (34) Condicional -> ( Condicional . )
     (35) Condicional -> Condicional . OperadorCondicional Condicional
@@ -2347,27 +2490,27 @@ state 134
     (40) OperadorCondicional -> . EQUALS
     (41) OperadorCondicional -> . NOTEQUALS
 
-    )               shift and go to state 116
-    >               shift and go to state 86
-    BIGEQUAL        shift and go to state 87
-    <               shift and go to state 88
-    LESSEREQUAL     shift and go to state 89
-    EQUALS          shift and go to state 90
-    NOTEQUALS       shift and go to state 91
+    )               shift and go to state 122
+    >               shift and go to state 92
+    BIGEQUAL        shift and go to state 93
+    <               shift and go to state 94
+    LESSEREQUAL     shift and go to state 95
+    EQUALS          shift and go to state 96
+    NOTEQUALS       shift and go to state 97
 
-    OperadorCondicional            shift and go to state 85
+    OperadorCondicional            shift and go to state 91
 
-state 135
+state 141
 
-    (68) BlocoFOR -> FOR ID ( Condicional ) . Atribuicao { BlocosCodigo }
+    (71) BlocoFOR -> FOR ID ( Condicional ) . Atribuicao { BlocosCodigo }
     (9) Atribuicao -> . ID = Expressao ;
     (10) Atribuicao -> . ID = Bloco_CALLFUNC
 
-    ID              shift and go to state 150
+    ID              shift and go to state 156
 
-    Atribuicao                     shift and go to state 151
+    Atribuicao                     shift and go to state 157
 
-state 136
+state 142
 
     (33) Condicional -> ! ( . Condicional )
     (32) Condicional -> . Var
@@ -2379,17 +2522,17 @@ state 136
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    !               shift and go to state 110
-    (               shift and go to state 108
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    !               shift and go to state 116
+    (               shift and go to state 114
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    Condicional                    shift and go to state 152
-    Var                            shift and go to state 57
+    Condicional                    shift and go to state 158
+    Var                            shift and go to state 61
 
-state 137
+state 143
 
     (45) BlocoLerSTDIN -> ID = STDIN ( ) ; .
 
@@ -2401,6 +2544,7 @@ state 137
     STRUCTARRAY     reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
     STDOUT          reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
     COMMENT         reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
+    RETURN          reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
     DEFINE          reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
     CALL            reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
     ARRAYNUM        reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
@@ -2410,7 +2554,7 @@ state 137
     }               reduce using rule 45 (BlocoLerSTDIN -> ID = STDIN ( ) ; .)
 
 
-state 138
+state 144
 
     (24) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo . }
     (3) BlocosCodigo -> BlocosCodigo . Codigo
@@ -2421,10 +2565,11 @@ state 138
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -2439,30 +2584,33 @@ state 138
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    }               shift and go to state 153
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    }               shift and go to state 159
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
-    Codigo                         shift and go to state 28
+    Codigo                         shift and go to state 30
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
     BlocoIF                        shift and go to state 6
@@ -2470,12 +2618,13 @@ state 138
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
-state 139
+state 145
 
     (28) ListaCondicionais -> ! ( ListaCondicionais ) .
 
@@ -2484,7 +2633,7 @@ state 139
     OR              reduce using rule 28 (ListaCondicionais -> ! ( ListaCondicionais ) .)
 
 
-state 140
+state 146
 
     (33) Condicional -> ! ( Condicional ) .
 
@@ -2499,7 +2648,7 @@ state 140
     OR              reduce using rule 33 (Condicional -> ! ( Condicional ) .)
 
 
-state 141
+state 147
 
     (25) BlocoIF -> IFELSE ( ListaCondicionais ) { BlocosCodigo . } ELSE { BlocosCodigo }
     (3) BlocosCodigo -> BlocosCodigo . Codigo
@@ -2510,10 +2659,11 @@ state 141
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -2528,30 +2678,33 @@ state 141
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    }               shift and go to state 154
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    }               shift and go to state 160
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
-    Codigo                         shift and go to state 28
+    Codigo                         shift and go to state 30
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
     BlocoIF                        shift and go to state 6
@@ -2559,12 +2712,13 @@ state 141
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
-state 142
+state 148
 
     (43) BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { . BlocosCodigo }
     (2) BlocosCodigo -> . Codigo
@@ -2576,10 +2730,11 @@ state 142
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -2594,29 +2749,32 @@ state 142
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
-    BlocosCodigo                   shift and go to state 155
+    BlocosCodigo                   shift and go to state 161
     Codigo                         shift and go to state 3
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
@@ -2625,28 +2783,29 @@ state 142
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
-state 143
+state 149
 
     (46) BlocoLerSTDIN -> STRUCTARRAY ID ID = STDIN ( . ) ;
 
-    )               shift and go to state 156
+    )               shift and go to state 162
 
 
-state 144
+state 150
 
     (50) Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY ID ID ) . ;
 
-    ;               shift and go to state 157
+    ;               shift and go to state 163
 
 
-state 145
+state 151
 
-    (54) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo . }
+    (57) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo . }
     (3) BlocosCodigo -> BlocosCodigo . Codigo
     (4) Codigo -> . Declaracao
     (8) Codigo -> . Atribuicao
@@ -2655,10 +2814,11 @@ state 145
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -2673,30 +2833,33 @@ state 145
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    }               shift and go to state 158
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    }               shift and go to state 164
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
-    Codigo                         shift and go to state 28
+    Codigo                         shift and go to state 30
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
     BlocoIF                        shift and go to state 6
@@ -2704,14 +2867,15 @@ state 145
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
-state 146
+state 152
 
-    (55) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { . BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { . BlocosCodigo }
     (2) BlocosCodigo -> . Codigo
     (3) BlocosCodigo -> . BlocosCodigo Codigo
     (4) Codigo -> . Declaracao
@@ -2721,10 +2885,11 @@ state 146
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -2739,29 +2904,32 @@ state 146
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
-    BlocosCodigo                   shift and go to state 159
+    BlocosCodigo                   shift and go to state 165
     Codigo                         shift and go to state 3
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
@@ -2770,65 +2938,67 @@ state 146
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
-state 147
+state 153
 
-    (57) ListaAtributos -> ListaAtributos , Atributo .
+    (60) ListaAtributos -> ListaAtributos , Atributo .
 
-    )               reduce using rule 57 (ListaAtributos -> ListaAtributos , Atributo .)
-    ,               reduce using rule 57 (ListaAtributos -> ListaAtributos , Atributo .)
-
-
-state 148
-
-    (61) Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .
-
-    INT             reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    ID              reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    IF              reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    IFELSE          reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    WHILE           reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    STRUCTARRAY     reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    STDOUT          reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    COMMENT         reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    DEFINE          reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    CALL            reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    ARRAYNUM        reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    ARRAYID         reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    FOR             reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    $end            reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    }               reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
-    {               reduce using rule 61 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    )               reduce using rule 60 (ListaAtributos -> ListaAtributos , Atributo .)
+    ,               reduce using rule 60 (ListaAtributos -> ListaAtributos , Atributo .)
 
 
-state 149
+state 154
 
-    (63) INPUTVar -> INPUTVar , Var .
+    (64) Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .
 
-    )               reduce using rule 63 (INPUTVar -> INPUTVar , Var .)
-    ,               reduce using rule 63 (INPUTVar -> INPUTVar , Var .)
+    INT             reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    ID              reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    IF              reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    IFELSE          reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    WHILE           reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    STRUCTARRAY     reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    STDOUT          reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    COMMENT         reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    RETURN          reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    DEFINE          reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    CALL            reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    ARRAYNUM        reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    ARRAYID         reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    FOR             reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    $end            reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    }               reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
+    {               reduce using rule 64 (Bloco_CALLFUNC -> CALL FUNC ( INPUTVar ) ; .)
 
 
-state 150
+state 155
+
+    (66) INPUTVar -> INPUTVar , Var .
+
+    )               reduce using rule 66 (INPUTVar -> INPUTVar , Var .)
+    ,               reduce using rule 66 (INPUTVar -> INPUTVar , Var .)
+
+
+state 156
 
     (9) Atribuicao -> ID . = Expressao ;
     (10) Atribuicao -> ID . = Bloco_CALLFUNC
 
-    =               shift and go to state 160
+    =               shift and go to state 166
 
 
-state 151
+state 157
 
-    (68) BlocoFOR -> FOR ID ( Condicional ) Atribuicao . { BlocosCodigo }
+    (71) BlocoFOR -> FOR ID ( Condicional ) Atribuicao . { BlocosCodigo }
 
-    {               shift and go to state 161
+    {               shift and go to state 167
 
 
-state 152
+state 158
 
     (33) Condicional -> ! ( Condicional . )
     (35) Condicional -> Condicional . OperadorCondicional Condicional
@@ -2839,17 +3009,17 @@ state 152
     (40) OperadorCondicional -> . EQUALS
     (41) OperadorCondicional -> . NOTEQUALS
 
-    )               shift and go to state 140
-    >               shift and go to state 86
-    BIGEQUAL        shift and go to state 87
-    <               shift and go to state 88
-    LESSEREQUAL     shift and go to state 89
-    EQUALS          shift and go to state 90
-    NOTEQUALS       shift and go to state 91
+    )               shift and go to state 146
+    >               shift and go to state 92
+    BIGEQUAL        shift and go to state 93
+    <               shift and go to state 94
+    LESSEREQUAL     shift and go to state 95
+    EQUALS          shift and go to state 96
+    NOTEQUALS       shift and go to state 97
 
-    OperadorCondicional            shift and go to state 85
+    OperadorCondicional            shift and go to state 91
 
-state 153
+state 159
 
     (24) BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .
 
@@ -2861,6 +3031,7 @@ state 153
     STRUCTARRAY     reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
     STDOUT          reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
     COMMENT         reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
+    RETURN          reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
     DEFINE          reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
     CALL            reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
     ARRAYNUM        reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
@@ -2870,14 +3041,14 @@ state 153
     }               reduce using rule 24 (BlocoIF -> IF ( ListaCondicionais ) { BlocosCodigo } .)
 
 
-state 154
+state 160
 
     (25) BlocoIF -> IFELSE ( ListaCondicionais ) { BlocosCodigo } . ELSE { BlocosCodigo }
 
-    ELSE            shift and go to state 162
+    ELSE            shift and go to state 168
 
 
-state 155
+state 161
 
     (43) BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo . }
     (3) BlocosCodigo -> BlocosCodigo . Codigo
@@ -2888,10 +3059,11 @@ state 155
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -2906,30 +3078,33 @@ state 155
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    }               shift and go to state 163
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    }               shift and go to state 169
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
-    Codigo                         shift and go to state 28
+    Codigo                         shift and go to state 30
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
     BlocoIF                        shift and go to state 6
@@ -2937,19 +3112,20 @@ state 155
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
-state 156
+state 162
 
     (46) BlocoLerSTDIN -> STRUCTARRAY ID ID = STDIN ( ) . ;
 
-    ;               shift and go to state 164
+    ;               shift and go to state 170
 
 
-state 157
+state 163
 
     (50) Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY ID ID ) ; .
 
@@ -2961,6 +3137,7 @@ state 157
     STRUCTARRAY     reduce using rule 50 (Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY ID ID ) ; .)
     STDOUT          reduce using rule 50 (Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY ID ID ) ; .)
     COMMENT         reduce using rule 50 (Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY ID ID ) ; .)
+    RETURN          reduce using rule 50 (Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY ID ID ) ; .)
     DEFINE          reduce using rule 50 (Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY ID ID ) ; .)
     CALL            reduce using rule 50 (Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY ID ID ) ; .)
     ARRAYNUM        reduce using rule 50 (Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY ID ID ) ; .)
@@ -2970,30 +3147,31 @@ state 157
     }               reduce using rule 50 (Bloco_EscreverSTDOUT -> STDOUT ( STRUCTARRAY ID ID ) ; .)
 
 
-state 158
+state 164
 
-    (54) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .
+    (57) Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .
 
-    INT             reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    ID              reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    IF              reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    IFELSE          reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    WHILE           reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    STRUCTARRAY     reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    STDOUT          reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    COMMENT         reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    DEFINE          reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    CALL            reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    ARRAYNUM        reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    ARRAYID         reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    FOR             reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    $end            reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
-    }               reduce using rule 54 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    INT             reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    ID              reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    IF              reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    IFELSE          reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    WHILE           reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    STRUCTARRAY     reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    STDOUT          reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    COMMENT         reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    RETURN          reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    DEFINE          reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    CALL            reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    ARRAYNUM        reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    ARRAYID         reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    FOR             reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    $end            reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
+    }               reduce using rule 57 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ) { BlocosCodigo } .)
 
 
-state 159
+state 165
 
-    (55) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo . }
+    (58) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo . }
     (3) BlocosCodigo -> BlocosCodigo . Codigo
     (4) Codigo -> . Declaracao
     (8) Codigo -> . Atribuicao
@@ -3002,10 +3180,11 @@ state 159
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -3020,30 +3199,33 @@ state 159
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    }               shift and go to state 165
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    }               shift and go to state 171
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
-    Codigo                         shift and go to state 28
+    Codigo                         shift and go to state 30
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
     BlocoIF                        shift and go to state 6
@@ -3051,39 +3233,40 @@ state 159
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
-state 160
+state 166
 
     (9) Atribuicao -> ID = . Expressao ;
     (10) Atribuicao -> ID = . Bloco_CALLFUNC
     (11) Expressao -> . Var
     (16) Expressao -> . Expressao Operador Var
     (17) Expressao -> . ( Expressao )
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
     (12) Var -> . NUM
     (13) Var -> . ID
     (14) Var -> . TRUE
     (15) Var -> . FALSE
 
-    (               shift and go to state 48
-    CALL            shift and go to state 24
-    NUM             shift and go to state 50
-    ID              shift and go to state 44
-    TRUE            shift and go to state 51
-    FALSE           shift and go to state 52
+    (               shift and go to state 52
+    CALL            shift and go to state 26
+    NUM             shift and go to state 54
+    ID              shift and go to state 48
+    TRUE            shift and go to state 55
+    FALSE           shift and go to state 56
 
-    Expressao                      shift and go to state 45
-    Bloco_CALLFUNC                 shift and go to state 46
-    Var                            shift and go to state 49
+    Expressao                      shift and go to state 49
+    Bloco_CALLFUNC                 shift and go to state 50
+    Var                            shift and go to state 53
 
-state 161
+state 167
 
-    (68) BlocoFOR -> FOR ID ( Condicional ) Atribuicao { . BlocosCodigo }
+    (71) BlocoFOR -> FOR ID ( Condicional ) Atribuicao { . BlocosCodigo }
     (2) BlocosCodigo -> . Codigo
     (3) BlocosCodigo -> . BlocosCodigo Codigo
     (4) Codigo -> . Declaracao
@@ -3093,10 +3276,11 @@ state 161
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -3111,30 +3295,33 @@ state 161
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
     Atribuicao                     shift and go to state 5
-    BlocosCodigo                   shift and go to state 166
+    BlocosCodigo                   shift and go to state 172
     Codigo                         shift and go to state 3
     Declaracao                     shift and go to state 4
     BlocoIF                        shift and go to state 6
@@ -3142,19 +3329,20 @@ state 161
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
-state 162
+state 168
 
     (25) BlocoIF -> IFELSE ( ListaCondicionais ) { BlocosCodigo } ELSE . { BlocosCodigo }
 
-    {               shift and go to state 167
+    {               shift and go to state 173
 
 
-state 163
+state 169
 
     (43) BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .
 
@@ -3166,6 +3354,7 @@ state 163
     STRUCTARRAY     reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
     STDOUT          reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
     COMMENT         reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
+    RETURN          reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
     DEFINE          reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
     CALL            reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
     ARRAYNUM        reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
@@ -3175,7 +3364,7 @@ state 163
     }               reduce using rule 43 (BlocoWhileDo -> WHILE ( ListaCondicionais ) DO { BlocosCodigo } .)
 
 
-state 164
+state 170
 
     (46) BlocoLerSTDIN -> STRUCTARRAY ID ID = STDIN ( ) ; .
 
@@ -3187,6 +3376,7 @@ state 164
     STRUCTARRAY     reduce using rule 46 (BlocoLerSTDIN -> STRUCTARRAY ID ID = STDIN ( ) ; .)
     STDOUT          reduce using rule 46 (BlocoLerSTDIN -> STRUCTARRAY ID ID = STDIN ( ) ; .)
     COMMENT         reduce using rule 46 (BlocoLerSTDIN -> STRUCTARRAY ID ID = STDIN ( ) ; .)
+    RETURN          reduce using rule 46 (BlocoLerSTDIN -> STRUCTARRAY ID ID = STDIN ( ) ; .)
     DEFINE          reduce using rule 46 (BlocoLerSTDIN -> STRUCTARRAY ID ID = STDIN ( ) ; .)
     CALL            reduce using rule 46 (BlocoLerSTDIN -> STRUCTARRAY ID ID = STDIN ( ) ; .)
     ARRAYNUM        reduce using rule 46 (BlocoLerSTDIN -> STRUCTARRAY ID ID = STDIN ( ) ; .)
@@ -3196,30 +3386,31 @@ state 164
     }               reduce using rule 46 (BlocoLerSTDIN -> STRUCTARRAY ID ID = STDIN ( ) ; .)
 
 
-state 165
+state 171
 
-    (55) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .
+    (58) Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .
 
-    INT             reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    ID              reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    IF              reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    IFELSE          reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    WHILE           reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    STRUCTARRAY     reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    STDOUT          reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    COMMENT         reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    DEFINE          reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    CALL            reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    ARRAYNUM        reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    ARRAYID         reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    FOR             reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    $end            reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
-    }               reduce using rule 55 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    INT             reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    ID              reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    IF              reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    IFELSE          reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    WHILE           reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    STRUCTARRAY     reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    STDOUT          reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    COMMENT         reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    RETURN          reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    DEFINE          reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    CALL            reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    ARRAYNUM        reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    ARRAYID         reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    FOR             reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    $end            reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
+    }               reduce using rule 58 (Bloco_DEFINEFUNC -> DEFINE FUNC ( ListaAtributos ) { BlocosCodigo } .)
 
 
-state 166
+state 172
 
-    (68) BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo . }
+    (71) BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo . }
     (3) BlocosCodigo -> BlocosCodigo . Codigo
     (4) Codigo -> . Declaracao
     (8) Codigo -> . Atribuicao
@@ -3228,10 +3419,11 @@ state 166
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -3246,43 +3438,47 @@ state 166
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    }               shift and go to state 168
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    }               shift and go to state 174
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
     Atribuicao                     shift and go to state 5
-    Codigo                         shift and go to state 28
+    Codigo                         shift and go to state 30
     Declaracao                     shift and go to state 4
     BlocoIF                        shift and go to state 6
     BlocoWhileDo                   shift and go to state 7
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
-state 167
+state 173
 
     (25) BlocoIF -> IFELSE ( ListaCondicionais ) { BlocosCodigo } ELSE { . BlocosCodigo }
     (2) BlocosCodigo -> . Codigo
@@ -3294,10 +3490,11 @@ state 167
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -3312,29 +3509,32 @@ state 167
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
-    BlocosCodigo                   shift and go to state 169
+    BlocosCodigo                   shift and go to state 175
     Codigo                         shift and go to state 3
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
@@ -3343,33 +3543,35 @@ state 167
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
-state 168
+state 174
 
-    (68) BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .
+    (71) BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .
 
-    INT             reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
-    ID              reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
-    IF              reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
-    IFELSE          reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
-    WHILE           reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
-    STRUCTARRAY     reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
-    STDOUT          reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
-    COMMENT         reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
-    DEFINE          reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
-    CALL            reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
-    ARRAYNUM        reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
-    ARRAYID         reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
-    FOR             reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
-    $end            reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
-    }               reduce using rule 68 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    INT             reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    ID              reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    IF              reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    IFELSE          reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    WHILE           reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    STRUCTARRAY     reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    STDOUT          reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    COMMENT         reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    RETURN          reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    DEFINE          reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    CALL            reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    ARRAYNUM        reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    ARRAYID         reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    FOR             reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    $end            reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
+    }               reduce using rule 71 (BlocoFOR -> FOR ID ( Condicional ) Atribuicao { BlocosCodigo } .)
 
 
-state 169
+state 175
 
     (25) BlocoIF -> IFELSE ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo . }
     (3) BlocosCodigo -> BlocosCodigo . Codigo
@@ -3380,10 +3582,11 @@ state 169
     (44) Codigo -> . BlocoLerSTDIN
     (47) Codigo -> . Bloco_EscreverSTDOUT
     (51) Codigo -> . Bloco_Comentario
-    (53) Codigo -> . Bloco_DEFINEFUNC
-    (59) Codigo -> . Bloco_CALLFUNC
-    (64) Codigo -> . Array
-    (67) Codigo -> . BlocoFOR
+    (53) Codigo -> . Bloco_Return
+    (56) Codigo -> . Bloco_DEFINEFUNC
+    (62) Codigo -> . Bloco_CALLFUNC
+    (67) Codigo -> . Array
+    (70) Codigo -> . BlocoFOR
     (5) Declaracao -> . INT ID ;
     (6) Declaracao -> . INT ID = Expressao ;
     (7) Declaracao -> . INT BlocoLerSTDIN
@@ -3398,30 +3601,33 @@ state 169
     (49) Bloco_EscreverSTDOUT -> . STDOUT ( PAL ) ;
     (50) Bloco_EscreverSTDOUT -> . STDOUT ( STRUCTARRAY ID ID ) ;
     (52) Bloco_Comentario -> . COMMENT
-    (54) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
-    (55) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
-    (60) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
-    (61) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
-    (65) Array -> . ARRAYNUM NUM ID ;
-    (66) Array -> . ARRAYID ID ID ;
-    (68) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
+    (54) Bloco_Return -> . RETURN ID ;
+    (55) Bloco_Return -> . RETURN NUM ;
+    (57) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ) { BlocosCodigo }
+    (58) Bloco_DEFINEFUNC -> . DEFINE FUNC ( ListaAtributos ) { BlocosCodigo }
+    (63) Bloco_CALLFUNC -> . CALL FUNC ( ) ;
+    (64) Bloco_CALLFUNC -> . CALL FUNC ( INPUTVar ) ;
+    (68) Array -> . ARRAYNUM NUM ID ;
+    (69) Array -> . ARRAYID ID ID ;
+    (71) BlocoFOR -> . FOR ID ( Condicional ) Atribuicao { BlocosCodigo }
 
-    }               shift and go to state 170
-    INT             shift and go to state 15
-    ID              shift and go to state 16
-    IF              shift and go to state 17
-    IFELSE          shift and go to state 18
-    WHILE           shift and go to state 19
-    STRUCTARRAY     shift and go to state 20
-    STDOUT          shift and go to state 21
-    COMMENT         shift and go to state 22
-    DEFINE          shift and go to state 23
-    CALL            shift and go to state 24
-    ARRAYNUM        shift and go to state 25
-    ARRAYID         shift and go to state 26
-    FOR             shift and go to state 27
+    }               shift and go to state 176
+    INT             shift and go to state 16
+    ID              shift and go to state 17
+    IF              shift and go to state 18
+    IFELSE          shift and go to state 19
+    WHILE           shift and go to state 20
+    STRUCTARRAY     shift and go to state 21
+    STDOUT          shift and go to state 22
+    COMMENT         shift and go to state 23
+    RETURN          shift and go to state 24
+    DEFINE          shift and go to state 25
+    CALL            shift and go to state 26
+    ARRAYNUM        shift and go to state 27
+    ARRAYID         shift and go to state 28
+    FOR             shift and go to state 29
 
-    Codigo                         shift and go to state 28
+    Codigo                         shift and go to state 30
     Declaracao                     shift and go to state 4
     Atribuicao                     shift and go to state 5
     BlocoIF                        shift and go to state 6
@@ -3429,12 +3635,13 @@ state 169
     BlocoLerSTDIN                  shift and go to state 8
     Bloco_EscreverSTDOUT           shift and go to state 9
     Bloco_Comentario               shift and go to state 10
-    Bloco_DEFINEFUNC               shift and go to state 11
-    Bloco_CALLFUNC                 shift and go to state 12
-    Array                          shift and go to state 13
-    BlocoFOR                       shift and go to state 14
+    Bloco_Return                   shift and go to state 11
+    Bloco_DEFINEFUNC               shift and go to state 12
+    Bloco_CALLFUNC                 shift and go to state 13
+    Array                          shift and go to state 14
+    BlocoFOR                       shift and go to state 15
 
-state 170
+state 176
 
     (25) BlocoIF -> IFELSE ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .
 
@@ -3446,6 +3653,7 @@ state 170
     STRUCTARRAY     reduce using rule 25 (BlocoIF -> IFELSE ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
     STDOUT          reduce using rule 25 (BlocoIF -> IFELSE ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
     COMMENT         reduce using rule 25 (BlocoIF -> IFELSE ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
+    RETURN          reduce using rule 25 (BlocoIF -> IFELSE ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
     DEFINE          reduce using rule 25 (BlocoIF -> IFELSE ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
     CALL            reduce using rule 25 (BlocoIF -> IFELSE ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
     ARRAYNUM        reduce using rule 25 (BlocoIF -> IFELSE ( ListaCondicionais ) { BlocosCodigo } ELSE { BlocosCodigo } .)
@@ -3457,11 +3665,11 @@ state 170
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for ) in state 80 resolved as shift
-WARNING: shift/reduce conflict for > in state 119 resolved as shift
-WARNING: shift/reduce conflict for BIGEQUAL in state 119 resolved as shift
-WARNING: shift/reduce conflict for < in state 119 resolved as shift
-WARNING: shift/reduce conflict for LESSEREQUAL in state 119 resolved as shift
-WARNING: shift/reduce conflict for EQUALS in state 119 resolved as shift
-WARNING: shift/reduce conflict for NOTEQUALS in state 119 resolved as shift
-WARNING: shift/reduce conflict for ) in state 121 resolved as shift
+WARNING: shift/reduce conflict for ) in state 86 resolved as shift
+WARNING: shift/reduce conflict for > in state 125 resolved as shift
+WARNING: shift/reduce conflict for BIGEQUAL in state 125 resolved as shift
+WARNING: shift/reduce conflict for < in state 125 resolved as shift
+WARNING: shift/reduce conflict for LESSEREQUAL in state 125 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 125 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUALS in state 125 resolved as shift
+WARNING: shift/reduce conflict for ) in state 127 resolved as shift

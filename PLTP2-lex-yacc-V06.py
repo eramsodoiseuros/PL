@@ -324,22 +324,6 @@ def p_Bloco_Comentario(p):
     p[0]=tupleX
     
     ####----------------------------------------------------------------------
-def p_Codigo_Return(p):
-    "Codigo  : Bloco_Return"
-    #print('Parsing p_Codigo_Comentario' , p[1])
-    p[0]=p[1]   
-    
-def p_Bloco_ReturnID(p):
-    " Bloco_Return : RETURN ID ';' "
-    #print('Parsing p_Bloco_Comentario '  , p[1])
-    tupleX= ('RETURNID',p[2])
-    p[0]=tupleX
-
-def p_Bloco_ReturnNUM(p):
-    " Bloco_Return : RETURN NUM ';' "
-    #print('Parsing p_Bloco_Comentario '  , p[1])
-    tupleX= ('RETURNNUM',p[2])
-    p[0]=tupleX
     
     ####--------------------------DEFINEFUNC--------------------------------------------
 def p_Codigo_DEFINEFUNC(p):
@@ -882,65 +866,7 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         
         sp+=1
         
-    
-    if (tupleX[0] == 'RETURNID') :#('RETURN', "x")
-        aux=""
-        cicleID = contador_de_Ciclos
-        extraID=extrapointer
         
-        aux=aux+'pushg '+str(dict_var.get(tupleX[1]))+'\nstorel -1\n'
-        corpo=corpo+aux
-        aux=""
-    if (tupleX[0] == 'RETURN') :#('RETURN', "1")
-        aux=""
-        cicleID = contador_de_Ciclos
-        extraID=extrapointer
-        
-        aux=aux+'pushi '+str(tupleX[1])+'\nstorel -1\n'
-        corpo=corpo+aux
-        aux=""
-        
-    if (tupleX[0] == 'CALLEMPTY') :#('CALLEMPTY', "_nome_")
-        aux=""
-        contador_de_Ciclos+=1
-        cicleID = contador_de_Ciclos
-        extraID=extrapointer
-        
-        aux=aux+'pushi 1\npusha Func'+str(cicleID)+'\ncall\nnop\npushs"a funcao devolveu:"\nwrites\nwritei\npushs"debug :FIM"\nwrites\n'
-        
-        corpo=corpo+aux
-        aux=""
-        
-    if (tupleX[0] == 'DEFINEEMPTY') :#('DEFINEEMPTY', "_nome_", tuplex de bloco de codigo)
-    
-        dict_varaux = {}
-        contador_de_Ciclosaux=0
-        spaux=0
-        extrapointeraux=0
-        cabecaaux=""
-        corpoaux=""
-        extraaux=[]
-        
-        aux=""
-        contador_de_Ciclos+=1
-        cicleID = contador_de_Ciclos
-        extraID=extrapointer
-        bloco_de_codigo_da_funcao=tupleX[2]
-        
-        aux=aux+'Func'+str(cicleID)+':\n'
-        
-        
-        spaux,cabecaaux,corpoaux,extraaux,contador_de_Ciclosaux,delayaux,dict_varaux,extrapointeraux= assembliza(bloco_de_codigo_da_funcao,spaux,contador_de_Ciclosaux,False,cabecaaux,corpoaux,extraaux,dict_varaux,extrapointeraux)
-
-        aux=aux+corpoaux
-        
-        aux=aux+'return\n'
-        
-        
-        
-        extra.append(aux)
-        
-        aux=""
         
        
         
@@ -1040,32 +966,12 @@ def assembliza_ARRAY(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_
 
 
         
-pergunta6="""
-CALL _potencia_();
-DEFINE _potencia_(){
-        
-    INT b = STDIN();
-
-    INT e = STDIN();
-
-    INT r;
-
-    IF(e == 0){
-        RETURN 1;
-    }
-
-    FOR i  (i < e) i=i+1;{
-        r = r*b;
-    }
-
-    RETURN r;
-}
-"""
 
 
 
 
-pergunta = pergunta6#pList[4]#pergunta_2#a3_WHILEDO
+
+pergunta = pList[4]#pergunta_2#a3_WHILEDO
 
 
 
