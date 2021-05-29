@@ -71,23 +71,7 @@ ELSE
         
 
 
-p_extra="""
 
-
-INT n = STDIN();
-INT x;
-INT y;
-
-x = 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
-
-
-WHILE (n > 0)  DO {  
-    n = n - 1 ;
-    y = STDIN();
-    IF( y < x ) { x = y ; }
-    }
-
-STDOUT(x);"""
 
 pergunta_3=""" 
 INT n = 10;
@@ -125,7 +109,7 @@ STDOUT("FIM"); """
 
 
 pergunta_5="""
-INT i; 
+INT i;
 INT tamanho = STDIN();
 INT tt;
 
@@ -143,22 +127,28 @@ FOR i (i < tamanho) i=1+i; {
     STRUCTARRAY v i = STDIN();
 }
 
-FOR i (i < tamanho) i=i-1; {
-    STDOUT(STRUCTARRAY v i);
+FOR c (c < tamanho) c=c-1; {
+    STDOUT(STRUCTARRAY v c);
 }
 
 """
 
 
 pergunta_6="""
-CALL _potencia_();
-DEFINE _potencia_(){
-        
+
+d = CALL FpotenciaF(;);
+
+DEFINE FpotenciaF(){
+    
+    INT i ;
+    
+    INTR r = 1;
+    
     INT b = STDIN();
 
     INT e = STDIN();
 
-    INT r;
+    
 
     IF(e == 0){
         RETURN 1;

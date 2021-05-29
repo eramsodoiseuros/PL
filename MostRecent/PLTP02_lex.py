@@ -2,14 +2,15 @@ import sys
 import ply.lex as lex
 
 
-tokens=['INT','ID','NUM','RETURN','IF','FOR','STRUCTARRAY','ARRAYNUM','ARRAYID','IFELSE','OR','AND','BIGEQUAL','LESSEREQUAL','EQUALS','WHILE','DO','STDIN','STDOUT','COMMENT','NOTEQUALS','TRUE','FALSE','DEFINE','FUNC', 'CALL','ELSE','PAL']
+tokens=['INT','ID','NUM','RETURN','INTR','IF','FOR','STRUCTARRAY','ARRAYNUM','ARRAYID','IFELSE','OR','AND','BIGEQUAL','LESSEREQUAL','EQUALS','WHILE','DO','STDIN','STDOUT','COMMENT','NOTEQUALS','TRUE','FALSE','DEFINE','FUNC', 'CALL','ELSE','PAL']
 
 
 literals=('=', '+','-','*','/','%', ';', '!', '>','<',')','(','{','}')
 
 #tenho de definir como funções
 t_INT = r'INT'
-
+t_INTR = r'INTR'
+t_FUNC = r'F\w+F'
 t_IF = r'IF'
 t_RETURN = r'RETURN'
 t_IFELSE = r'IFELSE'
@@ -35,7 +36,7 @@ t_LESSEREQUAL = r'<='
 t_EQUALS = r'=='
 t_NOTEQUALS= r'!='
 t_COMMENT = r'\*\/[^\/\*]*/\*'
-t_FUNC = r'\_\w+\_'
+
 t_PAL = r'\"[A-Z]+\"'
 
 
