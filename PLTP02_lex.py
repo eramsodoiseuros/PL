@@ -1,7 +1,7 @@
 import sys
 import ply.lex as lex
 
-tokens=['INT','ID','NUM','IF','IFELSE','OR','AND','BIGEQUAL','LESSEREQUAL','EQUALS','WHILE','DO','STDIN','STDOUT','COMMENT','NOTEQUALS','TRUE','FALSE','DEFINE','FUNC', 'CALL','ELSE','PAL']
+tokens=['INT','ID','NUM','IF','FOR','STRUCTARRAY','ARRAYNUM','ARRAYID','IFELSE','OR','AND','BIGEQUAL','LESSEREQUAL','EQUALS','WHILE','DO','STDIN','STDOUT','COMMENT','NOTEQUALS','TRUE','FALSE','DEFINE','FUNC', 'CALL','ELSE','PAL']
 
 literals=('=', '+','-','*','/','%', ';', '!', '>','<',')','(','{','}')
 
@@ -9,7 +9,11 @@ literals=('=', '+','-','*','/','%', ';', '!', '>','<',')','(','{','}')
 t_INT = r'INT'
 t_IF = r'IF'
 t_IFELSE = r'IFELSE'
+t_ARRAYNUM = r'ARRAYNUM'
+t_ARRAYID = r'ARRAYID'
 t_ELSE = r'ELSE'
+t_STRUCTARRAY = r'STRUCTARRAY'
+t_FOR = r'FOR'
 t_WHILE = r'WHILE'
 t_DO = r'DO'
 t_CALL = r'CALL'

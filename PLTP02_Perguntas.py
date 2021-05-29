@@ -124,7 +124,31 @@ WHILE( atual != fim ) DO {
 STDOUT("FIM"); """
 
 
-pList=[pergunta_1,pergunta_2,pergunta_3,pergunta_4]
+pergunta_5="""
+INT i; 
+INT tamanho = STDIN();
+INT tt;
+
+tt = 5;
+
+
+
+ARRAYID tt v;
+
+FOR j (j < tamanho) j=j+1; {
+   i = 0;
+}
+
+FOR i (i < tamanho) i=1+i; {
+    STRUCTARRAY v i = STDIN();
+}
+
+FOR i (i < tamanho) i=i-1; {
+    STDOUT(STRUCTARRAY v i);
+}
+
+"""
+pList=[pergunta_1,pergunta_2,pergunta_3,pergunta_4,pergunta_5]
 
 
 
