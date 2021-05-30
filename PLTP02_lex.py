@@ -1,7 +1,6 @@
 import sys
 import ply.lex as lex
 
-
 tokens=['INT','ID','NUM','RETURN','INTR','IF','FOR','STRUCTARRAY','ARRAYNUM','ARRAYID','IFELSE','OR','AND','BIGEQUAL','LESSEREQUAL','EQUALS','WHILE','DO','STDIN','STDOUT','COMMENT','NOTEQUALS','TRUE','FALSE','DEFINE','FUNC', 'CALL','ELSE','PAL']
 
 
@@ -40,9 +39,6 @@ t_COMMENT = r'\*\/[^\/\*]*/\*'
 
 t_PAL = r'\"[A-Z]+\"'
 
-
-
-#t_ = r''
 
 t_ignore  = ' \n\t'
 

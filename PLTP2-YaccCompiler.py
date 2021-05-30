@@ -1,7 +1,4 @@
-
-
 from PLTP02_lex import tokens
-from PLTP02_Perguntas import pList
 from PLTP02_Assembliza import assembliza
 import ply.yacc as yacc
 import sys
@@ -14,13 +11,6 @@ a3_WHILEDO= """INT x = STDIN();
 
 a1_Atribuicao= """INT x = (1+1)+2;"""
 
-        
-
-
-
-
-
-
 
 def p_Programa(p):
     "Programa : BlocosCodigo"
@@ -28,21 +18,18 @@ def p_Programa(p):
     #print(p[1])
     p[0]=p[1]
     
-    
-    ####----------------------------------------------------------------------
+####----------------------------------------------------------------------
+
 def p_BlocoCodigo_fin(p):
     "BlocosCodigo  :  Codigo "
-    #print('Parsing Codigo succesfully! ID DID' , p[1])
     p[0]=p[1]
 
 def p_BlocosCodigo_Rec(p):
     "BlocosCodigo  :  BlocosCodigo Codigo "
-    #print('Parsing Codigo succesfully! ID DID' , p[1])
     tupleX=('CodigoRec',p[1],p[2])
     p[0]=tupleX
-    
-    ####----------------------------------------------------------------------
-### p_Declaracao
+
+### ----------------------------------------------------------------------
 
 def p_Codigo_Declaracao(p):
     "Codigo  :  Declaracao "
@@ -73,8 +60,8 @@ def p_Declaracao_STDIN(p):
     #print(','.join(tupleX))
     p[0]=tupleX
 
-    ####----------------------------------------------------------------------
-### Atribuição
+####----------------------------------------------------------------------
+
 def p_Codigo_Atribuicao(p):
     "Codigo  : Atribuicao  "
     #print('Parsing Atribuicao' , p[1])
@@ -96,7 +83,7 @@ def p_Atribuicao_FUNC(p):
     #print('Atribuicao',a,b)
     p[0]=tupleX
 
-
+####----------------------------------------------------------------------
 
 def p_Expressao_fin(p):
     " Expressao : Var "
@@ -125,7 +112,7 @@ def p_Var_FALSE(p):
     #print(','.join(tupleX))
     p[0]=tupleX
 
-
+####----------------------------------------------------------------------
 
 def p_Expressao_Rec1(p):
     " Expressao : Expressao Operador Var "
@@ -137,7 +124,7 @@ def p_Expressao_Rec2(p):
     
     p[0]=p[2]
     
-
+####----------------------------------------------------------------------
     
 def p_Operador_MAIS(p):
     " Operador : '+' "
@@ -156,16 +143,12 @@ def p_Operador_Rest(p):
     " Operador : '%' "
     p[0]=p[1]
 
+####----------------------------------------------------------------------
 
-
-
-    ####----------------------------------IF------------------------------------
 def p_Codigo_BlocoIF(p):
     "Codigo  : BlocoIF"
     #print('Parsing BlocoIF' , p[1])
     p[0]=p[1]
-
-
     
 def p_BlocoIF(p):
     " BlocoIF : IF '(' ListaCondicionais ')' '{' BlocosCodigo '}' "
@@ -177,6 +160,7 @@ def p_BlocoIF_ELSE(p):
     tupleX=('IFELSE', p[3],p[6],p[10])
     p[0]=tupleX
 
+####----------------------------------------------------------------------
 
 def p_ListaCondicionais_fin(p):
     " ListaCondicionais : Condicional"
@@ -199,8 +183,8 @@ def p_ListaCondicionais_Rec(p):
     tupleX=('OperacaoLogica',p[2],p[1],p[3])
     p[0]=tupleX
     #print('--------------')
-    
-    
+
+####----------------------------------------------------------------------
 
 def p_OperadorLogico_AND(p):
     "OperadorLogico : AND"
@@ -211,10 +195,9 @@ def p_OperadorLogico_OR(p):
     "OperadorLogico : OR"
     #print('Parsing p_OperadorLogico_OR '  , p[1])
     p[0]=p[1]
-    
-    
-    
-    
+
+####----------------------------------------------------------------------
+
 def p_Condicional_Var(p):
     "Condicional : Var"
     #print('Parsing p_Condicional_Var '  , p[1])
@@ -237,7 +220,9 @@ def p_Condicional_OperadorCondicional(p):
     #c=','.join(p[3])
     #print('OperacaoCondicional' ,a,b,c )
     p[0]=tupleX
-    
+
+####----------------------------------------------------------------------
+
 def p_OperadorCondicional_Maior(p):
     "OperadorCondicional : '>'"
     #print('Parsing  p_OperadorCondicional_Maior'  , p[1])
@@ -263,9 +248,9 @@ def p_OperadorCondicional_NOTEQUALS(p):
     "OperadorCondicional : NOTEQUALS"
     #print('Parsing p_OperadorCondicional_EQUALS '  , p[1])
     p[0]=p[1]
-    
-    
-    ####---------------------------------WHILEDO-------------------------------------
+
+####----------------------------------------------------------------------
+
 def p_Codigo_BlocoWhileDo(p):
     "Codigo  : BlocoWhileDo"
     
@@ -275,8 +260,9 @@ def p_BlocoWhileDo(p):
     " BlocoWhileDo : WHILE  '(' ListaCondicionais ')' DO '{' BlocosCodigo '}'  "
     tupleX=('WHILE',p[3],'DO',p[7])
     p[0]=tupleX
-    
-    ####---------------------------------LERSTDIN-------------------------------------
+
+####----------------------------------------------------------------------
+
 def p_Codigo_LerSTDIN(p):
     "Codigo  : BlocoLerSTDIN"
     #print('Parsing p_Codigo_LerSTDIN' , p[1])
@@ -293,7 +279,9 @@ def p_BlocoLerSTDIN_STRUCTARRAY(p):
     tupleX=('STRUCTARRAY_STDIN', p[2],p[3] )
     #print(','.join(tupleX))
     p[0]=tupleX
-    ####---------------------------STDOUT-------------------------------------------
+
+####----------------------------------------------------------------------
+
 def p_Codigo_EscreverSTDOUT(p):
     "Codigo  : Bloco_EscreverSTDOUT"
     p[0]=p[1]   
@@ -318,8 +306,9 @@ def p_Bloco_EscreverSTDOUT_STRUCTARRAY(p):
     #a=  '('+','.join(p[3])+')'
     #print('STDOUT',a)
     p[0]=tupleX
-        
-    ####---------------------------Comentario-------------------------------------------
+
+####----------------------------------------------------------------------
+
 def p_Codigo_Comentario(p):
     "Codigo  : Bloco_Comentario"
     #print('Parsing p_Codigo_Comentario' , p[1])
@@ -330,18 +319,9 @@ def p_Bloco_Comentario(p):
     #print('Parsing p_Bloco_Comentario '  , p[1])
     tupleX= ('COMMENT',p[1])
     p[0]=tupleX
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
-    ####----------------------------------------------------------------------
+####----------------------------------------------------------------------
+
 def p_Codigo_Return(p):
     "Codigo  : Bloco_Return"
     #print('Parsing p_Codigo_Comentario' , p[1])
@@ -358,8 +338,9 @@ def p_Bloco_ReturnNUM(p):
     #print('Parsing p_Bloco_Comentario '  , p[1])
     tupleX= ('RETURNNUM',p[2])
     p[0]=tupleX
-    
-    ####--------------------------DEFINEFUNC--------------------------------------------
+
+####----------------------------------------------------------------------
+
 def p_Codigo_DEFINEFUNC(p):
     "Codigo  : Bloco_DEFINEFUNC"
     #print('Parsing Bloco_DEFINEFUNC' , p[1])
@@ -376,7 +357,9 @@ def p_Bloco_DEFINEFUNC_Atributos(p):
     #print('Parsing p_BlocoLerSTDIN '  , p[1])
     tupleX=('DEFINEFILL', p[2],p[4],p[7])
     p[0]=tupleX
-    
+
+####----------------------------------------------------------------------
+
 def p_ListaAtributos_fin(p):
     " ListaAtributos : Atributo"
     #print('Parsing p_BlocoLerSTDIN '  , p[1])
@@ -394,13 +377,11 @@ def p_Atributo(p):
     " Atributo : INT"
     #print('Parsing p_BlocoLerSTDIN '  , p[1])
     p[0]=p[1]
-    
-    
 
-    ####--------------------------Call_FUNC--------------------------------------------
+####----------------------------------------------------------------------
+
 def p_Codigo_CALLFUNC(p):
     "Codigo  : Bloco_CALLFUNC"
-    p#rint('Parsing p_Codigo_CALLFUNC' , p[1])
     p[0]=p[1]
     
 def p_Bloco_CALLFUNC_EMPTY(p):
@@ -412,13 +393,13 @@ def p_Bloco_CALLFUNC_EMPTYID(p):
     " Bloco_CALLFUNC :  ID '=' CALL FUNC '(' ';' ')' ';'"
     tupleX=('CALLEMPTYID',p[1],p[4])
     p[0]=tupleX
-    
-    
-## CALL _isNUMBER_(x)
+
 def p_Bloco_CALLFUNC_Atributos(p):
     " Bloco_CALLFUNC : CALL FUNC '(' INPUTVar  ')' ';' "
     tupleX=('CALLFILL',p[2],p[4])
     p[0]=tupleX  
+
+####----------------------------------------------------------------------
 
 def p_INPUTVar_fin(p):
     " INPUTVar : Var "
@@ -430,6 +411,7 @@ def p_INPUTVar_Rec(p):
     tupleX=('RecVar',p[1],p[3])
     p[0]=tupleX  
 
+####----------------------------------------------------------------------
 
 def p_Codigo_ARRAY(p):
     "Codigo  :  Array "
@@ -445,10 +427,8 @@ def p_Codigo_ARRAYID(p):
     tupleX=('ARRAYID',p[2],p[3])
     p[0]=tupleX
 
-
 def p_Codigo_BlocoFOR(p):
     "Codigo  : BlocoFOR"
-    
     p[0]=p[1]   
     
 def p_BlocoFOR(p):
@@ -456,29 +436,19 @@ def p_BlocoFOR(p):
     tupleX=('FOR',p[2],p[4],p[6],p[8])
     p[0]=tupleX
 
-
+####----------------------------------------------------------------------
 
 def p_error(p):
     parser.success = False
     print('Syntax error!', p)
 
 
+####----------------------------------------------------------------------
+
 
 ###inicio do parsing
 parser = yacc.yacc()
 parser.success = True
-
-
-
-
-
-
-
-        
-
-
-
-
 
 def main():
     
@@ -497,34 +467,26 @@ def main():
 
 
     dict_var = {}
-    l=[]
-    contador_de_Ciclos=0
-    sp=0
-    extrapointer=0
-    cabeca=""
-    corpo=""
-    extra=[]#"","","","","","","",""]
+    l = []
+    contador_de_Ciclos = 0
+    sp = 0
+    extrapointer = 0
+    cabeca = ""
+    corpo = ""
+    extra = []
 
-       
-    #print('--------Pergunta--------\n')
-    
-    
-    #print(pergunta)
-    #print('--------Estrutura Parsed--------\n')
+    print('--------Estrutura Parsed--------\n')
     struct_to_assemblizar=parser.parse(pergunta)
-    #print(struct_to_assemblizar)
+    print(struct_to_assemblizar)
     if parser.success:
-    
        print('Parsing completed!\n')
     
     
     sp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer= assembliza(struct_to_assemblizar,sp,contador_de_Ciclos,False,cabeca,corpo,extra,dict_var,extrapointer)
-    
-    
-        
-    #print('/*--------Dicionário de Variaveis:-----*/')
-    #print('/*',dict_var,'*/')
-    #print('/*--------Assembly Code:-----*/')
+     
+    print('\n/*--------Dicionário de Variaveis:-----*/\n')
+    print('/*',dict_var,'*/')
+    print('\n/*--------Assembly Code:-----*/\n')
     
     final=""
     #print(cabeca)
@@ -540,16 +502,13 @@ def main():
         #print(i)
         ecna+=1
     print(final)
-    
-    
+
     nomeFileAbrir = input("SELECIONE o nome final do ficheiro: ") 
     nomeHtml= 'PastaAssembly'+'/'+nomeFileAbrir+'.vm'
     f = open(nomeHtml, "a")
     f.write(final)
     f.close()
     print()
-
-
 
 if __name__ == "__main__":
     main()

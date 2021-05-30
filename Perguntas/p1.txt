@@ -3,6 +3,6 @@ INT y = STDIN();
 INT w = STDIN();
 INT z = STDIN();
 
-
+*/vamos verificar agora se todos os lados sao iguais/*
 
 IFELSE((x==y)&&(x==w)&&(x==z)) { STDOUT(TRUE); }  ELSE { STDOUT(FALSE);}
