@@ -488,7 +488,7 @@ def main():
         os.mkdir('PastaAssembly')
     
     nomeFileAbrir = input("SELECIONE O Numero da Pergunta: ")   # Python 3
-    with open('p'+str(nomeFileAbrir)+'.txt','r') as file:
+    with open('Perguntas/p'+str(nomeFileAbrir)+'.txt','r') as file:
         pergunta = file.read()
     print(pergunta)
     
