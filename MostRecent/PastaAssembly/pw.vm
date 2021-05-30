@@ -1,0 +1,82 @@
+pushi 0
+pushi 0
+pushi 0
+start
+read
+atoi
+storeg 0
+
+pushg 0
+pushi 1
+sup
+jz ELSE1
+read
+atoi
+storeg 1
+
+pushg 0
+pushi 1
+sub
+storeg 0
+
+While2:            
+pushg 0
+pushi 0
+sup
+jz EndOfWhile2
+pushg 0
+pushi 1
+equal
+jz ELSE3
+read
+atoi
+storeg 2
+
+pushg 2
+pushg 1
+inf
+jz ELSE4
+pushg 2
+writei
+jump ENDIFELSE4
+	ELSE4:
+pushg 1
+writei
+ENDIFELSE4:     
+jump ENDIFELSE3
+	ELSE3:
+read
+atoi
+storeg 2
+
+pushg 2
+pushg 1
+inf
+jz ENDSimpleIF5
+pushg 2
+storeg 1
+
+ENDSimpleIF5:       
+ENDIFELSE3:     
+pushg 0
+pushi 1
+sub
+storeg 0
+
+jump While2
+EndOfWhile2:         
+jump ENDIFELSE1
+	ELSE1:
+pushg 0
+pushi 1
+equal
+jz ENDSimpleIF6
+read
+atoi
+storeg 2
+
+pushg 2
+writei
+ENDSimpleIF6:       
+ENDIFELSE1:     
+stop

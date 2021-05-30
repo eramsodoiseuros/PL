@@ -539,6 +539,7 @@ def main():
         final+=i
         #print(i)
         ecna+=1
+    print(final)
     
     
     nomeFileAbrir = input("SELECIONE o nome final do ficheiro: ") 
@@ -546,6 +547,7 @@ def main():
     f = open(nomeHtml, "a")
     f.write(final)
     f.close()
+    print()
 
 
 
