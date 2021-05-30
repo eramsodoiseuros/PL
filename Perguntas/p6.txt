@@ -1,5 +1,9 @@
 d = CALL FpotenciaF(;);
 
+STDOUT("RETORNOU");
+STDOUT(d);
+
+
 DEFINE FpotenciaF(){
     
     INT i = 0;
@@ -9,8 +13,6 @@ DEFINE FpotenciaF(){
     INT b = STDIN();
 
     INT e = STDIN();
-
-    
 
     IF(e == 0){
         RETURN 1;

@@ -198,23 +198,23 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         corpo=corpo+aux
         
     if (tupleX[0] == 'STDOUTPAL') :
-        corpo=corpo+'pushs '+tupleX[1]+'\n' +'writes\n'
+        corpo=corpo+'pushs '+tupleX[1]+'\n' +'writes\npushs "\\n"\nwrites\n'
         sp+=1
 
     if (tupleX[0] == 'STDOUT') :#('STDOUT', ('ID', 'x')) 
         
         if(tupleX[1][0]=='ID'):
             
-                corpo=corpo+'pushg '+ str(dict_var.get(tupleX[1][1]))+'\n' + 'writei\n'
+                corpo=corpo+'pushg '+ str(dict_var.get(tupleX[1][1]))+'\n' + 'writei\npushs "\\n"\nwrites\n'
 
         if(tupleX[1][0]=='NUM'):
-            corpo=corpo+'pushi '+ str(dict_var.get(tupleX[1][1]))+'\n' + 'writei\n' 
+            corpo=corpo+'pushi '+ str(dict_var.get(tupleX[1][1]))+'\n' + 'writei\npushs "\\n"\nwrites\n' 
         
         if(tupleX[1][0]=='TRUE'):
-            corpo=corpo+'pushs "TRUE" '+'\n' + 'writes\n'
+            corpo=corpo+'pushs "TRUE" '+'\n' + 'writes\npushs "\\n"\nwrites\n'
             
         if(tupleX[1][0]=='FALSE'):
-            corpo = corpo + 'pushs "FALSE" '+'\n' + 'writes\n'
+            corpo = corpo + 'pushs "FALSE" '+'\n' + 'writes\npushs "\\n"\nwrites\n'
  
     if (tupleX[0] == 'COMMENT') :#('COMMENT', '*/ atenção aqui estou ainda a pensar como garantir que o numero é INT /*')
         size = len(tupleX[1])
@@ -230,8 +230,7 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         contador_de_Ciclos+=1
         cicleID = contador_de_Ciclos
         extraID=extrapointer
-        
-        
+
         aux=aux+'\n\tWhile'+str(cicleID)+':            \n\n'
         corpo=corpo+aux
         aux=""
@@ -243,13 +242,11 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         aux=aux+'jz EndOfWhile'+str(cicleID)+'\n\n'
         corpo=corpo+aux
         aux=""
-        
-        
+
         delayaux=delay
         
         extrapointer=extraID
-        
-        
+
         #Do de While
         sp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tupleX[3],sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
         
@@ -261,9 +258,7 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         aux=aux+'\n\tEndOfWhile'+str(cicleID)+':         \n\n'
         corpo=corpo+aux
         aux=""
-        
-        
-    
+
         #print(tupleX)
     if (tupleX[0] == 'NUM') :#('NUM', '1')
         aux='pushi '+str(tupleX[1])+'\n'
@@ -289,15 +284,11 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         
         tuplexAux= ('FOR_ARRAY_IN', 'indicedefor'+str(cicleID), variavel_tamanho, variavel_array)
         sp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza_ARRAY(tuplexAux,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
-        
-        
+
         #ciclo For Para Criar Array
-        
-        
+
         sp+=1
-    
-    
-    
+
     if (tupleX[0] == 'FOR') :#('FOR', (ID ,  A ), (Condição) ,OperacaoAtribuição , BlocodeCodigo )
         aux="" 
         contador_de_Ciclos+=1
@@ -319,8 +310,7 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         #assembliza-codigo da condição 
         tuplexAux= tupleX[2]
         sp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tuplexAux,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
-        
-        
+
         #+ jz para fim
         aux=aux+'jz EndOfFor'+str(cicleID)+'\n\n'
         corpo=corpo+aux
@@ -328,8 +318,7 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         #assembliza-BlocoCodigo
         tuplexAux= tupleX[4]
         sp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tuplexAux,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
-        
-        
+
         #assembliza-Operacao
         tuplexAux= tupleX[3]
         sp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza(tuplexAux,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
@@ -341,25 +330,19 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         aux=aux+'\n\tEndOfFor'+str(cicleID)+':\n'
         corpo=corpo+aux
         aux=""
-        
-        
-        
-        
+
     if (tupleX[0] == 'STRUCTARRAY_STDIN') :#('STRUCTARRAY_STDIN', p[2],p[3] )
         cicleID = contador_de_Ciclos
         variavel_nome=tupleX[1]
         variavel_indice=tupleX[2]
-        
-        
+
         #('FOR', 'j', ('OperacaoCondicional', '<', ('ID', 'j'), ('ID', 'tamanho')), ('Atribuicao', 'j', ('Operacao', '+', ('Var', ('ID', 'j')), ('NUM', '1'))), ('Atribuicao', 'i', ('Var', ('NUM', '0')))))
         
         tuplexAux= ('FOR_ARRAY_STDIN',  variavel_indice, variavel_nome)
         sp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza_ARRAY(tuplexAux,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
-        
-        
+
         #ciclo For Para Criar Array
-        
-        
+
         sp+=1
     if (tupleX[0] == 'STRUCTARRAY_STDOUT') :#ARRAYID ID ID ';' "
         
@@ -371,11 +354,9 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         
         tuplexAux= ('FOR_ARRAY_STDOUT',  variavel_indice, variavel_array)
         sp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza_ARRAY(tuplexAux,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
-        
-        
+
         #ciclo For Para Criar Array
-        
-        
+
         sp+=1
         
     
@@ -412,16 +393,15 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         contador_de_Ciclos+=1
         cicleID = contador_de_Ciclos
         extraID=extrapointer
-        
-        
-        aux=aux+'pusha '+str(tupleX[2])+'\ncall\nnop\npushs "\\na funcao devolveu:\\n"\nwrites\nwritei\npushs "\\ndebug :FIM\\n"\nwrites\n'
-        
-        cabeca = cabeca + 'pushi -1\n'
+
+        cabeca = cabeca + 'pushi 0\n'
         
         dict_var[tupleX[1]] = sp
-        sp+=1
 
-        corpo=corpo+aux
+        aux = aux + 'pushi 0\npusha '+str(tupleX[2])+'\ncall\nnop\n'
+        aux = aux + 'storeg ' + str(sp) + '\n\n'
+        corpo = corpo + aux
+
         aux=""
         
     if (tupleX[0] == 'Declaracao_e_AtribuicaoReturn'):
@@ -452,14 +432,10 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         
         aux=aux+'return\n'
         
-        
-        
         extra.append(aux)
         
         aux=""
-        
-       
-        
+  
     return sp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer
 
 # é preciso ter em atenção a ordem da recursividade e que algumas das cenas devemos verificar se tem outros tuplos dentro
@@ -474,8 +450,7 @@ def assembliza_ARRAY(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_
         indice = tupleX[1]
         tamanho = tupleX[2]
         nome = tupleX[3]
-        
-        
+
         # assembliza-declaração do indice
         sp-=1
         tuplexAux= ('Declaracao','INT',indice)
@@ -538,9 +513,7 @@ def assembliza_ARRAY(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_
         aux=aux+'read\natoi\nstoren\n\n'
         corpo=corpo+aux
         aux=""
-        
-        
-       
+
     if (tupleX[0] == 'FOR_ARRAY_STDOUT') :#('FOR', indice , tamanho )
         aux="" 
         indice = tupleX[1]
@@ -552,15 +525,11 @@ def assembliza_ARRAY(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_
         sp+=1
         aux=aux+'pushg  '+str(dict_var.get(indice))+'\n'
         sp+=1
-        aux=aux+'loadn\nwritei\n'
+        aux=aux+'loadn\nwritei\npushs "\\n"\nwrites\n'
         
         corpo=corpo+aux
         aux=""
-        
-        
-    
-    
-    
+
     return sp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer
 
 

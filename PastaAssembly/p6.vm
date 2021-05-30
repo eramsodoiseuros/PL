@@ -1,17 +1,23 @@
-	pushi -1
+	pushi 0
 	pushi 0
 	pushi 1
 	pushi 0
 	pushi 0
 	
 start
+	pushi 0
 	pusha FpotenciaF
 	call
 	nop
-	pushs "\na funcao devolveu:\n"
+	storeg 0
+	
+	pushs "RETORNOU"
 	writes
+	pushs "\n"
+	writes
+	pushg 0
 	writei
-	pushs "\ndebug :FIM\n"
+	pushs "\n"
 	writes
 	
 stop
