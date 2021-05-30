@@ -1,0 +1,45 @@
+
+INT n;
+
+n = STDIN();
+INT y;
+INT x;
+
+IFELSE (n > 1) 
+{
+    y = STDIN();
+    n = n - 1;
+    WHILE(n > 0) DO 
+    {
+        IFELSE(n == 1) 
+        {
+            x = STDIN();
+            IFELSE(x < y) 
+            {
+                STDOUT(x);
+            } 
+            ELSE 
+            {
+                STDOUT(y);
+            }
+        } 
+        ELSE {
+            x = STDIN();
+            IF(x < y) {
+                y = x;
+            }
+        }
+
+        n = n - 1;
+    }
+
+} 
+ELSE 
+{
+
+    IF(n == 1)
+    {
+        x = STDIN();
+        STDOUT(x);
+    } 
+} 

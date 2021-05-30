@@ -17,8 +17,7 @@ INT z = STDIN();
 
 
 
-IFELSE((x==y)&&(x==w)&&(x==z)) { STDOUT(TRUE); }  ELSE { STDOUT(FALSE);
-                                                        }
+IFELSE((x==y)&&(x==w)&&(x==z)) { STDOUT(TRUE); }  ELSE { STDOUT(FALSE);}
 """
 
  
@@ -111,26 +110,22 @@ STDOUT("FIM"); """
 
 
 pergunta_5="""
-INT i;
-INT tamanho = STDIN();
-INT tt;
 
-tt = 5;
+INT i ;
+INT tt ;
+tt = STDIN();
 
 
 
 ARRAYID tt v;
 
-FOR j (j < tamanho) j=j+1; {
-   i = 0;
-}
-
-FOR i (i < tamanho) i=1+i; {
+FOR i (i < tt) i=1+i; {
     STRUCTARRAY v i = STDIN();
 }
+i=i-1;
 
-FOR c (c < tamanho) c=c-1; {
-    STDOUT(STRUCTARRAY v c);
+FOR i (i >= 0  ) i=i-1; {
+    STDOUT(STRUCTARRAY v i);
 }
 
 """

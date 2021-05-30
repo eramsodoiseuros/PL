@@ -1,0 +1,18 @@
+INT conta = 0;
+INT aux;
+INT atual = 1;
+INT fim = 8;
+
+STDOUT("INICIO");
+
+WHILE( atual != fim ) DO { 
+    aux = atual % 2;
+    
+    IF( aux != 0 ) {
+        conta = conta + 1;
+        STDOUT(atual);
+    }
+    atual = atual + 1;
+}
+
+STDOUT("FIM"); 

@@ -1,0 +1,17 @@
+INT i ;
+INT tt ;
+tt = STDIN();
+
+
+
+ARRAYID tt v;
+
+FOR i (i < tt) i=1+i; {
+    STRUCTARRAY v i = STDIN();
+}
+i=i-1;
+
+FOR i (i >= 0  ) i=i-1; {
+    STDOUT(STRUCTARRAY v i);
+}
+

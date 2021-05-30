@@ -1,0 +1,12 @@
+INT n = 10;
+INT novo ;
+
+INT total = 1;
+
+WHILE(n > 0) DO { 
+    novo = STDIN();
+    total = total*novo;
+    n = n-1; 
+}
+    
+STDOUT(total);

@@ -1,0 +1,8 @@
+INT x = STDIN();
+INT y = STDIN();
+INT w = STDIN();
+INT z = STDIN();
+
+
+
+IFELSE((x==y)&&(x==w)&&(x==z)) { STDOUT(TRUE); }  ELSE { STDOUT(FALSE);}

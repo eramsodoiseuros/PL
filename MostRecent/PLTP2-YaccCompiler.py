@@ -4,6 +4,7 @@ from PLTP02_lex import tokens
 from PLTP02_Perguntas import pList
 import ply.yacc as yacc
 import sys
+import os
 
 a3_WHILEDO= """INT x = STDIN(); 
         WHILE(x==x) 
@@ -599,6 +600,9 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         if(tupleX[1]=='!='):
             aux=aux+'equal' + '\n'+'NOT' + '\n'
             sp-=1
+        if(tupleX[1]=='>='):
+            aux=aux+'supeq'  + '\n'
+            sp-=1
     
         corpo=corpo+aux
     
@@ -883,13 +887,15 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
     if (tupleX[0] == 'STRUCTARRAY_STDIN') :#('STRUCTARRAY_STDIN', p[2],p[3] )
         print(tupleX)
         cicleID = contador_de_Ciclos
-        variavel_array=tupleX[1]
+        variavel_nome=tupleX[1]
+        print(variavel_nome)
         variavel_indice=tupleX[2]
+        print(variavel_indice)
         
         
         #('FOR', 'j', ('OperacaoCondicional', '<', ('ID', 'j'), ('ID', 'tamanho')), ('Atribuicao', 'j', ('Operacao', '+', ('Var', ('ID', 'j')), ('NUM', '1'))), ('Atribuicao', 'i', ('Var', ('NUM', '0')))))
         
-        tuplexAux= ('FOR_ARRAY_STDIN',  variavel_indice, variavel_array)
+        tuplexAux= ('FOR_ARRAY_STDIN',  variavel_indice, variavel_nome)
         sp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer = assembliza_ARRAY(tuplexAux,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,extrapointer)
         
         
@@ -903,7 +909,6 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         variavel_array=tupleX[1]
         variavel_indice=tupleX[2]
         
-        dict_var[variavel_array] = sp
         #('FOR', 'j', ('OperacaoCondicional', '<', ('ID', 'j'), ('ID', 'tamanho')), ('Atribuicao', 'j', ('Operacao', '+', ('Var', ('ID', 'j')), ('NUM', '1'))), ('Atribuicao', 'i', ('Var', ('NUM', '0')))))
         
         tuplexAux= ('FOR_ARRAY_STDOUT',  variavel_indice, variavel_array)
@@ -1030,7 +1035,8 @@ def assembliza_ARRAY(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_
         
         #
         aux=aux+'pushg '+str(dict_var.get(indice))+'\n'
-        aux=aux+'pushg '+str(dict_var.get(tamanho))+'\nsup\n'
+        aux=aux+'pushg '+str(dict_var.get(tamanho))+'\ninf\n'
+        sp+=1
         corpo=corpo+aux
         aux=""
         
@@ -1040,13 +1046,16 @@ def assembliza_ARRAY(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_
         aux=""
         #assembliza-BlocoCodigo
         aux=aux+'pushi 0\n'
+        sp+=1
         corpo=corpo+aux
         aux=""
         
         #assembliza-Operacao
         aux=aux+'pushg '+str(dict_var.get(indice))+'\n\n'
         aux=aux+'pushi 1\nadd\n'
+        sp+=1
         aux=aux+'storeg '+str(dict_var.get(indice))+'\n\n'
+        sp-=1
         corpo=corpo+aux
         aux=""
         
@@ -1061,13 +1070,16 @@ def assembliza_ARRAY(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_
         
     if (tupleX[0] == 'FOR_ARRAY_STDIN') :#('FOR', indice , tamanho )
         aux="" 
-        nome = tupleX[1]
-        indice = tupleX[2]
+        nome = tupleX[2]
+        indice = tupleX[1]
         
         
         #
         aux=aux+'pushgp\npushi '+str(dict_var.get(nome))+'\npadd\n'
-        aux=aux+'pushi  '+str(dict_var.get(indice))+'\n'
+        sp+=1
+        print('TESTE ___ ' , indice)
+        aux=aux+'pushg  '+str(dict_var.get(indice))+'\n'
+        sp+=1
         aux=aux+'read\natoi\nstoren\n\n'
         corpo=corpo+aux
         aux=""
@@ -1076,14 +1088,17 @@ def assembliza_ARRAY(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_
        
     if (tupleX[0] == 'FOR_ARRAY_STDOUT') :#('FOR', indice , tamanho )
         aux="" 
-        nome = tupleX[1]
-        indice = tupleX[2]
+        indice = tupleX[1]
+        nome = tupleX[2]
         
         
         #
         aux=aux+'pushgp\npushi '+str(dict_var.get(nome))+'\npadd\n'
-        aux=aux+'pushi  '+str(dict_var.get(indice))+'\n'
-        aux=aux+'load\nwritei\n'
+        sp+=1
+        aux=aux+'pushg  '+str(dict_var.get(indice))+'\n'
+        sp+=1
+        aux=aux+'loadn\nwritei\n'
+        
         corpo=corpo+aux
         aux=""
         
@@ -1099,20 +1114,31 @@ def assembliza_ARRAY(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_
         
 pergunta5="""
 
+INT i ;
+INT tt ;
+tt = STDIN();
 
-INT tt = 5;
-INT tamanho = 4;
+
 
 ARRAYID tt v;
+
+FOR i (i < tt) i=1+i; {
+    STRUCTARRAY v i = STDIN();
+}
+i=i-1;
+
+FOR i (i < tt) i=i-1; {
+    STDOUT(STRUCTARRAY v i);
+}
 
 """
 
 
 
 aaaa=""" 
-
+ARRAYID tt v;
 FOR j (j < tamanho) j=j+1; {
-   i = 0;
+   a = 0;
 }
 
 FOR i (i < tamanho) i=1+i; {
@@ -1127,56 +1153,78 @@ FOR c (c < tamanho) c=c-1; {
 
 
 
-pergunta = pList[5]#pergunta_2#a3_WHILEDO# pergunta5#
 
 
 
-dict_var = {}
-l=[]
-contador_de_Ciclos=0
-sp=0
-extrapointer=0
-cabeca=""
-corpo=""
-extra=[]#"","","","","","","",""]
 
-
-
-print('--------Pergunta--------\n')
-
-print(pergunta)
-print('--------Estrutura Parsed--------\n')
-struct_to_assemblizar=parser.parse(pergunta)
-print(struct_to_assemblizar)
-if parser.success:
-
-   print('Parsing completed!\n')
-   
-
-
-
-sp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer= assembliza(struct_to_assemblizar,sp,contador_de_Ciclos,False,cabeca,corpo,extra,dict_var,extrapointer)
-
-
+def main():
     
-print('/*--------Dicionário de Variaveis:-----*/')
-print('/*',dict_var,'*/')
-print('/*--------Assembly Code:-----*/')
+    
+    
+    if not os.path.exists('PastaAssembly'):
+        os.mkdir('PastaAssembly')
+    
+    nomeFileAbrir = input("SELECIONE O Numero da Pergunta: ")   # Python 3
+    with open('p'+str(nomeFileAbrir)+'.txt','r') as file:
+        pergunta = file.read()
+    print(pergunta)
+    
+    
 
-final=""
-print(cabeca)
-final+=cabeca+'start'+corpo+'stop'
-print('start')
-print(corpo)
-print('stop')
-#print('/*--------extra:-----*/')
-ecna=0
-for i in extra:
-    #print('/*------------------------extra',ecna,':-----*/')
-    final+=i
-    print(i)
-    ecna+=1
 
-f = open("pFile.vm", "a")
-f.write(final)
-f.close()
+
+    dict_var = {}
+    l=[]
+    contador_de_Ciclos=0
+    sp=0
+    extrapointer=0
+    cabeca=""
+    corpo=""
+    extra=[]#"","","","","","","",""]
+
+       
+    #print('--------Pergunta--------\n')
+    
+    
+    #print(pergunta)
+    #print('--------Estrutura Parsed--------\n')
+    struct_to_assemblizar=parser.parse(pergunta)
+    #print(struct_to_assemblizar)
+    if parser.success:
+    
+       print('Parsing completed!\n')
+    
+    
+    sp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer= assembliza(struct_to_assemblizar,sp,contador_de_Ciclos,False,cabeca,corpo,extra,dict_var,extrapointer)
+    
+    
+        
+    #print('/*--------Dicionário de Variaveis:-----*/')
+    #print('/*',dict_var,'*/')
+    #print('/*--------Assembly Code:-----*/')
+    
+    final=""
+    #print(cabeca)
+    final+=cabeca+'start\n'+corpo+'stop\n'
+    #print('start')
+    #print(corpo)
+    #print('stop')
+    #print('/*--------extra:-----*/')
+    ecna=0
+    for i in extra:
+        #print('/*------------------------extra',ecna,':-----*/')
+        final+=i
+        #print(i)
+        ecna+=1
+    
+    
+    nomeFileAbrir = input("SELECIONE o nome final do ficheiro: ") 
+    nomeHtml= 'PastaAssembly'+'/'+nomeFileAbrir+'.vm'
+    f = open(nomeHtml, "a")
+    f.write(final)
+    f.close()
+
+
+
+if __name__ == "__main__":
+    main()
