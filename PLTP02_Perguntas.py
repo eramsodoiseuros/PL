@@ -17,14 +17,15 @@ INT z = STDIN();
 
 
 
-IFELSE((x==y)&&(x==w)&&(x==z)) { STDOUT(TRUE); }  ELSE { STDOUT(FALSE); }
+IFELSE((x==y)&&(x==w)&&(x==z)) { STDOUT(TRUE); }  ELSE { STDOUT(FALSE);}
 """
 
  
 
 
 pergunta_2=""" 
-INT n ;
+
+INT n;
 
 n = STDIN();
 INT y;
@@ -71,23 +72,7 @@ ELSE
         
 
 
-p_extra="""
 
-
-INT n = STDIN();
-INT x;
-INT y;
-
-x = 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
-
-
-WHILE (n > 0)  DO {  
-    n = n - 1 ;
-    y = STDIN();
-    IF( y < x ) { x = y ; }
-    }
-
-STDOUT(x);"""
 
 pergunta_3=""" 
 INT n = 10;
@@ -125,30 +110,55 @@ STDOUT("FIM"); """
 
 
 pergunta_5="""
-INT i; 
-INT tamanho = STDIN();
-INT tt;
 
-tt = 5;
+INT i ;
+INT tt ;
+tt = STDIN();
 
 
 
 ARRAYID tt v;
 
-FOR j (j < tamanho) j=j+1; {
-   i = 0;
-}
-
-FOR i (i < tamanho) i=1+i; {
+FOR i (i < tt) i=1+i; {
     STRUCTARRAY v i = STDIN();
 }
+i=i-1;
 
-FOR i (i < tamanho) i=i-1; {
+FOR i (i >= 0  ) i=i-1; {
     STDOUT(STRUCTARRAY v i);
 }
 
 """
-pList=[pergunta_1,pergunta_2,pergunta_3,pergunta_4,pergunta_5]
+
+
+pergunta_6="""
+
+d = CALL FpotenciaF(;);
+
+DEFINE FpotenciaF(){
+    
+    INT i ;
+    
+    INTR r = 1;
+    
+    INT b = STDIN();
+
+    INT e = STDIN();
+
+    
+
+    IF(e == 0){
+        RETURN 1;
+    }
+
+    FOR i  (i < e) i=i+1;{
+        r = r*b;
+    }
+
+    RETURN r;
+}
+"""
+pList=[pergunta_1,pergunta_2,pergunta_3,pergunta_4,pergunta_5,pergunta_6]
 
 
 
