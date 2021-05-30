@@ -5,6 +5,7 @@
 start
 	
 While1:            
+	
 	pushg 0
 	pushi 0
 	sup
@@ -30,6 +31,8 @@ EndOfWhile1:
 	
 	pushg 2
 	writei
+	pushs "\n"
+	writes
 	
 stop
 	

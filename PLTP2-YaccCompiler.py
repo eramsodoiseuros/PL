@@ -452,8 +452,6 @@ parser.success = True
 
 def main():
     
-    
-    
     if not os.path.exists('PastaAssembly'):
         os.mkdir('PastaAssembly')
     
@@ -462,10 +460,6 @@ def main():
         pergunta = file.read()
     print(pergunta)
     
-    
-
-
-
     dict_var = {}
     l = []
     contador_de_Ciclos = 0
@@ -480,7 +474,6 @@ def main():
     print(struct_to_assemblizar)
     if parser.success:
        print('Parsing completed!\n')
-    
     
     sp,cabeca,corpo,extra,contador_de_Ciclos,delay,dict_var,extrapointer= assembliza(struct_to_assemblizar,sp,contador_de_Ciclos,False,cabeca,corpo,extra,dict_var,extrapointer)
      

@@ -21,8 +21,8 @@ start
 	storeg 0
 	
 	
-While2:      
-      
+While2:            
+	
 	pushg 0
 	pushi 0
 	sup
@@ -44,12 +44,16 @@ While2:
 	
 	pushg 2
 	writei
+	pushs "\n"
+	writes
 	jump ENDIFELSE4
 	
 ELSE4:
 	
 	pushg 1
 	writei
+	pushs "\n"
+	writes
 	
 	ENDIFELSE4:     
 	
@@ -98,6 +102,8 @@ ELSE1:
 	
 	pushg 2
 	writei
+	pushs "\n"
+	writes
 	
 ENDSimpleIF6:       
 	

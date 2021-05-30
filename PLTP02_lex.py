@@ -34,9 +34,7 @@ t_ID= r'[a-z]+'
 t_NUM = r'\d+'
 t_OR = r'\|\|'
 t_AND = r'\&\&'
-
 t_COMMENT = r'\*\/[^\/\*]*/\*'
-
 t_PAL = r'\"[a-zA-Z]+\"'
 
 

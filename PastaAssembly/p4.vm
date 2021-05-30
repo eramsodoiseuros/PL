@@ -6,9 +6,11 @@
 start
 	pushs "INICIO"
 	writes
+	pushs "\n"
+	writes
 	
-While1:       
-     
+While1:            
+	
 	pushg 2
 	pushg 3
 	equal
@@ -33,6 +35,8 @@ While1:
 	
 	pushg 2
 	writei
+	pushs "\n"
+	writes
 	
 ENDSimpleIF2:       
 	pushg 2
@@ -45,6 +49,8 @@ ENDSimpleIF2:
 EndOfWhile1:         
 	
 	pushs "FIM"
+	writes
+	pushs "\n"
 	writes
 	
 stop

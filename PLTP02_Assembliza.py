@@ -14,7 +14,7 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
     if (tupleX[0] == 'Declaracao') :#('Declaracao', 'INT', 'x')
         
     
-        if(tupleX[2] in dict_var): print('TESTE')
+        if(tupleX[2] in dict_var): print('variavel tentou escrever por cima de outra')
             
         else:
             cabeca=cabeca + 'pushi 0\n'
@@ -259,7 +259,6 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         corpo=corpo+aux
         aux=""
 
-        #print(tupleX)
     if (tupleX[0] == 'NUM') :#('NUM', '1')
         aux='pushi '+str(tupleX[1])+'\n'
         sp+=1#
@@ -273,7 +272,6 @@ def assembliza(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_var,ex
         sp+=1
     
     if (tupleX[0] == 'ARRAYID') :#ARRAYID ID ID ';' "
-        print(tupleX)
         cicleID = contador_de_Ciclos
         variavel_tamanho=tupleX[1]
         variavel_array=tupleX[2]
@@ -507,7 +505,6 @@ def assembliza_ARRAY(tupleX,sp,contador_de_Ciclos,delay,cabeca,corpo,extra,dict_
         #
         aux=aux+'pushgp\npushi '+str(dict_var.get(nome))+'\npadd\n'
         sp+=1
-        print('TESTE ___ ' , indice)
         aux=aux+'pushg  '+str(dict_var.get(indice))+'\n'
         sp+=1
         aux=aux+'read\natoi\nstoren\n\n'

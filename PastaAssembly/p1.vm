@@ -34,11 +34,15 @@ start
 	
 	pushs "TRUE" 
 	writes
+	pushs "\n"
+	writes
 	jump ENDIFELSE1
 	
 ELSE1:
 	
 	pushs "FALSE" 
+	writes
+	pushs "\n"
 	writes
 	
 	ENDIFELSE1:     
