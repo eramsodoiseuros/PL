@@ -487,8 +487,8 @@ def main():
     if not os.path.exists('PastaAssembly'):
         os.mkdir('PastaAssembly')
     
-    nomeFileAbrir = input("SELECIONE O Numero da Pergunta: ")   # Python 3
-    with open('Perguntas/p'+str(nomeFileAbrir)+'.txt','r') as file:
+    nomeFileAbrir = input("Selecione o Nome do Programa: ")   # Python 3
+    with open('Perguntas/'+str(nomeFileAbrir)+'.txt','r') as file:
         pergunta = file.read()
     print(pergunta)
     
