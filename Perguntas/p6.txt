@@ -2,9 +2,9 @@ d = CALL FpotenciaF(;);
 
 DEFINE FpotenciaF(){
     
-    INT i ;
+    INT i = 0;
     
-    INTR r = 1;
+    INT r = 1;
     
     INT b = STDIN();
 

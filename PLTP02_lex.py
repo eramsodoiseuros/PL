@@ -37,7 +37,7 @@ t_AND = r'\&\&'
 
 t_COMMENT = r'\*\/[^\/\*]*/\*'
 
-t_PAL = r'\"[A-Z]+\"'
+t_PAL = r'\"[a-zA-Z]+\"'
 
 
 t_ignore  = ' \n\t'

@@ -1,0 +1,5 @@
+*/ Este programa serve para testar tudo /*
+
+STDOUT("Inicio do Programa de teste");
+
+INT x = STDIN();

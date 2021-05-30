@@ -1,0 +1,77 @@
+	pushi 0
+	pushi 0
+	pushi 0
+	
+start
+	read
+	atoi
+	storeg 1
+ForArray1:
+	pushg 2
+	pushg 1
+	inf
+	jz EndOfForArray1
+	
+	pushi 0
+	pushg 2
+	
+	pushi 1
+	add
+	storeg 2
+	
+	jump ForArray1
+EndOfForArray1:
+	
+For2:
+	
+	pushg 0
+	pushg 1
+	inf
+	jz EndOfFor2
+	
+	pushgp
+	pushi 3
+	padd
+	pushg  0
+	read
+	atoi
+	storen
+	
+	pushi 1
+	pushg 0
+	add
+	storeg 0
+	
+	jump For2
+	
+EndOfFor2:
+	pushg 0
+	pushi 1
+	sub
+	storeg 0
+	
+	
+For3:
+	
+	pushg 0
+	pushi 0
+	supeq
+	jz EndOfFor3
+	
+	pushgp
+	pushi 3
+	padd
+	pushg  0
+	loadn
+	writei
+	pushg 0
+	pushi 1
+	sub
+	storeg 0
+	
+	jump For3
+	
+EndOfFor3:
+	
+stop
+	

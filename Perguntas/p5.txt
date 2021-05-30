@@ -1,8 +1,5 @@
 INT i ;
-INT tt ;
-tt = STDIN();
-
-
+INT tt = STDIN();
 
 ARRAYID tt v;
 

@@ -490,7 +490,7 @@ def main():
     
     final=""
     #print(cabeca)
-    final+=cabeca+'start\n'+corpo+'stop\n'
+    final+=cabeca+'\n\tstart\n'+corpo+'\n\tstop\n'
     #print('start')
     #print(corpo)
     #print('stop')
@@ -506,7 +506,14 @@ def main():
     nomeFileAbrir = input("SELECIONE o nome final do ficheiro: ") 
     nomeHtml= 'PastaAssembly'+'/'+nomeFileAbrir+'.vm'
     f = open(nomeHtml, "a")
-    f.write(final)
+    
+    assembly = ""
+    for linha in final.split('\n'):
+        if '\t' in linha:
+            assembly = assembly + linha[1:] + '\n'
+        else: 
+            assembly = assembly + '\t' + linha + '\n'
+    f.write(assembly)
     f.close()
     print()
 

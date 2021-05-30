@@ -1,0 +1,57 @@
+	pushi -1
+	pushi 0
+	pushi 1
+	pushi 0
+	pushi 0
+	
+start
+	pusha FpotenciaF
+	call
+	nop
+	pushs "\na funcao devolveu:\n"
+	writes
+	writei
+	pushs "\ndebug :FIM\n"
+	writes
+	
+stop
+FpotenciaF: nop
+	read
+	atoi
+	storeg 3
+	read
+	atoi
+	storeg 4
+	pushg 4
+	pushi 0
+	equal
+	jz ENDSimpleIF2
+	
+	
+ENDSimpleIF2:       
+	
+For3:
+	
+	pushg 1
+	pushg 4
+	inf
+	jz EndOfFor3
+	
+	pushg 2
+	pushg 3
+	mul
+	storeg 2
+	
+	pushg 1
+	pushi 1
+	add
+	storeg 1
+	
+	jump For3
+	
+EndOfFor3:
+	pushg 2
+	storel -1
+	
+	return
+	

@@ -1,0 +1,51 @@
+	pushi 0
+	pushi 0
+	pushi 1
+	pushi 8
+	
+start
+	pushs "INICIO"
+	writes
+	
+While1:       
+     
+	pushg 2
+	pushg 3
+	equal
+	NOT
+	jz EndOfWhile1
+	
+	pushg 2
+	pushi 2
+	mod
+	storeg 1
+	
+	pushg 1
+	pushi 0
+	equal
+	NOT
+	jz ENDSimpleIF2
+	
+	pushg 0
+	pushi 1
+	add
+	storeg 0
+	
+	pushg 2
+	writei
+	
+ENDSimpleIF2:       
+	pushg 2
+	pushi 1
+	add
+	storeg 2
+	
+	jump While1
+	
+EndOfWhile1:         
+	
+	pushs "FIM"
+	writes
+	
+stop
+	

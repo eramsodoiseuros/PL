@@ -1,6 +1,6 @@
+INT n = STDIN();
 INT y;
 INT x;
-INT n = STDIN();
 
 IFELSE (n > 1) 
 {
